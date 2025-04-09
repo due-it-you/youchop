@@ -1,6 +1,12 @@
 <div>
   <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
   <div id="player"></div>
+  <div>
+    <%= form_with do |form| %>
+      <%= form.url_field :url, class: "border border-black", size: 40 %>
+      <%= form.submit "submit", class: "bg-green-200" %>
+    <% end %>
+  </div>
   <script>
     // 2. This code loads the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
