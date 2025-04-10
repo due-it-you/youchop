@@ -4,12 +4,13 @@ export default class extends Controller {
   static targets = [ 
                     "url",
                     "error_url",
-   ]
+  ]
 
   url_validation() {
     console.log(this.urlTarget.value)
     const urlInput = this.urlTarget
     const urlError = this.error_urlTarget
+    const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
 
     if(this.urlTarget.value === "") {
       console.log("中身がありませんよ")
