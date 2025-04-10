@@ -12,7 +12,7 @@ export default class extends Controller {
     const urlError = this.error_urlTarget
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
 
-    if(this.urlTarget.value === "") {
+    if(urlInput.value === "") {
       console.log("中身がありませんよ")
       urlError.className = "text-red-500 border border-red-400"
       urlError.textContent = "put youtube video URL here"
