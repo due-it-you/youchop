@@ -31,7 +31,7 @@ export default class extends Controller {
     }
   }
 
-  fetch_url() {
-    console.log(this.urlTarget.value)
+  extractVideoId() {
+    
   }
 }
