@@ -20,6 +20,12 @@ export default class extends Controller {
       urlError.className = ""
       urlError.textContent = ""
     }
+
+    if(!urlRegex.test(urlInput.value)) {
+      console.log("正規表現と一致しません")
+      urlError.className = "text-red-600 border border-red-600"
+      urlError.textContent = "paste valid Youtube Video URL"
+    }
   }
 
   fetch_url() {
