@@ -31,7 +31,7 @@ export default class extends Controller {
     }
   }
 
-  extractVideoId() {
-    
+  extractVideoId(event) {
+    event.preventDefault();
   }
 }
