@@ -33,5 +33,9 @@ export default class extends Controller {
 
   extractVideoId(event) {
     event.preventDefault();
+    var youtubeVideoUrl = this.urlTarget.value
+    const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+    var match = youtubeVideoUrl.match(urlRegex)
+    videoId = match[5]
   }
 }
