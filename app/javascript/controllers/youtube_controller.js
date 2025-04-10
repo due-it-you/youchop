@@ -23,10 +23,10 @@ export default class extends Controller {
 
   isValidSubmit() {
     if(this.error_urlTarget.textContent == "" && this.urlTarget.value !== "") {
-      this.submitTarget.disabled = true
+      this.submitTarget.disabled = false
       this.submitTarget.className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
     } else {
-      this.submitTarget.disabled = false
+      this.submitTarget.disabled = true
       this.submitTarget.className = "bg-blue-500 text-white font-bold py-2 px-4 rounded"
     }
   }
