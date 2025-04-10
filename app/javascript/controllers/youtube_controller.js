@@ -14,7 +14,6 @@ export default class extends Controller {
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
 
     if(!urlRegex.test(urlInput.value)) {
-      console.log("正規表現と一致しません")
       urlError.className = "text-red-600 border border-red-600"
       urlError.textContent = "paste valid Youtube Video URL"
     } else {
@@ -25,7 +24,6 @@ export default class extends Controller {
 
   isValidSubmit() {
     if(this.error_urlTarget.textContent == "" && this.urlTarget.value !== "") {
-      console.log("ボタンは有効化されます")
       this.submitTarget.disabled = true
       this.submitTarget.className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
     } else {
