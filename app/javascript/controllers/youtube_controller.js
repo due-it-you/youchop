@@ -31,7 +31,7 @@ export default class extends Controller {
     }
   }
 
-  extractVideoId(event) {
+  embedVideo(event) {
     event.preventDefault();
     var youtubeVideoUrl = this.urlTarget.value
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
