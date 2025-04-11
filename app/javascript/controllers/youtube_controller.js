@@ -4,7 +4,8 @@ export default class extends Controller {
   static targets = [ 
                     "url",
                     "error_url",
-                    "submit"
+                    "submit",
+                    "frame"
   ]
 
   initialize() {
@@ -42,17 +43,32 @@ export default class extends Controller {
   embedVideo(event) {
     event.preventDefault();
     var youtubeVideoUrl = this.urlTarget.value
+    const DivNotEmbeddedYet = new DOMParser().parseFromString('<div id="player" data-youtube-target="frame"></div>', "text/html").querySelector('#player')
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
     var match = youtubeVideoUrl.match(urlRegex)
     const extractedVideoId = match[5]
 
-    let player = new YT.Player('player', {
-      height: '390',
-      width: '640',
-      videoId: extractedVideoId,
-      playerVars: {
-        'playsinline': 1
-      }
-    });
+    console.log(DivNotEmbeddedYet)
+
+    if(this.frameTarget.tagName == "DIV") {
+      let player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: extractedVideoId,
+        playerVars: {
+          'playsinline': 1
+        }
+      });
+    } else {
+      this.frameTarget.replaceWith(DivNotEmbeddedYet)
+      let player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: extractedVideoId,
+        playerVars: {
+          'playsinline': 1
+        }
+      });
+    }
   }
 }
