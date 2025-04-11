@@ -48,8 +48,6 @@ export default class extends Controller {
     var match = youtubeVideoUrl.match(urlRegex)
     const extractedVideoId = match[5]
 
-    console.log(DivNotEmbeddedYet)
-
     if(this.frameTarget.tagName == "DIV") {
       let player = new YT.Player('player', {
         height: '390',
