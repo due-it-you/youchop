@@ -7,6 +7,14 @@ export default class extends Controller {
                     "submit"
   ]
 
+  initialize() {
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
+
   url_validation() {
     const urlInput = this.urlTarget
     const urlError = this.error_urlTarget
@@ -36,6 +44,15 @@ export default class extends Controller {
     var youtubeVideoUrl = this.urlTarget.value
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
     var match = youtubeVideoUrl.match(urlRegex)
-    const videoId = match[5]
+    const extractedVideoId = match[5]
+
+    let player = new YT.Player('player', {
+      height: '390',
+      width: '640',
+      videoId: extractedVideoId,
+      playerVars: {
+        'playsinline': 1
+      }
+    });
   }
 }
