@@ -1,13 +1,15 @@
 <div>
   <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-  <div id="player"></div>
-  <div>
-    <%= form_with(local: true, data: { controller: "youtube", action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
-      <div>
-        <%= f.url_field :url, class: "form-control", data: { youtube_target: "url", action: "input->youtube#url_validation" } %>
-        <p data-youtube-target="error_url"></p>
-        <%= f.submit "submit" ,class: "bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
-      </div>
-    <% end %>
+  <div data-controller="youtube">
+    <div id="player" data-youtube-target="frame"></div>
+    <div>
+      <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
+        <div>
+          <%= f.url_field :url, class: "form-control", data: { youtube_target: "url", action: "input->youtube#url_validation" } %>
+          <p data-youtube-target="error_url"></p>
+          <%= f.submit "submit" ,class: "bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
