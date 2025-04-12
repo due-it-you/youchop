@@ -2,6 +2,7 @@
   <div data-controller="youtube" data-action="
   keydown.t@document->youtube#play 
   keydown.y@document->youtube#play
+  keydown.u@document->youtube#play
     ">
     <div id="player" data-youtube-target="frame"></div>
     <div>
@@ -14,24 +15,40 @@
       <% end %>
     </div>
     <div class="flex">
-      <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+      <div>
+        <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+          <div>
+            <p>key:T</p>
+          </div>
+        </div>
         <div>
-          <p>key:T</p>
+          <div>
+            key:T<input data-youtube-target="t_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          </div>
         </div>
       </div>
       <div>
-        <div>
-          key:T<input data-youtube-target="t_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+        <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+          <div>
+            <p>key:Y</p>
+          </div>
         </div>
-      </div>
-      <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
         <div>
-          <p>key:Y</p>
+          <div>
+            key:Y<input data-youtube-target="y_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          </div>
         </div>
       </div>
       <div>
+        <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+          <div>
+            <p>key:U</p>
+          </div>
+        </div>
         <div>
-          key:Y<input data-youtube-target="y_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          <div>
+            key:U<input data-youtube-target="u_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          </div>
         </div>
       </div>
     </div>
