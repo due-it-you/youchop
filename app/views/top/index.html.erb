@@ -1,5 +1,8 @@
 <div>
-  <div data-controller="youtube" data-action="keydown.t@document->youtube#play">
+  <div data-controller="youtube" data-action="
+  keydown.t@document->youtube#play 
+  keydown.y@document->youtube#play
+    ">
     <div id="player" data-youtube-target="frame"></div>
     <div>
       <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
