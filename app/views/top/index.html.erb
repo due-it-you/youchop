@@ -14,24 +14,28 @@
       <% end %>
     </div>
     <div class="flex">
-      <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+      <div>
+        <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+          <div>
+            <p>key:T</p>
+          </div>
+        </div>
         <div>
-          <p>key:T</p>
+          <div>
+            key:T<input data-youtube-target="t_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          </div>
         </div>
       </div>
       <div>
-        <div>
-          key:T<input data-youtube-target="t_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+        <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+          <div>
+            <p>key:Y</p>
+          </div>
         </div>
-      </div>
-      <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
         <div>
-          <p>key:Y</p>
-        </div>
-      </div>
-      <div>
-        <div>
-          key:Y<input data-youtube-target="y_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          <div>
+            key:Y<input data-youtube-target="y_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          </div>
         </div>
       </div>
     </div>
