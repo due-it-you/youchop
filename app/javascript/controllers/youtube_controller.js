@@ -5,7 +5,8 @@ export default class extends Controller {
                     "url",
                     "error_url",
                     "submit",
-                    "frame"
+                    "frame",
+                    "time-t",
   ]
 
   initialize() {
