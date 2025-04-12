@@ -9,6 +9,10 @@ export default class extends Controller {
                     "t_start_time",
   ]
 
+  initialize() {
+    this.element['youtube'] = this
+  }
+
   connect() {
     var tag = document.createElement('script');
 
