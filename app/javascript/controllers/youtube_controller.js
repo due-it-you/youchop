@@ -59,7 +59,8 @@ export default class extends Controller {
         width: '640',
         videoId: extractedVideoId,
         playerVars: {
-          'playsinline': 1
+          'playsinline': 1,
+          'mute': 0
         }
       });
     } else {
