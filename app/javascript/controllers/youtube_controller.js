@@ -63,6 +63,7 @@ export default class extends Controller {
           'mute': 0
         }
       });
+      this.youtube = player
     } else {
       this.frameTarget.replaceWith(DivNotEmbeddedYet)
       var player = new YT.Player('player', {
@@ -73,6 +74,7 @@ export default class extends Controller {
           'playsinline': 1
         }
       });
+      this.youtube = player
     }
   }
 
