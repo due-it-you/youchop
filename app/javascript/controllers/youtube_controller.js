@@ -81,5 +81,7 @@ export default class extends Controller {
   play(event) {
     if(event.target.closest(".ignore-keydown")) return
 
+  get getPlayer() {
+    return this.youtube
   }
 }
