@@ -73,6 +73,5 @@ export default class extends Controller {
 
   play(event) {
     if(event.target.closest(".ignore-keydown")) return
-    console.log("再生します")
   }
 }
