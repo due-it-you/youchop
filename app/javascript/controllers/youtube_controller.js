@@ -12,6 +12,7 @@ export default class extends Controller {
                     "g_start_time",
                     "h_start_time",
                     "j_start_time",
+                    "b_start_time",
   ]
 
   initialize() {
