@@ -8,6 +8,7 @@ export default class extends Controller {
                     "frame",
                     "t_start_time",
                     "y_start_time",
+                    "u_start_time",
   ]
 
   initialize() {
