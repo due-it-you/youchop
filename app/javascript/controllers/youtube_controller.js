@@ -50,7 +50,7 @@ export default class extends Controller {
     const extractedVideoId = match[5]
 
     if(this.frameTarget.tagName == "DIV") {
-      let player = new YT.Player('player', {
+      var player = new YT.Player('player', {
         height: '390',
         width: '640',
         videoId: extractedVideoId,
@@ -60,7 +60,7 @@ export default class extends Controller {
       });
     } else {
       this.frameTarget.replaceWith(DivNotEmbeddedYet)
-      let player = new YT.Player('player', {
+      var player = new YT.Player('player', {
         height: '390',
         width: '640',
         videoId: extractedVideoId,
