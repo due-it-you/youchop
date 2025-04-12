@@ -1,5 +1,8 @@
 <div>
-  <div data-controller="youtube" data-action="keydown.t@document->youtube#play">
+  <div data-controller="youtube" data-action="
+  keydown.t@document->youtube#play 
+  keydown.y@document->youtube#play
+    ">
     <div id="player" data-youtube-target="frame"></div>
     <div>
       <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
@@ -10,14 +13,26 @@
         </div>
       <% end %>
     </div>
-    <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
-      <div>
-        <p>key:T</p>
+    <div class="flex">
+      <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+        <div>
+          <p>key:T</p>
+        </div>
       </div>
-    </div>
-    <div>
       <div>
-        <input data-youtube-target="t_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+        <div>
+          key:T<input data-youtube-target="t_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+        </div>
+      </div>
+      <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+        <div>
+          <p>key:Y</p>
+        </div>
+      </div>
+      <div>
+        <div>
+          key:Y<input data-youtube-target="y_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+        </div>
       </div>
     </div>
   </div>
