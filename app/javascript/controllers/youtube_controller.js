@@ -12,6 +12,7 @@ export default class extends Controller {
                     "g_start_time",
                     "h_start_time",
                     "j_start_time",
+                    "b_start_time",
   ]
 
   initialize() {
@@ -111,6 +112,7 @@ export default class extends Controller {
     if(event.key == "g") return this.g_start_timeTarget
     if(event.key == "h") return this.h_start_timeTarget
     if(event.key == "j") return this.j_start_timeTarget
+    if(event.key == "b") return this.b_start_timeTarget
   }
 
   get getPlayer() {
