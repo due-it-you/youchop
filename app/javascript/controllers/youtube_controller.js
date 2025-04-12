@@ -6,7 +6,7 @@ export default class extends Controller {
                     "error_url",
                     "submit",
                     "frame",
-                    "t_time",
+                    "t_start_time",
   ]
 
   connect() {
