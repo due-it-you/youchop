@@ -1,5 +1,5 @@
 <div>
-  <div data-controller="youtube">
+  <div data-controller="youtube" data-action="keydown.t@document->youtube#play">
     <div id="player" data-youtube-target="frame"></div>
     <div>
       <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
@@ -10,14 +10,14 @@
         </div>
       <% end %>
     </div>
-    <div class= "border border-black bg-green-100 aspect-square w-20">
+    <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
       <div>
-      <p>key:T</p>
+        <p>key:T</p>
       </div>
-      <div class="flex items-center justify-center">
-        <div>
-          <input type="time" class="icon-del font-bold">
-        </div>
+    </div>
+    <div>
+      <div>
+        <input type="time" class="icon-del font-bold">
       </div>
     </div>
   </div>
