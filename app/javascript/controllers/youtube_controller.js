@@ -54,7 +54,7 @@ export default class extends Controller {
     const extractedVideoId = match[5]
 
     if(this.frameTarget.tagName == "DIV") {
-      var player = new YT.Player('player', {
+      const player = new YT.Player('player', {
         height: '390',
         width: '640',
         videoId: extractedVideoId,
@@ -66,7 +66,7 @@ export default class extends Controller {
       this.youtube = player
     } else {
       this.frameTarget.replaceWith(DivNotEmbeddedYet)
-      var player = new YT.Player('player', {
+      const player = new YT.Player('player', {
         height: '390',
         width: '640',
         videoId: extractedVideoId,
@@ -80,6 +80,7 @@ export default class extends Controller {
 
   play(event) {
     if(event.target.closest(".ignore-keydown")) return
+  }
 
   get getPlayer() {
     return this.youtube
