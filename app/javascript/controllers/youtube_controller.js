@@ -9,6 +9,7 @@ export default class extends Controller {
                     "t_start_time",
                     "y_start_time",
                     "u_start_time",
+                    "g_start_time",
   ]
 
   initialize() {
