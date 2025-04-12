@@ -104,6 +104,7 @@ export default class extends Controller {
   targetTime(event) {
     if(event.key == "t") return this.t_start_timeTarget
     if(event.key == "y") return this.y_start_timeTarget
+    if(event.key == "u") return this.u_start_timeTarget
   }
 
   get getPlayer() {
