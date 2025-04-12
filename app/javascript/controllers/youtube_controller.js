@@ -61,6 +61,11 @@ export default class extends Controller {
         playerVars: {
           'playsinline': 1,
           'mute': 0
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo()
+          }
         }
       });
       this.youtube = player
@@ -72,7 +77,12 @@ export default class extends Controller {
         videoId: extractedVideoId,
         playerVars: {
           'playsinline': 1
-        }
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo()
+          }
+         }
       });
       this.youtube = player
     }
