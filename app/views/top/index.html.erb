@@ -7,6 +7,7 @@
   keydown.h@document->youtube#play
   keydown.j@document->youtube#play
   keydown.b@document->youtube#play
+  keydown.n@document->youtube#play
     ">
     <div id="player" data-youtube-target="frame"></div>
     <div>
@@ -100,6 +101,18 @@
         <div>
           <div>
             key:B<input data-youtube-target="b_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          </div>
+        </div>
+      </div>
+      <div>
+        <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+          <div>
+            <p>key:N</p>
+          </div>
+        </div>
+        <div>
+          <div>
+            key:N<input data-youtube-target="n_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
           </div>
         </div>
       </div>
