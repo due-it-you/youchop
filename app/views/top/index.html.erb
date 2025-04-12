@@ -4,7 +4,7 @@
     <div>
       <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
         <div>
-          <%= f.url_field :url, class: "form-control", data: { youtube_target: "url", action: "input->youtube#url_validation" } %>
+          <%= f.url_field :url, class: "form-control ignore-keydown",data: { youtube_target: "url", action: "input->youtube#url_validation" } %>
           <p data-youtube-target="error_url"></p>
           <%= f.submit "submit" ,class: "bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
         </div>
@@ -17,7 +17,7 @@
     </div>
     <div>
       <div>
-        <input type="time" class="icon-del font-bold">
+        <input type="time" class="icon-del font-bold ignore-keydown">
       </div>
     </div>
   </div>
