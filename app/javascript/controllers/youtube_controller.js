@@ -82,7 +82,7 @@ export default class extends Controller {
           onReady: (event) => {
             event.target.playVideo()
           }
-         }
+        }
       });
       this.youtube = player
     }
@@ -90,6 +90,13 @@ export default class extends Controller {
 
   play(event) {
     if(event.target.closest(".ignore-keydown")) return
+
+    const [m,s] = this.t_start_timeTarget.value.split(":")
+    const minSecArray = [m,s].map( str => parseInt(str, 10))
+    const totalSecondResult = minSecArray[0]*60 + minSecArray[1]
+
+    this.getPlayer.seekTo(totalSecondResult, true)
+    this.getPlayer.playVideo()
   }
 
   get getPlayer() {
