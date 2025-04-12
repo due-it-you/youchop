@@ -91,24 +91,17 @@ export default class extends Controller {
   play(event) {
     if(event.target.closest(".ignore-keydown")) return
 
-    if(event.key == "t") {
-    const [m,s] = this.t_start_timeTarget.value.split(":")
+    const [m,s] = this.targetTime(event).value.split(":")
     const minSecArray = [m,s].map( str => parseInt(str, 10))
     const totalSecondResult = minSecArray[0]*60 + minSecArray[1]
 
     this.getPlayer.seekTo(totalSecondResult, true)
     this.getPlayer.playVideo()
-    }
+  }
 
-    if(event.key == "y") {
-      const [m,s] = this.y_start_timeTarget.value.split(":")
-      const minSecArray = [m,s].map( str => parseInt(str, 10))
-      const totalSecondResult = minSecArray[0]*60 + minSecArray[1]
-  
-      this.getPlayer.seekTo(totalSecondResult, true)
-      this.getPlayer.playVideo()
-    }
-
+  targetTime(event) {
+    if(event.key == "t") return this.t_start_timeTarget
+    if(event.key == "y") return this.y_start_timeTarget
   }
 
   get getPlayer() {
