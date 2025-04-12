@@ -5,10 +5,15 @@ export default class extends Controller {
                     "url",
                     "error_url",
                     "submit",
-                    "frame"
+                    "frame",
+                    "t_start_time",
   ]
 
   initialize() {
+    this.element['youtube'] = this
+  }
+
+  connect() {
     var tag = document.createElement('script');
 
     tag.src = "https://www.youtube.com/iframe_api";
@@ -49,29 +54,51 @@ export default class extends Controller {
     const extractedVideoId = match[5]
 
     if(this.frameTarget.tagName == "DIV") {
-      let player = new YT.Player('player', {
+      const player = new YT.Player('player', {
         height: '390',
         width: '640',
         videoId: extractedVideoId,
         playerVars: {
           'playsinline': 1
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo()
+          }
         }
       });
+      this.youtube = player
     } else {
       this.frameTarget.replaceWith(DivNotEmbeddedYet)
-      let player = new YT.Player('player', {
+      const player = new YT.Player('player', {
         height: '390',
         width: '640',
         videoId: extractedVideoId,
         playerVars: {
           'playsinline': 1
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo()
+          }
         }
       });
+      this.youtube = player
     }
   }
 
   play(event) {
     if(event.target.closest(".ignore-keydown")) return
-    console.log("再生します")
+
+    const [m,s] = this.t_start_timeTarget.value.split(":")
+    const minSecArray = [m,s].map( str => parseInt(str, 10))
+    const totalSecondResult = minSecArray[0]*60 + minSecArray[1]
+
+    this.getPlayer.seekTo(totalSecondResult, true)
+    this.getPlayer.playVideo()
+  }
+
+  get getPlayer() {
+    return this.youtube
   }
 }
