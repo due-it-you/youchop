@@ -6,7 +6,7 @@ export default class extends Controller {
                     "error_url",
                     "submit",
                     "frame",
-                    "time_t",
+                    "t_time",
   ]
 
   connect() {
@@ -73,6 +73,6 @@ export default class extends Controller {
 
   play(event) {
     if(event.target.closest(".ignore-keydown")) return
-    
+
   }
 }
