@@ -3,6 +3,7 @@
   keydown.t@document->youtube#play 
   keydown.y@document->youtube#play
   keydown.u@document->youtube#play
+  keydown.g@document->youtube#play
     ">
     <div id="player" data-youtube-target="frame"></div>
     <div>
@@ -48,6 +49,18 @@
         <div>
           <div>
             key:U<input data-youtube-target="u_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          </div>
+        </div>
+      </div>
+      <div>
+        <div data-action="click->youtube#play" class="border border-black bg-green-100 aspect-square w-20">
+          <div>
+            <p>key:G</p>
+          </div>
+        </div>
+        <div>
+          <div>
+            key:G<input data-youtube-target="g_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
           </div>
         </div>
       </div>
