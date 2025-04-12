@@ -69,4 +69,8 @@ export default class extends Controller {
       });
     }
   }
+
+  play() {
+    console.log("再生します")
+  }
 }
