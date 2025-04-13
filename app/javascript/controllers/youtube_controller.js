@@ -31,27 +31,30 @@ export default class extends Controller {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   }
 
-  url_validation() {
+  url_validation(event) {
     const urlMelodyInput = this.url_melodyTarget
     const urlDrumsInput = this.url_drumsTarget
     const urlMelodyError = this.error_url_melodyTarget
     const urlDrumsError = this.error_url_drumsTarget
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
-
-    if(!urlRegex.test(urlMelodyInput.value)) {
-      urlMelodyError.className = "text-red-600 border border-red-600"
-      urlMelodyError.textContent = "paste valid Youtube Video URL"
+    
+    if(event.target.id == "url_melody") {
+      if(!urlRegex.test(urlMelodyInput.value)) {
+        console.log(urlMelodyError)
+        urlMelodyError.className = "text-red-600 border border-red-600"
+        urlMelodyError.textContent = "paste valid Youtube Video URL"
+      } else {
+        urlMelodyError.className = ""
+        urlMelodyError.textContent = ""
+      }
     } else {
-      urlMelodyError.className = ""
-      urlMelodyError.textContent = ""
-    }
-
-    if(!urlRegex.test(urlDrumsInput.value)) {
-      urlDrumsError.className = "text-red-600 border border-red-600"
-      urlDrumsError.textContent = "paste valid Youtube Video URL"
-    } else {
-      urlDrumsError.className = ""
-      urlDrumsError.textContent = ""
+      if(!urlRegex.test(urlDrumsInput.value)) {
+        urlDrumsError.className = "text-red-600 border border-red-600"
+        urlDrumsError.textContent = "paste valid Youtube Video URL"
+      } else {
+        urlDrumsError.className = ""
+        urlDrumsError.textContent = ""
+      }
     }
   }
 
