@@ -119,6 +119,8 @@ export default class extends Controller {
     if(event.key == "b") return this.b_start_timeTarget
     if(event.key == "n") return this.n_start_timeTarget
     if(event.key == "m") return this.m_start_timeTarget
+
+    if(event.target.id == "t_pad") return this.t_start_timeTarget
   }
 
   get getPlayer() {
