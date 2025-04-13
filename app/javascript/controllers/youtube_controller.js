@@ -130,6 +130,14 @@ export default class extends Controller {
     if(event.key == "m") return this.m_start_timeTarget
 
     if(event.target.id == "t_pad") return this.t_start_timeTarget
+    if(event.target.id == "y_pad") return this.y_start_timeTarget
+    if(event.target.id == "u_pad") return this.u_start_timeTarget
+    if(event.target.id == "g_pad") return this.g_start_timeTarget
+    if(event.target.id == "h_pad") return this.h_start_timeTarget
+    if(event.target.id == "j_pad") return this.j_start_timeTarget
+    if(event.target.id == "b_pad") return this.b_start_timeTarget
+    if(event.target.id == "n_pad") return this.n_start_timeTarget
+    if(event.target.id == "m_pad") return this.m_start_timeTarget
   }
 
   get getPlayer() {
