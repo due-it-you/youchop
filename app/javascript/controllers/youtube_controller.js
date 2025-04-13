@@ -31,7 +31,7 @@ export default class extends Controller {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   }
 
-  url_validation(event) {
+  validateUrl(event) {
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
 
     if(!urlRegex.test(this.urlInput(event).value)) {
