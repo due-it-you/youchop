@@ -45,6 +45,14 @@ export default class extends Controller {
       urlMelodyError.className = ""
       urlMelodyError.textContent = ""
     }
+
+    if(!urlRegex.test(urlDrumsInput.value)) {
+      urlDrumsError.className = "text-red-600 border border-red-600"
+      urlDrumsError.textContent = "paste valid Youtube Video URL"
+    } else {
+      urlDrumsError.className = ""
+      urlDrumsError.textContent = ""
+    }
   }
 
   isValidSubmit() {
