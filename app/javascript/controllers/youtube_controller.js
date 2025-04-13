@@ -32,10 +32,6 @@ export default class extends Controller {
   }
 
   url_validation(event) {
-    const urlMelodyInput = this.url_melodyTarget
-    const urlDrumsInput = this.url_drumsTarget
-    const urlMelodyError = this.error_url_melodyTarget
-    const urlDrumsError = this.error_url_drumsTarget
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
     console.log(event.target)
 
