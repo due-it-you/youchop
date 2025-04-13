@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = [ 
-                    "url",
+                    "url_melody",
+                    "url_drums",
                     "error_url",
                     "submit",
                     "frame",
