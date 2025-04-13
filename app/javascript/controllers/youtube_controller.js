@@ -99,12 +99,12 @@ export default class extends Controller {
     if(event.target.closest(".ignore-keydown")) return
     if(this.frameTarget.tagName == "DIV") return
 
-      const [m,s] = this.targetTime(event).value.split(":")
-      const minSecArray = [m,s].map( str => parseInt(str, 10))
-      const totalSecondResult = minSecArray[0]*60 + minSecArray[1]
+    const [m,s] = this.targetTime(event).value.split(":")
+    const minSecArray = [m,s].map( str => parseInt(str, 10))
+    const totalSecondResult = minSecArray[0]*60 + minSecArray[1]
 
-      this.getPlayer.seekTo(totalSecondResult, true)
-      this.getPlayer.playVideo()
+    this.getPlayer.seekTo(totalSecondResult, true)
+    this.getPlayer.playVideo()
   }
 
   targetTime(event) {
