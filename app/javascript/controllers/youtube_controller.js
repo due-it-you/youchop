@@ -62,7 +62,20 @@ export default class extends Controller {
     const extractedVideoId = match[5]
 
     if(this.frameTarget.tagName == "DIV") {
-      const player = new YT.Player('player', {
+      const playerMelody = new YT.Player('player_melody', {
+        height: '390',
+        width: '640',
+        videoId: extractedVideoId,
+        playerVars: {
+          'playsinline': 1
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo()
+          }
+        }
+      });
+      const playerDrums = new YT.Player('player_drums', {
         height: '390',
         width: '640',
         videoId: extractedVideoId,
