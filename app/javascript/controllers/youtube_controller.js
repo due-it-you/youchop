@@ -40,11 +40,11 @@ export default class extends Controller {
 
     if(event.target.id == "url_melody") {
       if(!urlRegex.test(urlMelodyInput.value)) {
-        urlMelodyError.className = "text-red-600 border border-red-600"
-        urlMelodyError.textContent = "paste valid Youtube Video URL"
+        this.urlError.className = "text-red-600 border border-red-600"
+        this.urlError.textContent = "paste valid Youtube Video URL"
       } else {
-        urlMelodyError.className = ""
-        urlMelodyError.textContent = ""
+        this.urlError.className = ""
+        this.urlError.textContent = ""
       }
     } else {
       if(!urlRegex.test(urlDrumsInput.value)) {
