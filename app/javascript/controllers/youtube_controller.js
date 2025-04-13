@@ -38,12 +38,12 @@ export default class extends Controller {
     const urlDrumsError = this.error_url_drumsTarget
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
 
-    if(!urlRegex.test(urlInput.value)) {
-      urlError.className = "text-red-600 border border-red-600"
-      urlError.textContent = "paste valid Youtube Video URL"
+    if(!urlRegex.test(urlMelodyInput.value)) {
+      urlMelodyError.className = "text-red-600 border border-red-600"
+      urlMelodyError.textContent = "paste valid Youtube Video URL"
     } else {
-      urlError.className = ""
-      urlError.textContent = ""
+      urlMelodyError.className = ""
+      urlMelodyError.textContent = ""
     }
   }
 
