@@ -10,15 +10,29 @@
   keydown.n@document->youtube#play
   keydown.m@document->youtube#play
     ">
-    <div id="player" data-youtube-target="frame"></div>
     <div>
-      <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
-        <div>
-          <%= f.url_field :url, class: "form-control ignore-keydown",data: { youtube_target: "url", action: "input->youtube#url_validation" } %>
-          <p data-youtube-target="error_url"></p>
-          <%= f.submit "submit" ,class: "bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
-        </div>
-      <% end %>
+      <div id="player_melody" data-youtube-target="frame"></div>
+      <div>
+        <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
+          <div>
+            <%= f.url_field :url, class: "form-control ignore-keydown",data: { youtube_target: "url_melody", action: "input->youtube#url_validation" } %>
+            <p data-youtube-target="error_url"></p>
+            <%= f.submit "submit" ,class: "bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div id="player_drums" data-youtube-target="frame"></div>
+      <div>
+        <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
+          <div>
+            <%= f.url_field :url, class: "form-control ignore-keydown",data: { youtube_target: "url_drums", action: "input->youtube#url_validation" } %>
+            <p data-youtube-target="error_url"></p>
+            <%= f.submit "submit" ,class: "bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
+          </div>
+        <% end %>
+      </div>
     </div>
     <%= render 'shared/pad_to_click' %>
   </div>
