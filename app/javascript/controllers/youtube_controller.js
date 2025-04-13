@@ -107,6 +107,15 @@ export default class extends Controller {
       this.getPlayer.seekTo(totalSecondResult, true)
       this.getPlayer.playVideo()
     }
+
+    if(event.type == "click") {
+      const [m,s] = this.targetTime(event).value.split(":")
+      const minSecArray = [m,s].map( str => parseInt(str, 10))
+      const totalSecondResult = minSecArray[0]*60 + minSecArray[1]
+
+      this.getPlayer.seekTo(totalSecondResult, true)
+      this.getPlayer.playVideo()
+    }
   }
 
   targetTime(event) {
