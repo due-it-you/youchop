@@ -4,7 +4,8 @@ export default class extends Controller {
   static targets = [ 
                     "url_melody",
                     "url_drums",
-                    "error_url",
+                    "error_url_melody",
+                    "error_url_drums",
                     "submit",
                     "frame",
                     "t_start_time",
