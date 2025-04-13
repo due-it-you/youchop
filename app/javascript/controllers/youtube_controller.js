@@ -33,7 +33,6 @@ export default class extends Controller {
 
   url_validation(event) {
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
-    console.log(event.target)
 
     if(!urlRegex.test(this.urlInput(event).value)) {
       this.urlError(event).className = "text-red-600 border border-red-600"
