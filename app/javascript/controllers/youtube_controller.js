@@ -54,8 +54,8 @@ export default class extends Controller {
   }
 
   urlError(event) {
-    if(event.target.id == "url_error_melody") return this.error_url_melodyTarget 
-    if(event.target.id == "url_error_drums") return this.error_url_drumsTarget 
+    if(event.target.id == "url_melody") return this.error_url_melodyTarget 
+    if(event.target.id == "url_drums") return this.error_url_drumsTarget 
   }
 
   isValidSubmit() {
