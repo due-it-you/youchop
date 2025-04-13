@@ -37,23 +37,14 @@ export default class extends Controller {
     const urlMelodyError = this.error_url_melodyTarget
     const urlDrumsError = this.error_url_drumsTarget
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+    console.log(event.target)
 
-    if(event.target.id == "url_melody") {
-      if(!urlRegex.test(this.urlInput(event).value)) {
-        this.urlError(event).className = "text-red-600 border border-red-600"
-        this.urlError(event).textContent = "paste valid Youtube Video URL"
-      } else {
-        this.urlError(event).className = ""
-        this.urlError(event).textContent = ""
-      }
+    if(!urlRegex.test(this.urlInput(event).value)) {
+      this.urlError(event).className = "text-red-600 border border-red-600"
+      this.urlError(event).textContent = "paste valid Youtube Video URL"
     } else {
-      if(!urlRegex.test(urlDrumsInput.value)) {
-        urlDrumsError.className = "text-red-600 border border-red-600"
-        urlDrumsError.textContent = "paste valid Youtube Video URL"
-      } else {
-        urlDrumsError.className = ""
-        urlDrumsError.textContent = ""
-      }
+      this.urlError(event).className = ""
+      this.urlError(event).textContent = ""
     }
   }
 
