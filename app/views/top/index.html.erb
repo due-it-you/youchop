@@ -16,7 +16,7 @@
         <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
           <div>
             <%= f.url_field :url, id: "url_melody", class: "form-control ignore-keydown",data: { youtube_target: "url_melody", action: "input->youtube#url_validation" } %>
-            <p data-youtube-target="error_url_melody"></p>
+            <p data-youtube-target="error_url_melody" id="error_url_melody"></p>
             <%= f.submit "submit" ,class: "bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
           </div>
         <% end %>
@@ -28,7 +28,7 @@
         <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
           <div>
             <%= f.url_field :url, id: "url_drums" ,class: "form-control ignore-keydown",data: { youtube_target: "url_drums", action: "input->youtube#url_validation" } %>
-            <p data-youtube-target="error_url_drums"></p>
+            <p data-youtube-target="error_url_drums" id="error_url_drums"></p>
             <%= f.submit "submit" ,class: "bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
           </div>
         <% end %>
