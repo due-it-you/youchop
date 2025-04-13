@@ -39,12 +39,12 @@ export default class extends Controller {
     const urlRegex = /^.*(youtu\.be\/|v\/|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
 
     if(event.target.id == "url_melody") {
-      if(!urlRegex.test(urlMelodyInput.value)) {
-        this.urlError.className = "text-red-600 border border-red-600"
-        this.urlError.textContent = "paste valid Youtube Video URL"
+      if(!urlRegex.test(this.urlInput(event).value)) {
+        this.urlError(event).className = "text-red-600 border border-red-600"
+        this.urlError(event).textContent = "paste valid Youtube Video URL"
       } else {
-        this.urlError.className = ""
-        this.urlError.textContent = ""
+        this.urlError(event).className = ""
+        this.urlError(event).textContent = ""
       }
     } else {
       if(!urlRegex.test(urlDrumsInput.value)) {
