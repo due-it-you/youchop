@@ -1,30 +1,29 @@
 <div>
   <div data-controller="youtube" data-action="
-  keydown.t@document->youtube#play 
-  keydown.y@document->youtube#play
-  keydown.u@document->youtube#play
-  keydown.g@document->youtube#play
-  keydown.h@document->youtube#play
-  keydown.j@document->youtube#play
-  keydown.b@document->youtube#play
-  keydown.n@document->youtube#play
-  keydown.m@document->youtube#play
+    keydown.t@document->youtube#play 
+    keydown.y@document->youtube#play
+    keydown.u@document->youtube#play
+    keydown.g@document->youtube#play
+    keydown.h@document->youtube#play
+    keydown.j@document->youtube#play
+    keydown.b@document->youtube#play
+    keydown.n@document->youtube#play
+    keydown.m@document->youtube#play
     ">
-    <div id="player" data-youtube-target="frame"></div>
     <div>
-      <%= form_with(local: true, data: { action: "input->youtube#isValidSubmit submit->youtube#embedVideo"}) do |f| %>
+      <%= render 'shared/youtube' %>
+    </div>
+    <div>
+      <div class="flex justify-center">
         <div>
-          <%= f.url_field :url, class: "form-control ignore-keydown",data: { youtube_target: "url", action: "input->youtube#url_validation" } %>
-          <p data-youtube-target="error_url"></p>
-          <%= f.submit "submit" ,class: "bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
+          <div>
+            <%= render 'shared/pad_to_set_time' %>
+          </div>
         </div>
-      <% end %>
-    </div>
-    <div>
-      <%= render 'shared/pad_to_set_time' %>
-    </div>
-    <div>
-      <%= render 'shared/hihats' %>
+        <div>
+          <%= render 'shared/hihats' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
