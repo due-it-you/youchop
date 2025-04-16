@@ -2,10 +2,11 @@
   <div class="px-12 py-4">
     <div class="mb-4">
       <div class="flex justify-center items-center gap-3">
-        <div>
+        <div class="flex items-center justify-center">
+          <div class="text-lg mr-2">90</div>
           <label for="bpm">BPM:</label>
-          <input type="range" id="bpm" min="60" max="240" value="90" data-action="input->step-sequencer#currentBPM" data-step-sequencer-target="bpm">
         </div>
+        <input type="range" id="bpm" min="60" max="240" value="90" data-action="input->step-sequencer#currentBPM" data-step-sequencer-target="bpm">
         <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Play</button>
         <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Stop</button>
       </div>

@@ -9,4 +9,8 @@ export default class extends Controller {
 
   connect() {
   }
+
+  currentBPM() {
+    console.log(this.bpmTarget.value)
+  }
 }
