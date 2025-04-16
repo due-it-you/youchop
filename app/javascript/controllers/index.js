@@ -8,7 +8,7 @@ import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
 import StepSequencerController from "./step_sequencer_controller"
-application.register("step_sequencer", StepSequencerController)
+application.register("step-sequencer", StepSequencerController)
 
 import YoutubeController from "./youtube_controller"
 application.register("youtube", YoutubeController)
