@@ -9,6 +9,15 @@ export default class extends Controller {
                     "step",
   ]
 
+  initialize() {
+    const steps = this.stepTarget.children
+    for (const step of steps) {
+      if(step.getAttribute('index') % 4 == 1) {
+        step.classList.add('bg-gray-400')
+      }
+    }
+  }
+
   connect() {
   }
 
