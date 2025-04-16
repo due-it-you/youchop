@@ -28,7 +28,7 @@
       </div>
       <div class="grid grid-cols-16 gap-2" data-step-sequencer-target="step" >
         <% 64.times do |step_number| %>
-          <div active="false" step-index="<%= step_number %>" class="aspect-square border border-black h-12 rounded bg-gray-400" data-action="click->step-sequencer#stepActiveControl"></div>
+          <div active="false" step-index="<%= step_number %>" class="aspect-square border border-black h-12 rounded" data-action="click->step-sequencer#stepActiveControl"></div>
         <% end %>
       </div>
     </div>
