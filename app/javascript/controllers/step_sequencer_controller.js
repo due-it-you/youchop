@@ -2,6 +2,16 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="step-sequencer"
 export default class extends Controller {
+
+  static targets = [
+                    "bpm",
+                    "current_bpm",
+  ]
+
   connect() {
+  }
+
+  currentBPM() {
+    this.current_bpmTarget.textContent = this.bpmTarget.value
   }
 }
