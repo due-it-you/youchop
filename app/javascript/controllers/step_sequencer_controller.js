@@ -5,6 +5,7 @@ export default class extends Controller {
 
   static targets = [
                     "bpm",
+                    "current_bpm",
   ]
 
   connect() {
