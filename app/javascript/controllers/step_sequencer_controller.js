@@ -12,6 +12,6 @@ export default class extends Controller {
   }
 
   currentBPM() {
-    console.log(this.bpmTarget.value)
+    this.current_bpmTarget.textContent = this.bpmTarget.value
   }
 }
