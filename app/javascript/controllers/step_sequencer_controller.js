@@ -6,6 +6,7 @@ export default class extends Controller {
   static targets = [
                     "bpm",
                     "current_bpm",
+                    "step",
   ]
 
   connect() {
@@ -13,5 +14,17 @@ export default class extends Controller {
 
   currentBPM() {
     this.current_bpmTarget.textContent = this.bpmTarget.value
+  }
+
+  stepActiveControl(event) {
+    const steps = this.stepTarget.children
+    for (const step of steps) {
+      // if step is 
+      if(step.getAttribute("active") == "false") {
+        console.log("falseです")
+      } else {
+        console.log("falseです")
+      }
+    }
   }
 }
