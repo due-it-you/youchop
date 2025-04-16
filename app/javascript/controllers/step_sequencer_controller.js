@@ -8,6 +8,10 @@ export default class extends Controller {
                     "current_bpm",
   ]
 
+  initialize() {
+    console.log(this.stepTarget)
+  }
+
   connect() {
   }
 

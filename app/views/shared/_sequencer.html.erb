@@ -28,7 +28,11 @@
       </div>
       <div class="grid grid-cols-16 gap-2">
         <% 64.times do |step| %>
-          <div class="aspect-square border border-black h-12 rounded"></div>
+          <% if step % 4 == 0 %>
+            <div class="aspect-square border border-black h-12 rounded bg-gray-400"></div>
+          <% else %>
+            <div class="aspect-square border border-black h-12 rounded"></div>
+          <% end %>
         <% end %>
       </div>
     </div>
