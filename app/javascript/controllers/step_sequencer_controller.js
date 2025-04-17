@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import * as Tone from "tone"
 
 // Connects to data-controller="step-sequencer"
 export default class extends Controller {
@@ -42,5 +43,15 @@ export default class extends Controller {
     }
 
     stepClicked.dataset.active = (!isActive).toString()
+  }
+
+  playHihatDemo(event) {
+    const player = new Tone.Player(this.fetchSampleSoundPath(event)).toDestination();
+    player.autostart = true;    
+  }
+
+  fetchSampleSoundPath(event) {
+    const sample_name = event.target.parentNode.previousElementSibling.textContent
+    if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
   }
 }
