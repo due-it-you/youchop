@@ -29,9 +29,9 @@
       <div class="grid grid-cols-16 gap-2">
         <% 64.times do |step_number| %>
           <% if step_number % 4 == 0 %>
-            <div active="false" index="<%= step_number + 1 %>" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+            <div index="<%= step_number + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
           <% else %>
-            <div active="false" index="<%= step_number + 1 %>" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+            <div index="<%= step_number + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
           <% end %>
         <% end %>
       </div>
