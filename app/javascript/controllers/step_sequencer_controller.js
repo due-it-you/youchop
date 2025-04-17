@@ -10,12 +10,6 @@ export default class extends Controller {
   ]
 
   initialize() {
-    const steps = this.stepTarget.children
-    for (const step of steps) {
-      if(step.getAttribute('index') % 4 == 1) {
-        step.classList.add('bg-gray-400')
-      }
-    }
   }
 
   connect() {
@@ -26,14 +20,7 @@ export default class extends Controller {
   }
 
   stepActiveControl(event) {
-    const steps = this.stepTarget.children
-    for (const step of steps) {
-      // if step is 
-      if(step.getAttribute("active") == "false") {
-        console.log("falseです")
-      } else {
-        console.log("falseです")
-      }
-    }
+    const stepClicked = event.target
+    stepClicked.classList.remove('bg-gray-400')
   }
 }
