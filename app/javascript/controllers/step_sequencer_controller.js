@@ -9,6 +9,7 @@ export default class extends Controller {
                     "current_bpm",
                     "step",
                     "current_hihat",
+                    "current_snare",
   ]
 
   initialize() {
