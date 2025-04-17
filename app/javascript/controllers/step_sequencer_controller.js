@@ -70,4 +70,10 @@ export default class extends Controller {
     this.current_hihatTarget.textContent = ""
     this.current_hihatTarget.textContent = current_hihat_name
   }
+
+  setSelectedSnare(event) {
+    const current_snare_name = event.target.textContent
+    this.current_snareTarget.textContent = ""
+    this.current_snareTarget.textContent = current_snare_name
+  }
 }
