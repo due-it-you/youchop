@@ -57,6 +57,11 @@ export default class extends Controller {
       if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
       if(sample_name.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
     }
+
+    if (sample_name.includes('snare')) {
+      if (sample_name.includes('#1')) return '/samples/snares/boom-bap-snare.wav'
+      if (sample_name.includes('#2')) return '/samples/snares/old-school-snare.wav'
+    }
   }
 
   setSelectedHihat(event) {
