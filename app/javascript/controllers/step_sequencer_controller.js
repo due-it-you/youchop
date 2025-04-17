@@ -46,7 +46,7 @@ export default class extends Controller {
     stepClicked.dataset.active = (!isActive).toString()
   }
 
-  playHihatDemo(event) {
+  playSampleDemo(event) {
     const player = new Tone.Player(this.fetchSampleSoundPath(event)).toDestination();
     player.autostart = true;    
   }
