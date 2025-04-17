@@ -21,6 +21,11 @@ export default class extends Controller {
 
   stepActiveControl(event) {
     const stepClicked = event.target
-    stepClicked.classList.remove('bg-gray-400')
+
+    if (stepClicked.getAttribute('active') == "false") {
+      stepClicked.classList.remove('bg-gray-400')
+      stepClicked.classList.add('bg-green-300')
+      stepClicked.setAttribute('active', 'true')
+    }
   }
 }
