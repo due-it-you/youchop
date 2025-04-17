@@ -9,6 +9,7 @@ export default class extends Controller {
                     "current_bpm",
                     "step",
                     "current_hihat",
+                    "current_snare",
   ]
 
   initialize() {
@@ -46,20 +47,33 @@ export default class extends Controller {
     stepClicked.dataset.active = (!isActive).toString()
   }
 
-  playHihatDemo(event) {
+  playSampleDemo(event) {
     const player = new Tone.Player(this.fetchSampleSoundPath(event)).toDestination();
     player.autostart = true;    
   }
 
   fetchSampleSoundPath(event) {
     const sample_name = event.target.parentNode.previousElementSibling.textContent
-    if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
-    if(sample_name.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
+    if (sample_name.includes('hihat')) {
+      if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
+      if(sample_name.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
+    }
+
+    if (sample_name.includes('snare')) {
+      if (sample_name.includes('#1')) return '/samples/snares/boom-bap-snare.wav'
+      if (sample_name.includes('#2')) return '/samples/snares/old-school-snare.wav'
+    }
   }
 
   setSelectedHihat(event) {
     const current_hihat_name = event.target.textContent
     this.current_hihatTarget.textContent = ""
     this.current_hihatTarget.textContent = current_hihat_name
+  }
+
+  setSelectedSnare(event) {
+    const current_snare_name = event.target.textContent
+    this.current_snareTarget.textContent = ""
+    this.current_snareTarget.textContent = current_snare_name
   }
 }
