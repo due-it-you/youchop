@@ -8,6 +8,7 @@ export default class extends Controller {
                     "bpm",
                     "current_bpm",
                     "step",
+                    "current_hihat",
   ]
 
   initialize() {
@@ -53,5 +54,12 @@ export default class extends Controller {
   fetchSampleSoundPath(event) {
     const sample_name = event.target.parentNode.previousElementSibling.textContent
     if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
+    if(sample_name.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
+  }
+
+  setSelectedHihat(event) {
+    const current_hihat_name = event.target.textContent
+    this.current_hihatTarget.textContent = ""
+    this.current_hihatTarget.textContent = current_hihat_name
   }
 }
