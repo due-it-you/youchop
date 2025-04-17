@@ -26,9 +26,13 @@
           <div class="border border-black px-4 py-2 mr-2 font-bold rounded">Kicks</div>
         </div>
       </div>
-      <div class="grid grid-cols-16 gap-2" data-step-sequencer-target="step" >
+      <div class="grid grid-cols-16 gap-2">
         <% 64.times do |step_number| %>
-          <div active="false" index="<%= step_number + 1 %>" class="aspect-square border border-black h-12 rounded" data-action="click->step-sequencer#stepActiveControl"></div>
+          <% if step_number % 4 == 0 %>
+            <div index="<%= step_number + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+          <% else %>
+            <div index="<%= step_number + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+          <% end %>
         <% end %>
       </div>
     </div>

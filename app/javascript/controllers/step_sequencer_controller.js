@@ -10,12 +10,6 @@ export default class extends Controller {
   ]
 
   initialize() {
-    const steps = this.stepTarget.children
-    for (const step of steps) {
-      if(step.getAttribute('index') % 4 == 1) {
-        step.classList.add('bg-gray-400')
-      }
-    }
   }
 
   connect() {
@@ -26,14 +20,27 @@ export default class extends Controller {
   }
 
   stepActiveControl(event) {
-    const steps = this.stepTarget.children
-    for (const step of steps) {
-      // if step is 
-      if(step.getAttribute("active") == "false") {
-        console.log("falseです")
+    const stepClicked = event.target
+    const isActive = stepClicked.dataset.active === "true"
+    
+    if (isActive == false) {
+      if (stepClicked.getAttribute('index') % 4 == 1) {
+        stepClicked.classList.remove('bg-gray-400')
+        stepClicked.classList.add('bg-green-300')
       } else {
-        console.log("falseです")
+        stepClicked.classList.add('bg-green-300')
       }
     }
+
+    if (isActive == true) {
+      if (stepClicked.getAttribute('index') % 4 == 1) {
+        stepClicked.classList.remove('bg-green-300')
+        stepClicked.classList.add('bg-gray-400')
+      } else {
+        stepClicked.classList.remove('bg-green-300')
+      }
+    }
+
+    stepClicked.dataset.active = (!isActive).toString()
   }
 }
