@@ -66,7 +66,7 @@ export default class extends Controller {
     }
 
     if (sample_name.includes('kick')) {
-      if (sample_name.includes('#1')) return '/samples/snares/drum-boom-bap-kick_C_minor.wav'
+      if (sample_name.includes('#1')) return '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
     }
   }
 
