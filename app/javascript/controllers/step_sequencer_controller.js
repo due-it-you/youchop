@@ -57,12 +57,14 @@ export default class extends Controller {
   playSequencer() {
     const grid_array = Array.from(this.gridTarget.children)
     const rows = [
-      grid_array.slice(0,16),
-      grid_array.slice(16,32),
-      grid_array.slice(32,48),
-      grid_array.slice(48,64),
+      grid_array.slice(0,16), // chop row
+      grid_array.slice(16,32), // hihat row
+      grid_array.slice(32,48), // snare row
+      grid_array.slice(48,64), // kick row
     ]
-    console.log(rows)
+    rows.forEach((row, index) => {
+
+    })
   }
 
   fetchSampleSoundPath(event) {
