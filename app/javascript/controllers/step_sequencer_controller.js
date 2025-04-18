@@ -10,6 +10,7 @@ export default class extends Controller {
                     "step",
                     "current_hihat",
                     "current_snare",
+                    "current_kick",
   ]
 
   initialize() {
@@ -63,6 +64,10 @@ export default class extends Controller {
       if (sample_name.includes('#1')) return '/samples/snares/boom-bap-snare.wav'
       if (sample_name.includes('#2')) return '/samples/snares/old-school-snare.wav'
     }
+
+    if (sample_name.includes('kick')) {
+      if (sample_name.includes('#1')) return '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
+    }
   }
 
   setSelectedHihat(event) {
@@ -75,5 +80,11 @@ export default class extends Controller {
     const current_snare_name = event.target.textContent
     this.current_snareTarget.textContent = ""
     this.current_snareTarget.textContent = current_snare_name
+  }
+
+  setSelectedKick(event) {
+    const current_kick_name = event.target.textContent
+    this.current_kickTarget.textContent = ""
+    this.current_kickTarget.textContent = current_kick_name
   }
 }

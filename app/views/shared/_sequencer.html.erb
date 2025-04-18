@@ -64,8 +64,21 @@
               </ul>
           </div>
         </div>
-        <div class="flex items-center justify-center">
-          <div class="border border-black px-4 py-2 mr-2 font-bold rounded">Kicks</div>
+        <div>
+          <button data-step-sequencer-target="current_kick" id="dropdownDefaultButton" data-dropdown-toggle="dropdown-kick" class="w-40 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-4 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Select a kick <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+          <!-- Dropdown menu -->
+          <div id="dropdown-kick" class="hidden z-10 h-28 overflow-auto bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                <li>
+                  <div class="flex">
+                    <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedKick">boom-bap kick #1</button>
+                    <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
+                      <%= fa_icon "play-circle 3x" %>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+          </div>
         </div>
       </div>
       <div class="grid grid-cols-16 gap-2">
