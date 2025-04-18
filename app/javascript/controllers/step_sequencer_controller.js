@@ -64,16 +64,9 @@ export default class extends Controller {
       grid_array.slice(32,48),  // snare
       grid_array.slice(48,64)   // kick
     ];
-  
-    const players = new Tone.Players({
-      chop  : '/samples/snares/boom-bap-snare.wav',
-      hihat : "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav",
-      snare : '/samples/snares/boom-bap-snare.wav',
-      kick  : '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
-    }).toDestination();
-  
+
     let beat = 0;
-  
+
     Tone.Transport.scheduleRepeat((time) => {
       rows.forEach((row, index) => {
         const step = row[beat];
@@ -87,13 +80,26 @@ export default class extends Controller {
     }, "16n");
 
     Tone.Transport.bpm.value = Number(this.current_bpmTarget.textContent)
-  
-    Tone.Transport.start();
-  }
-  
 
-  fetchSampleSoundPath(event) {
-    const sample_name = event.target.parentNode.previousElementSibling.textContent
+    const players = new Tone.Players({
+      chop  : '/samples/snares/boom-bap-snare.wav',
+      hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
+      snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
+      kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
+    }, function() {
+      Tone.Transport.start()
+    }).toDestination();
+  }
+
+  fetchSampleSoundPath(input) {
+    let sample_name
+    
+    if (input instanceof Event) {
+      sample_name = input.target.parentNode.previousElementSibling.textContent
+    } else {
+      sample_name = input
+    }
+    
     if (sample_name.includes('hihat')) {
       if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
       if(sample_name.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
