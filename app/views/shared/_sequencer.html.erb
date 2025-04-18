@@ -114,6 +114,13 @@
                 <div sample="snare" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
               <% end %>
             <% end %>
+            <% if row == 3 %>
+              <% if step % 4 == 0 %>
+                <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+              <% else %>
+                <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+              <% end %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
