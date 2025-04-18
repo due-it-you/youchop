@@ -77,4 +77,10 @@ export default class extends Controller {
     this.current_snareTarget.textContent = ""
     this.current_snareTarget.textContent = current_snare_name
   }
+
+  setSelectedKick(event) {
+    const current_kick_name = event.target.textContent
+    this.current_kickTarget.textContent = ""
+    this.current_kickTarget.textContent = current_kick_name
+  }
 }
