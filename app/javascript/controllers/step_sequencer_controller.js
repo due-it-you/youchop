@@ -62,6 +62,13 @@ export default class extends Controller {
       grid_array.slice(32,48), // snare row
       grid_array.slice(48,64), // kick row
     ]
+
+    const players = new Tone.Players({
+      chop  : "test.wav",
+      hihat : "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav",
+      snare : '/samples/snares/boom-bap-snare.wav',
+      kick  : '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
+    }).toDestination()
   }
 
   fetchSampleSoundPath(event) {
