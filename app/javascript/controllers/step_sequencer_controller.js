@@ -54,6 +54,17 @@ export default class extends Controller {
     player.autostart = true;    
   }
 
+  playSequencer() {
+    const grid_array = Array.from(this.gridTarget.children)
+    const rows = [
+      grid_array.slice(0,16),
+      grid_array.slice(16,32),
+      grid_array.slice(32,48),
+      grid_array.slice(48,64),
+    ]
+    console.log(rows)
+  }
+
   fetchSampleSoundPath(event) {
     const sample_name = event.target.parentNode.previousElementSibling.textContent
     if (sample_name.includes('hihat')) {
