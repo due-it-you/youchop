@@ -62,9 +62,6 @@ export default class extends Controller {
       grid_array.slice(32,48), // snare row
       grid_array.slice(48,64), // kick row
     ]
-    rows.forEach((row, index) => {
-
-    })
   }
 
   fetchSampleSoundPath(event) {
