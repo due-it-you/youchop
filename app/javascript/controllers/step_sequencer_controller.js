@@ -92,8 +92,14 @@ export default class extends Controller {
   }
   
 
-  fetchSampleSoundPath(event) {
-    const sample_name = event.target.parentNode.previousElementSibling.textContent
+  fetchSampleSoundPath(input) {
+    let sample_name
+    
+    if (input instanceof Event) {
+      sample_name = input.target.parentNode.previousElementSibling.textContent
+    } else {
+      sample_name = input
+    }
     
     if (sample_name.includes('hihat')) {
       if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
