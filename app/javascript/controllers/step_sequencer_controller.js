@@ -8,6 +8,7 @@ export default class extends Controller {
                     "bpm",
                     "current_bpm",
                     "step",
+                    "grid",
                     "current_hihat",
                     "current_snare",
                     "current_kick",
@@ -52,6 +53,44 @@ export default class extends Controller {
     const player = new Tone.Player(this.fetchSampleSoundPath(event)).toDestination();
     player.autostart = true;    
   }
+
+  async playSequencer() {
+    await Tone.start();
+  
+    const grid_array = Array.from(this.gridTarget.children);
+    const rows = [
+      grid_array.slice(0,16),   // chop
+      grid_array.slice(16,32),  // hihat
+      grid_array.slice(32,48),  // snare
+      grid_array.slice(48,64)   // kick
+    ];
+  
+    const players = new Tone.Players({
+      chop  : '/samples/snares/boom-bap-snare.wav',
+      hihat : "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav",
+      snare : '/samples/snares/boom-bap-snare.wav',
+      kick  : '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
+    }).toDestination();
+  
+    let beat = 0;
+  
+    Tone.Transport.scheduleRepeat((time) => {
+      rows.forEach((row, index) => {
+        const step = row[beat];
+        if (step.dataset.active === "true") {
+          const sample = step.getAttribute("sample");
+          players.player(sample).start(time);
+        }
+      });
+  
+      beat = (beat + 1) % 16;
+    }, "16n");
+
+    Tone.Transport.bpm.value = Number(this.current_bpmTarget.textContent)
+  
+    Tone.Transport.start();
+  }
+  
 
   fetchSampleSoundPath(event) {
     const sample_name = event.target.parentNode.previousElementSibling.textContent
