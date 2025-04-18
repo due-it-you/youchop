@@ -64,6 +64,10 @@ export default class extends Controller {
       if (sample_name.includes('#1')) return '/samples/snares/boom-bap-snare.wav'
       if (sample_name.includes('#2')) return '/samples/snares/old-school-snare.wav'
     }
+
+    if (sample_name.includes('kick')) {
+      if (sample_name.includes('#1')) return '/samples/snares/drum-boom-bap-kick_C_minor.wav'
+    }
   }
 
   setSelectedHihat(event) {
