@@ -50,7 +50,7 @@ export default class extends Controller {
   }
 
   playSampleDemo(event) {
-    const player = new Tone.Player(this.fetchSampleSoundPath(event, null)).toDestination();
+    const player = new Tone.Player(this.fetchSampleSoundPath(event)).toDestination();
     player.autostart = true;    
   }
 
@@ -67,7 +67,7 @@ export default class extends Controller {
   
     const players = new Tone.Players({
       chop  : '/samples/snares/boom-bap-snare.wav',
-      hihat : this.fetchSampleSoundPath(null, this.current_hihatTarget.textContent),
+      hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
       snare : '/samples/snares/boom-bap-snare.wav',
       kick  : '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
     }).toDestination();
@@ -92,8 +92,9 @@ export default class extends Controller {
   }
   
 
-  fetchSampleSoundPath(event, current_sample_name) {
+  fetchSampleSoundPath(event) {
     const sample_name = event.target.parentNode.previousElementSibling.textContent
+    
     if (sample_name.includes('hihat')) {
       if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
       if(sample_name.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
