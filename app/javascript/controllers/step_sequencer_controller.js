@@ -8,6 +8,7 @@ export default class extends Controller {
                     "bpm",
                     "current_bpm",
                     "step",
+                    "grid",
                     "current_hihat",
                     "current_snare",
                     "current_kick",
