@@ -64,16 +64,9 @@ export default class extends Controller {
       grid_array.slice(32,48),  // snare
       grid_array.slice(48,64)   // kick
     ];
-  
-    const players = new Tone.Players({
-      chop  : '/samples/snares/boom-bap-snare.wav',
-      hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
-      snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
-      kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
-    }).toDestination();
-  
+
     let beat = 0;
-  
+
     Tone.Transport.scheduleRepeat((time) => {
       rows.forEach((row, index) => {
         const step = row[beat];
@@ -87,10 +80,16 @@ export default class extends Controller {
     }, "16n");
 
     Tone.Transport.bpm.value = Number(this.current_bpmTarget.textContent)
-  
-    Tone.Transport.start();
+
+    const players = new Tone.Players({
+      chop  : '/samples/snares/boom-bap-snare.wav',
+      hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
+      snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
+      kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
+    }, function() {
+      Tone.Transport.start()
+    }).toDestination();
   }
-  
 
   fetchSampleSoundPath(input) {
     let sample_name
