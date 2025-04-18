@@ -68,7 +68,7 @@ export default class extends Controller {
     const players = new Tone.Players({
       chop  : '/samples/snares/boom-bap-snare.wav',
       hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
-      snare : '/samples/snares/boom-bap-snare.wav',
+      snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
       kick  : '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
     }).toDestination();
   
