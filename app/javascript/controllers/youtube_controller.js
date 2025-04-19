@@ -115,15 +115,17 @@ export default class extends Controller {
     if(this.frameTarget.tagName == "DIV") return
 
     const [m,s] = this.targetTime(event).start.value.split(":")
+    const firstDecimalStr = this.targetTime(event).start_decimal.value
     const minSecArray = [m,s].map( str => parseInt(str, 10))
-    const totalSecondResult = minSecArray[0]*60 + minSecArray[1]
+    const firstDecimalNum = Number('0.' + firstDecimalStr)
+    const totalSecondResult = minSecArray[0]*60 + minSecArray[1] + firstDecimalNum
 
     this.getPlayer.seekTo(totalSecondResult, true)
     this.getPlayer.playVideo()
   }
 
   targetTime(event) {
-    if(event.key == "t") return {start: this.t_start_timeTarget, start_dicimal: this.t_start_time_decimalTarget}
+    if(event.key == "t") return {start: this.t_start_timeTarget, start_decimal: this.t_start_time_decimalTarget}
     if(event.key == "y") return this.y_start_timeTarget
     if(event.key == "u") return this.u_start_timeTarget
     if(event.key == "g") return this.g_start_timeTarget
