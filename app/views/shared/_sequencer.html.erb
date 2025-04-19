@@ -84,7 +84,7 @@
       <div class="grid grid-cols-16 gap-2" data-step-sequencer-target="grid">
         <% 16.times do |beat| %>
           <div class="flex justify-center">
-            <div data-step-sequencer-target="indicator" class="rounded-full w-4 h-4 border border-black"></div>
+            <div data-step-sequencer-target="indicator" index="<%= beat + 1 %>" class="rounded-full w-4 h-4 border border-black"></div>
           </div>
         <% end %>
         <% 4.times do |row| %>
