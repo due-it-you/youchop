@@ -114,6 +114,7 @@ export default class extends Controller {
 
     const [end_m,end_s] = this.targetTime(event).end.value.split(":")
     const endTimeMinSec = [end_m,end_s]
+    const endTimeDecimalStr = this.targetTime(event).end_decimal.value
 
     this.getPlayer.seekTo(startTimeTotalSecond, true)
     this.getPlayer.playVideo()
