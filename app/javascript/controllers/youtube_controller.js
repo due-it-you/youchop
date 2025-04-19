@@ -7,6 +7,7 @@ export default class extends Controller {
                     "error_url",
                     "submit",
                     "frame",
+                    "range",
                     "t_start_time",
                     "y_start_time",
                     "u_start_time",
@@ -28,6 +29,16 @@ export default class extends Controller {
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    noUiSlider.create(this.rangeTarget, {
+      start: [20],
+      connect: [true, false],
+      range: {
+        min: 0,
+        max: 100
+      },
+      step: 1
+    });
   }
 
   url_validation() {
