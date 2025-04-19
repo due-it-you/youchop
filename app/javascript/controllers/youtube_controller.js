@@ -11,6 +11,7 @@ export default class extends Controller {
                     "t_start_time",
                     "t_start_time_decimal",
                     "t_end_time",
+                    "t_end_time_decimal",
                     "y_start_time",
                     "u_start_time",
                     "g_start_time",
