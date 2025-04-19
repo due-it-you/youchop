@@ -105,8 +105,9 @@ export default class extends Controller {
     if(this.frameTarget.tagName == "DIV") return
 
     const [m,s] = this.targetTime(event).start.value.split(":")
+    const startTimeMinSec = [m,s]
     const firstDecimalStr = this.targetTime(event).start_decimal.value
-    const minSecArray = [m,s].map( str => parseInt(str, 10))
+    const minSecArray = startTimeMinSec.map( str => parseInt(str, 10))
     const firstDecimalNum = Number('0.' + firstDecimalStr)
     const totalSecondResult = minSecArray[0]*60 + minSecArray[1] + firstDecimalNum
 
