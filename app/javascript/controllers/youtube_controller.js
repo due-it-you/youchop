@@ -10,6 +10,7 @@ export default class extends Controller {
                     "range",
                     "t_start_time",
                     "t_start_time_decimal",
+                    "t_end_time",
                     "y_start_time",
                     "u_start_time",
                     "g_start_time",
