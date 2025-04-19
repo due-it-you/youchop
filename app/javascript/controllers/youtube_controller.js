@@ -112,6 +112,8 @@ export default class extends Controller {
     const startTimeMinSecArray = startTimeMinSec.map( str => parseInt(str, 10))
     const startTimeTotalSecond = startTimeMinSecArray[0]*60 + startTimeMinSecArray[1] + startTimeDecimalNum
 
+    const [end_m,end_s] = this.targetTime(event).end.value.split(":")
+
     this.getPlayer.seekTo(startTimeTotalSecond, true)
     this.getPlayer.playVideo()
   }
