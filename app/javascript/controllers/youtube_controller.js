@@ -116,10 +116,10 @@ export default class extends Controller {
 
   targetTime(event) {
     if(event.key == "t") return {
-      start: this.t_start_timeTarget, 
-      start_decimal: this.t_start_time_decimalTarget,
-      end: this.t_end_timeTarget,
-      end_decimal: this.t_end_time_decimalTarget
+      start:          this.t_start_timeTarget, 
+      start_decimal:  this.t_start_time_decimalTarget,
+      end:            this.t_end_timeTarget,
+      end_decimal:    this.t_end_time_decimalTarget
     }
     if(event.key == "y") return this.y_start_timeTarget
     if(event.key == "u") return this.u_start_timeTarget
