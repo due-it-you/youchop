@@ -67,7 +67,7 @@ export default class extends Controller {
 
     let beat = 0;
 
-    Tone.Transport.scheduleRepeat((time) => {
+    await Tone.Transport.scheduleRepeat((time) => {
       rows.forEach((row, index) => {
         const step = row[beat];
         if (step.dataset.active === "true") {
@@ -88,7 +88,12 @@ export default class extends Controller {
       kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
     }, function() {
       Tone.Transport.start()
-    }).toDestination();
+    }).toDestination()
+  }
+
+  stopSequencer() {
+    Tone.Transport.stop()
+    Tone.Transport.cancel()
   }
 
   fetchSampleSoundPath(input) {
