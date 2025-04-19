@@ -2,16 +2,35 @@
   <div class="p-4">
     <div class="border border-black bg-gray-400 flex items-center justify-center aspect-square w-80 rounded-md">
       <div class="grid grid-cols-3 aspect-square w-72 gap-3">
+        <!-- T pad -->
         <div>
-          <div id="t_pad" class="border border-black bg-gray-100 aspect-square flex items-center justify-center rounded-sm">
-            <div>
-              <div>
-                <div data-youtube-target="range" class="mt-4"></div>
-                <input data-youtube-target="t_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="border border-black bg-gray-100 aspect-square w-full" type="button">
+          </button>
+
+          <!-- T pad Dropdown menu -->
+          <div id="dropdownHover" class="z-50 absolute bg-white shadow-lg rounded-lg p-4 overflow-visible">
+            <div class="p-2">
+              <div class="flex items-center justify-center">
+                <div class="flex items-end">
+                  <input data-youtube-target="t_start_time" class="w-18 icon-del font-bold ignore-keydown" value="00:00" type="time">
+                  <div class="px-2">
+                    <div class="font-bold text-3xl">.</div>
+                  </div>
+                  <input data-youtube-target="t_start_time_decimal" class="w-10 icon-del font-bold ignore-keydown" value="0" type="text" maxlength="1">
+                </div>
+                <div class="px-2">〜</div>
+                <div class="flex items-end">
+                  <input class="w-18 icon-del font-bold ignore-keydown" value="00:00" type="time">
+                  <div class="px-2">
+                    <div class="font-bold text-3xl">.</div>
+                  </div>
+                  <input class="w-10 icon-del font-bold ignore-keydown" value="0" type="text" maxlength="1">
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- Y pad -->
         <div>
           <div id="y_pad" class="border border-black bg-gray-100 aspect-square flex items-center justify-center rounded-sm">
             <div>
