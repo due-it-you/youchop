@@ -97,6 +97,7 @@ export default class extends Controller {
   stopSequencer() {
     Tone.Transport.stop()
     Tone.Transport.cancel()
+    this.isPlaying = false
   }
 
   highlightStep(beat) {
