@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import noUiSlider from 'nouislider';
 
 export default class extends Controller {
   static targets = [ 

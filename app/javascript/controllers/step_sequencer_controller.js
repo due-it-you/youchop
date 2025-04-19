@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import * as Tone from "tone"
+import noUiSlider from 'nouislider';
 
 // Connects to data-controller="step-sequencer"
 export default class extends Controller {
