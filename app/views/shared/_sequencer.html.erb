@@ -11,114 +11,118 @@
         <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" data-action="click->step-sequencer#stopSequencer">Stop</button>
       </div>
     </div>
-    <div class="flex items-center justify-center">
-      <div class="grid grid-cols-1 gap-2">
-        <div class="flex items-center justify-center">
-          <div class="border border-black px-4 py-2 mr-2 font-bold rounded">Chops</div>
-        </div>
-        <div>
-          <button data-step-sequencer-target="current_hihat" id="dropdownDefaultButton" data-dropdown-toggle="dropdown-hihat" class="w-40 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-4 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Select a hihat <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-          <!-- Dropdown menu -->
-          <div id="dropdown-hihat" class="hidden z-10 h-28 overflow-auto bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                <li>
-                  <div class="flex">
-                    <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedHihat">closed hihat #1</button>
-                    <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
-                      <%= fa_icon "play-circle 3x" %>
-                    </button>
-                  </div>
-                </li>
-                <li>
-                  <div class="flex">
-                    <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedHihat">half-opened hihat #2</button>
-                    <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
-                      <%= fa_icon "play-circle 3x" %>
-                    </button>
-                  </div>
-                </li>
-              </ul>
+    <div class="mb-4">
+      <div class="flex items-center justify-center">
+        <div class="mt-8">
+          <div class="grid grid-cols-1 gap-2">
+            <div class="flex items-center justify-center">
+              <div class="border border-black px-4 py-2 mr-2 font-bold rounded">Chops</div>
+            </div>
+            <div>
+              <button data-step-sequencer-target="current_hihat" id="dropdownDefaultButton" data-dropdown-toggle="dropdown-hihat" class="w-40 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-4 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Select a hihat <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+              <!-- Dropdown menu -->
+              <div id="dropdown-hihat" class="hidden z-10 h-28 overflow-auto bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                    <li>
+                      <div class="flex">
+                        <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedHihat">closed hihat #1</button>
+                        <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
+                          <%= fa_icon "play-circle 3x" %>
+                        </button>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex">
+                        <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedHihat">half-opened hihat #2</button>
+                        <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
+                          <%= fa_icon "play-circle 3x" %>
+                        </button>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+            <div>
+              <button data-step-sequencer-target="current_snare" id="dropdownDefaultButton" data-dropdown-toggle="dropdown-snare" class="w-40 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-4 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Select a snare <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+              <!-- Dropdown menu -->
+              <div id="dropdown-snare" class="hidden z-10 h-28 overflow-auto bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                    <li>
+                      <div class="flex">
+                        <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedSnare">boom-bap snare #1</button>
+                        <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
+                          <%= fa_icon "play-circle 3x" %>
+                        </button>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex">
+                        <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedSnare">old-school snare #2</button>
+                        <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
+                          <%= fa_icon "play-circle 3x" %>
+                        </button>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+            <div>
+              <button data-step-sequencer-target="current_kick" id="dropdownDefaultButton" data-dropdown-toggle="dropdown-kick" class="w-40 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-4 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Select a kick <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+              <!-- Dropdown menu -->
+              <div id="dropdown-kick" class="hidden z-10 h-28 overflow-auto bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                    <li>
+                      <div class="flex">
+                        <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedKick">boom-bap kick #1</button>
+                        <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
+                          <%= fa_icon "play-circle 3x" %>
+                        </button>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div>
-          <button data-step-sequencer-target="current_snare" id="dropdownDefaultButton" data-dropdown-toggle="dropdown-snare" class="w-40 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-4 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Select a snare <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-          <!-- Dropdown menu -->
-          <div id="dropdown-snare" class="hidden z-10 h-28 overflow-auto bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                <li>
-                  <div class="flex">
-                    <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedSnare">boom-bap snare #1</button>
-                    <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
-                      <%= fa_icon "play-circle 3x" %>
-                    </button>
-                  </div>
-                </li>
-                <li>
-                  <div class="flex">
-                    <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedSnare">old-school snare #2</button>
-                    <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
-                      <%= fa_icon "play-circle 3x" %>
-                    </button>
-                  </div>
-                </li>
-              </ul>
-          </div>
-        </div>
-        <div>
-          <button data-step-sequencer-target="current_kick" id="dropdownDefaultButton" data-dropdown-toggle="dropdown-kick" class="w-40 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-4 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Select a kick <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-          <!-- Dropdown menu -->
-          <div id="dropdown-kick" class="hidden z-10 h-28 overflow-auto bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                <li>
-                  <div class="flex">
-                    <button class="w-2/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-action="click->step-sequencer#setSelectedKick">boom-bap kick #1</button>
-                    <button class="w-1/3 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-center" data-action="click->step-sequencer#playSampleDemo">
-                      <%= fa_icon "play-circle 3x" %>
-                    </button>
-                  </div>
-                </li>
-              </ul>
-          </div>
-        </div>
-      </div>
-      <div class="grid grid-cols-16 gap-2" data-step-sequencer-target="grid">
-        <% 16.times do |beat| %>
-          <div class="flex justify-center">
-            <div data-step-sequencer-target="indicator" index="<%= beat %>" class="rounded-full w-4 h-4 border border-black"></div>
-          </div>
-        <% end %>
-        <% 4.times do |row| %>
-          <% 16.times do |step| %>
-            <% if row == 0 %>
-              <% if step % 4 == 0 %>
-                <div sample="chop" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
-              <% else %>
-                <div sample="chop" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+        <div class="grid grid-cols-16 gap-2" data-step-sequencer-target="grid">
+          <% 16.times do |beat| %>
+            <div class="flex justify-center">
+              <div data-step-sequencer-target="indicator" index="<%= beat %>" class="rounded-full w-4 h-4 border border-black"></div>
+            </div>
+          <% end %>
+          <% 4.times do |row| %>
+            <% 16.times do |step| %>
+              <% if row == 0 %>
+                <% if step % 4 == 0 %>
+                  <div sample="chop" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                <% else %>
+                  <div sample="chop" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                <% end %>
               <% end %>
-            <% end %>
-            <% if row == 1 %>
-              <% if step % 4 == 0 %>
-                <div sample="hihat" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
-              <% else %>
-                <div sample="hihat" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+              <% if row == 1 %>
+                <% if step % 4 == 0 %>
+                  <div sample="hihat" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                <% else %>
+                  <div sample="hihat" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                <% end %>
               <% end %>
-            <% end %>
-            <% if row == 2 %>
-              <% if step % 4 == 0 %>
-                <div sample="snare" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
-              <% else %>
-                <div sample="snare" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+              <% if row == 2 %>
+                <% if step % 4 == 0 %>
+                  <div sample="snare" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                <% else %>
+                  <div sample="snare" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                <% end %>
               <% end %>
-            <% end %>
-            <% if row == 3 %>
-              <% if step % 4 == 0 %>
-                <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
-              <% else %>
-                <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+              <% if row == 3 %>
+                <% if step % 4 == 0 %>
+                  <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                <% else %>
+                  <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
