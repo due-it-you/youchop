@@ -56,7 +56,7 @@ export default class extends Controller {
   }
 
   async playSequencer() {
-    if (this.isPlaying) { return }
+    if (this.isPlaying)  return
 
     await Tone.start();
   
