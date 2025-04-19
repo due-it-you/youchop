@@ -56,6 +56,8 @@ export default class extends Controller {
   }
 
   async playSequencer() {
+    if (this.isPlaying)  return
+
     await Tone.start();
   
     const grid_array = Array.from(this.gridTarget.children);
@@ -92,11 +94,14 @@ export default class extends Controller {
     }, function() {
       Tone.Transport.start()
     }).toDestination()
+
+    this.isPlaying = true
   }
 
   stopSequencer() {
     Tone.Transport.stop()
     Tone.Transport.cancel()
+    this.isPlaying = false
   }
 
   highlightStep(beat) {
