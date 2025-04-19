@@ -33,6 +33,7 @@ export default class extends Controller {
     noUiSlider.create(this.rangeTarget, {
       start: [20,40],
       connect: [false,true, false],
+      tooltips: [true, true],
       range: {
         min: 0,
         max: 100
