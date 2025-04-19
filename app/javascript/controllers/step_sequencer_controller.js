@@ -92,6 +92,8 @@ export default class extends Controller {
     }, function() {
       Tone.Transport.start()
     }).toDestination()
+
+    this.isPlaying = true
   }
 
   stopSequencer() {
