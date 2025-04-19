@@ -9,6 +9,7 @@ export default class extends Controller {
                     "frame",
                     "range",
                     "t_start_time",
+                    "t_start_time_decimal",
                     "y_start_time",
                     "u_start_time",
                     "g_start_time",
@@ -113,7 +114,7 @@ export default class extends Controller {
     if(event.target.closest(".ignore-keydown")) return
     if(this.frameTarget.tagName == "DIV") return
 
-    const [m,s] = this.t_start_timeTarget.value.split(":")
+    const [m,s] = this.targetTime(event).value.split(":")
     const minSecArray = [m,s].map( str => parseInt(str, 10))
     const totalSecondResult = minSecArray[0]*60 + minSecArray[1]
 
