@@ -121,10 +121,13 @@ export default class extends Controller {
     const endTimeTotalSecond = endTimeMinSecArray[0]*60 + endTimeMinSecArray[1] + endTimeDecimalNum
 
     // playing length
-    const playingTimeTotalSecond = endTimeTotalSecond - endTimeTotalSecond
+    const playingTimeTotalSecond = endTimeTotalSecond - startTimeTotalSecond
 
     this.getPlayer.seekTo(startTimeTotalSecond, true)
     this.getPlayer.playVideo()
+    setTimeout(() => {
+      this.getPlayer.pauseVideo()
+    }, playingTimeTotalSecond * 1000)
   }
 
   targetTime(event) {
