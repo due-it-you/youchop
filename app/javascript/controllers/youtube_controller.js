@@ -113,6 +113,7 @@ export default class extends Controller {
     const startTimeTotalSecond = startTimeMinSecArray[0]*60 + startTimeMinSecArray[1] + startTimeDecimalNum
 
     const [end_m,end_s] = this.targetTime(event).end.value.split(":")
+    const endTimeMinSec = [end_m,end_s]
 
     this.getPlayer.seekTo(startTimeTotalSecond, true)
     this.getPlayer.playVideo()
