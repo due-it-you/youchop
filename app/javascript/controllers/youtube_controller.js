@@ -10,6 +10,8 @@ export default class extends Controller {
                     "range",
                     "t_start_time",
                     "t_start_time_decimal",
+                    "t_end_time",
+                    "t_end_time_decimal",
                     "y_start_time",
                     "u_start_time",
                     "g_start_time",
@@ -102,18 +104,39 @@ export default class extends Controller {
     if(event.target.closest(".ignore-keydown")) return
     if(this.frameTarget.tagName == "DIV") return
 
+    // start time
     const [m,s] = this.targetTime(event).start.value.split(":")
-    const firstDecimalStr = this.targetTime(event).start_decimal.value
-    const minSecArray = [m,s].map( str => parseInt(str, 10))
-    const firstDecimalNum = Number('0.' + firstDecimalStr)
-    const totalSecondResult = minSecArray[0]*60 + minSecArray[1] + firstDecimalNum
+    const startTimeMinSec = [m,s]
+    const startTimeDecimalStr = this.targetTime(event).start_decimal.value
+    const startTimeDecimalNum = Number('0.' + startTimeDecimalStr)
+    const startTimeMinSecArray = startTimeMinSec.map( str => parseInt(str, 10))
+    const startTimeTotalSecond = startTimeMinSecArray[0]*60 + startTimeMinSecArray[1] + startTimeDecimalNum
 
-    this.getPlayer.seekTo(totalSecondResult, true)
+    // end time
+    const [end_m,end_s] = this.targetTime(event).end.value.split(":")
+    const endTimeMinSec = [end_m,end_s]
+    const endTimeDecimalStr = this.targetTime(event).end_decimal.value
+    const endTimeDecimalNum = Number('0.' + endTimeDecimalStr)
+    const endTimeMinSecArray = endTimeMinSec.map( str => parseInt(str, 10))
+    const endTimeTotalSecond = endTimeMinSecArray[0]*60 + endTimeMinSecArray[1] + endTimeDecimalNum
+
+    // playing length
+    const playingTimeTotalSecond = endTimeTotalSecond - startTimeTotalSecond
+
+    this.getPlayer.seekTo(startTimeTotalSecond, true)
     this.getPlayer.playVideo()
+    setTimeout(() => {
+      this.getPlayer.pauseVideo()
+    }, playingTimeTotalSecond * 1000)
   }
 
   targetTime(event) {
-    if(event.key == "t") return {start: this.t_start_timeTarget, start_decimal: this.t_start_time_decimalTarget}
+    if(event.key == "t") return {
+      start:          this.t_start_timeTarget, 
+      start_decimal:  this.t_start_time_decimalTarget,
+      end:            this.t_end_timeTarget,
+      end_decimal:    this.t_end_time_decimalTarget
+    }
     if(event.key == "y") return this.y_start_timeTarget
     if(event.key == "u") return this.u_start_timeTarget
     if(event.key == "g") return this.g_start_timeTarget
