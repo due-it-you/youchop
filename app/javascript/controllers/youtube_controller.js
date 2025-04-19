@@ -104,6 +104,7 @@ export default class extends Controller {
     if(event.target.closest(".ignore-keydown")) return
     if(this.frameTarget.tagName == "DIV") return
 
+    // start time
     const [m,s] = this.targetTime(event).start.value.split(":")
     const startTimeMinSec = [m,s]
     const startTimeDecimalStr = this.targetTime(event).start_decimal.value
