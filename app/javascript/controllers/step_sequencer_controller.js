@@ -12,6 +12,7 @@ export default class extends Controller {
                     "current_hihat",
                     "current_snare",
                     "current_kick",
+                    "indicator"
   ]
 
   initialize() {
