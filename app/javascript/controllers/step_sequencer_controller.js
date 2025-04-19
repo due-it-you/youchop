@@ -12,6 +12,7 @@ export default class extends Controller {
                     "current_hihat",
                     "current_snare",
                     "current_kick",
+                    "indicator"
   ]
 
   initialize() {
@@ -59,10 +60,11 @@ export default class extends Controller {
   
     const grid_array = Array.from(this.gridTarget.children);
     const rows = [
-      grid_array.slice(0,16),   // chop
-      grid_array.slice(16,32),  // hihat
-      grid_array.slice(32,48),  // snare
-      grid_array.slice(48,64)   // kick
+      grid_array.slice(0,16),   // indicator
+      grid_array.slice(16,32),  // chop
+      grid_array.slice(32,48),  // hihat
+      grid_array.slice(48,64),   // snare
+      grid_array.slice(64,80)   // kick
     ];
 
     let beat = 0;
@@ -74,8 +76,9 @@ export default class extends Controller {
           const sample = step.getAttribute("sample");
           players.player(sample).start(time);
         }
-      });
-  
+      })
+      this.highlightStep(beat)
+
       beat = (beat + 1) % 16;
     }, "16n");
 
@@ -94,6 +97,16 @@ export default class extends Controller {
   stopSequencer() {
     Tone.Transport.stop()
     Tone.Transport.cancel()
+  }
+
+  highlightStep(beat) {
+    this.indicatorTargets.forEach((el, index) => {
+      if (index === beat) {
+        el.classList.add('bg-green-300')
+      } else {
+        el.classList.remove('bg-green-300')
+      }
+    })
   }
 
   fetchSampleSoundPath(input) {
