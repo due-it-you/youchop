@@ -30,18 +30,6 @@ export default class extends Controller {
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    noUiSlider.create(this.rangeTarget, {
-      start: [0,20000],
-      connect: [false,true, false],
-      range: {
-        min: 0,
-        max: 59999
-      },
-      step: 1
-    });
-
-    
   }
 
   url_validation() {
