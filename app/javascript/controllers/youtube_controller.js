@@ -31,8 +31,8 @@ export default class extends Controller {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     noUiSlider.create(this.rangeTarget, {
-      start: [20],
-      connect: [true, false],
+      start: [20,40],
+      connect: [false,true, false],
       range: {
         min: 0,
         max: 100
