@@ -33,6 +33,9 @@ export default class extends Controller {
                     "j_end_time",
                     "j_end_time_decimal",
                     "b_start_time",
+                    "b_start_time_decimal",
+                    "b_end_time",
+                    "b_end_time_decimal",
                     "n_start_time",
                     "m_start_time",
   ]
