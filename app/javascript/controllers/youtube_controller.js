@@ -13,6 +13,9 @@ export default class extends Controller {
                     "t_end_time",
                     "t_end_time_decimal",
                     "y_start_time",
+                    "y_start_time_decimal",
+                    "y_end_time",
+                    "y_end_time_decimal",
                     "u_start_time",
                     "g_start_time",
                     "h_start_time",
@@ -137,7 +140,12 @@ export default class extends Controller {
       end:            this.t_end_timeTarget,
       end_decimal:    this.t_end_time_decimalTarget
     }
-    if(event.key == "y") return this.y_start_timeTarget
+    if(event.key == "y") return {
+      start:          this.y_start_timeTarget,
+      start_decimal:  this.y_start_time_decimalTarget,
+      end:            this.y_end_timeTarget,
+      end_decimal:    this.y_end_time_decimalTarget
+    }
     if(event.key == "u") return this.u_start_timeTarget
     if(event.key == "g") return this.g_start_timeTarget
     if(event.key == "h") return this.h_start_timeTarget
