@@ -41,6 +41,9 @@ export default class extends Controller {
                     "n_end_time",
                     "n_end_time_decimal",
                     "m_start_time",
+                    "m_start_time_decimal",
+                    "m_end_time",
+                    "m_end_time_decimal"
   ]
 
   initialize() {
