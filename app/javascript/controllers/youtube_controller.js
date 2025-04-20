@@ -168,7 +168,12 @@ export default class extends Controller {
       end:            this.g_end_timeTarget,
       end_decimal:    this.g_end_time_decimalTarget
     }
-    if(event.key == "h") return this.h_start_timeTarget
+    if(event.key == "h") return {
+      start: this.h_start_timeTarget,
+      start_decimal: this.h_start_time_decimalTarget,
+      end: this.h_end_timeTarget,
+      end_decimal: this.h_end_time_decimalTarget
+    }
     if(event.key == "j") return this.j_start_timeTarget
     if(event.key == "b") return this.b_start_timeTarget
     if(event.key == "n") return this.n_start_timeTarget
