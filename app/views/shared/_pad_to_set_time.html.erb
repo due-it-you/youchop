@@ -191,11 +191,29 @@
             </div>
           </div>
         </div>
+        <!-- N pad -->
         <div>
-          <div id="n_pad" class="border border-black bg-gray-100 aspect-square flex items-center justify-center rounded-sm">
-            <div>
-              <div>
-                <input data-youtube-target="n_start_time" type="time" class="icon-del font-bold ignore-keydown" value="00:00">
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHoverN" data-dropdown-trigger="hover" class="border border-black bg-gray-100 aspect-square w-full" type="button"> 
+          </button>
+          <!-- N pad Dropdown menu -->
+          <div id="dropdownHoverN" class="hidden z-50 absolute bg-white shadow-lg rounded-lg p-4 overflow-visible">
+            <div class="p-2">
+              <div class="flex items-center justify-center">
+                <div class="flex items-end">
+                  <input data-youtube-target="n_start_time" class="w-18 icon-del font-bold ignore-keydown" value="00:00" type="time">
+                  <div class="px-2">
+                    <div class="font-bold text-3xl">.</div>
+                  </div>
+                  <input data-youtube-target="n_start_time_decimal" class="w-10 icon-del font-bold ignore-keydown" value="0" type="text" maxlength="1">
+                </div>
+                <div class="px-2">〜</div>
+                <div class="flex items-end">
+                  <input data-youtube-target="n_end_time" class="w-18 icon-del font-bold ignore-keydown" value="00:00" type="time">
+                  <div class="px-2">
+                    <div class="font-bold text-3xl">.</div>
+                  </div>
+                  <input data-youtube-target="n_end_time_decimal" class="w-10 icon-del font-bold ignore-keydown" value="0" type="text" maxlength="1">
+                </div>
               </div>
             </div>
           </div>
