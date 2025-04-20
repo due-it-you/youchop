@@ -104,6 +104,7 @@ export default class extends Controller {
   }
 
   play(event) {
+    clearTimeout(this.timeoutId_)
     if(event.target.closest(".ignore-keydown")) return
     if(this.frameTarget.tagName == "DIV") return
 
@@ -128,7 +129,7 @@ export default class extends Controller {
 
     this.getPlayer.seekTo(startTimeTotalSecond, true)
     this.getPlayer.playVideo()
-    setTimeout(() => {
+    this.timeoutId_ = setTimeout(() => {
       this.getPlayer.pauseVideo()
     }, playingTimeTotalSecond * 1000)
   }
