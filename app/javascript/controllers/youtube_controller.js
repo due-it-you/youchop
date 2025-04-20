@@ -37,6 +37,9 @@ export default class extends Controller {
                     "b_end_time",
                     "b_end_time_decimal",
                     "n_start_time",
+                    "n_start_time_decimal",
+                    "n_end_time",
+                    "n_end_time_decimal",
                     "m_start_time",
   ]
 
@@ -192,7 +195,12 @@ export default class extends Controller {
       end:            this.b_end_timeTarget,
       end_decimal:    this.b_end_time_decimalTarget
     }
-    if(event.key == "n") return this.n_start_timeTarget
+    if(event.key == "n") return {
+      start:          this.n_start_timeTarget,
+      start_decimal:  this.n_start_time_decimalTarget,
+      end:            this.n_end_timeTarget,
+      end_decimal:    this.n_end_time_decimalTarget
+    }
     if(event.key == "m") return this.m_start_timeTarget
 
     if(event.target.id == "t_pad") return this.t_start_timeTarget
