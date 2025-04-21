@@ -156,4 +156,24 @@ export default class extends Controller {
     this.current_kickTarget.textContent = ""
     this.current_kickTarget.textContent = current_kick_name
   }
+
+  setThePad(event) {
+
+    // if the input letter *doesn't* include the following characters
+    // which correspond to each pad key!
+    if (![  't', 'y', 'u',
+            'g', 'h', 'j',
+            'b', 'n', 'm',
+      
+            'T', 'Y', 'U',
+            'G', 'H', 'J',
+            'B', 'N', 'M'
+
+    ].includes(event.target.value)) {
+      // this means that users can input the letter that corresponds to any pad key only.
+      event.target.value = ''
+    }
+
+    event.target.value = event.target.value.toUpperCase()
+  }
 }
