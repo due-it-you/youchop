@@ -95,7 +95,7 @@
               <% if row == 0 %>
                 <% if step % 4 == 0 %>
                   <div sample="chop" index="<%= step + 1 %>" data-active="false" data-step-sequencer-target="step">
-                    <input data-action="input->step-sequencer#updateLowerToUpper" class="ignore-keydown text-2xl font-bold aspect-square border border-black h-12 w-full rounded bg-gray-400 text-center" type="text" maxlength="1">
+                    <input data-action="input->step-sequencer#setThePad" class="ignore-keydown text-2xl font-bold aspect-square border border-black h-12 w-full rounded bg-gray-400 text-center" type="text" maxlength="1">
                   </div>
                 <% else %>
                   <div sample="chop" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded" data-step-sequencer-target="step"></div>

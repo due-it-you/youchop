@@ -157,7 +157,7 @@ export default class extends Controller {
     this.current_kickTarget.textContent = current_kick_name
   }
 
-  updateLowerToUpper(event) {
+  setThePad(event) {
 
     // if the input letter *doesn't* include the following characters
     // which correspond to each pad key!
@@ -168,9 +168,9 @@ export default class extends Controller {
             'T', 'Y', 'U',
             'G', 'H', 'J',
             'B', 'N', 'M'
-      
-    // then replace it with blank.
+
     ].includes(event.target.value)) {
+      // this means that users can input the letter that corresponds to any pad key only.
       event.target.value = ''
     }
 
