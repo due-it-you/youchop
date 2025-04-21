@@ -156,4 +156,8 @@ export default class extends Controller {
     this.current_kickTarget.textContent = ""
     this.current_kickTarget.textContent = current_kick_name
   }
+
+  updateLowerToUpper(event) {
+    event.target.value = event.target.value.toUpperCase()
+  }
 }
