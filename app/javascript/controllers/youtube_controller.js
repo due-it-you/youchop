@@ -156,6 +156,10 @@ export default class extends Controller {
     }, playingTimeTotalSecond * 1000)
   }
 
+  padVolumeControl () {
+    this.getPlayer.setVolume(this.pads_volumeTarget.value)
+  }
+
   targetTime(event) {
     if(event.key == "t") return {
       start:          this.t_start_timeTarget, 
