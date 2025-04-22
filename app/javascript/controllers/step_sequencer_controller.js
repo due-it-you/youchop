@@ -102,7 +102,6 @@ export default class extends Controller {
     Tone.Transport.bpm.value = Number(this.current_bpmTarget.textContent)
 
     const players = new Tone.Players({
-      chop  : '/samples/snares/boom-bap-snare.wav',
       hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
       snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
       kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
