@@ -162,6 +162,9 @@ export default class extends Controller {
     this.getPlayer.setVolume(this.pads_volumeTarget.value)
   }
 
+  resetAllInputTimings () {
+  }
+
   targetTime(event) {
     if(event.key == "t") return {
       start:          this.t_start_timeTarget, 
