@@ -43,7 +43,8 @@ export default class extends Controller {
                     "m_start_time",
                     "m_start_time_decimal",
                     "m_end_time",
-                    "m_end_time_decimal"
+                    "m_end_time_decimal",
+                    "pads_volume",
   ]
 
   initialize() {
@@ -100,6 +101,7 @@ export default class extends Controller {
         },
         events: {
           onReady: (event) => {
+            event.target.setVolume(20)
             event.target.playVideo()
           }
         }
@@ -116,6 +118,7 @@ export default class extends Controller {
         },
         events: {
           onReady: (event) => {
+            event.target.setVolume(20)
             event.target.playVideo()
           }
         }
@@ -153,6 +156,10 @@ export default class extends Controller {
     this.timeoutId_ = setTimeout(() => {
       this.getPlayer.pauseVideo()
     }, playingTimeTotalSecond * 1000)
+  }
+
+  padVolumeControl () {
+    this.getPlayer.setVolume(this.pads_volumeTarget.value)
   }
 
   targetTime(event) {

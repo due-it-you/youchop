@@ -14,7 +14,6 @@ export default class extends Controller {
                     "current_snare",
                     "current_kick",
                     "indicator",
-                    "pads_volume",
                     "hihats_volume",
                     "snares_volume",
                     "kicks_volume",
