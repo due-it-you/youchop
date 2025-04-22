@@ -79,6 +79,16 @@ export default class extends Controller {
       grid_array.slice(64,80)   // kick
     ];
 
+    const players = new Tone.Players({
+      hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
+      snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
+      kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
+    }).connect({
+      hihat : this.hihatGain,
+      snare : this.snareGain,
+      kick  : this.kickGain
+    }).toDestination()
+    
     let beat = 0;
 
     await Tone.Transport.scheduleRepeat((time) => {
@@ -107,20 +117,7 @@ export default class extends Controller {
     }, "16n");
 
     Tone.Transport.bpm.value = Number(this.current_bpmTarget.textContent)
-
-    const players = new Tone.Players({
-      hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
-      snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
-      kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
-    }, function() {
-      Tone.Transport.start()
-    }).connect({
-      hihat : this.hihatGain,
-      snare : this.snareGain,
-      kick  : this.kickGain
-    }).toDestination()
-
-
+    Tone.Transport.start()
 
     this.isPlaying = true
   }
