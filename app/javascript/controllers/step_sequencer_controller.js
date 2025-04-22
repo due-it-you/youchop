@@ -203,4 +203,8 @@ export default class extends Controller {
   hihatVolumeControl() {
     this.hihatGain.gain.value = this.hihats_volumeTarget.value
   }
+
+  snareVolumeControl() {
+    this.snareGain.gain.value = this.snares_volumeTarget.value
+  }
 }
