@@ -126,7 +126,7 @@ export default class extends Controller {
 
   play(event) {
     clearTimeout(this.timeoutId_)
-    if(event.target.closest(".ignore-keydown")) return
+    if(event.target?.closest?.(".ignore-keydown")) return
     if(this.frameTarget.tagName == "DIV") return
 
     // start time

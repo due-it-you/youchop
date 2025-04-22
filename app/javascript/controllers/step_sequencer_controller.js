@@ -20,6 +20,8 @@ export default class extends Controller {
   }
 
   connect() {
+    this.youtubeController = document.querySelector('[data-controller~="youtube"]')?.youtube
+
   }
 
   currentBPM() {
@@ -73,6 +75,18 @@ export default class extends Controller {
     let beat = 0;
 
     await Tone.Transport.scheduleRepeat((time) => {
+      const padRow = rows[1]
+      const currentStep = padRow[beat]
+      const inputEl = currentStep.querySelector("input")
+
+      if (inputEl && inputEl.value) {
+        const key = inputEl.value.toLowerCase()
+        if (this.youtubeController) {
+          const Event = new KeyboardEvent("keydown", { key: key })
+          this.youtubeController.play(Event)
+        }
+      }
+
       rows.forEach((row, index) => {
         const step = row[beat];
         if (step.dataset.active === "true") {
@@ -95,6 +109,8 @@ export default class extends Controller {
     }, function() {
       Tone.Transport.start()
     }).toDestination()
+
+
 
     this.isPlaying = true
   }
