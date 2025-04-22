@@ -13,7 +13,11 @@ export default class extends Controller {
                     "current_hihat",
                     "current_snare",
                     "current_kick",
-                    "indicator"
+                    "indicator",
+                    "pads_volume",
+                    "hihats_volume",
+                    "snares_volume",
+                    "kicks_volume",
   ]
 
   initialize() {
@@ -22,6 +26,13 @@ export default class extends Controller {
   connect() {
     this.youtubeController = document.querySelector('[data-controller~="youtube"]')?.youtube
 
+    this.hihatGain = new Tone.Gain(1).toDestination()
+    this.snareGain = new Tone.Gain(1).toDestination()
+    this.kickGain = new Tone.Gain(1).toDestination()
+
+    this.hihatGain.gain.value = this.hihats_volumeTarget.value
+    this.snareGain.gain.value = this.snares_volumeTarget.value
+    this.kickGain.gain.value = this.kicks_volumeTarget.value
   }
 
   currentBPM() {
@@ -72,6 +83,16 @@ export default class extends Controller {
       grid_array.slice(64,80)   // kick
     ];
 
+    const players = new Tone.Players({
+      hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
+      snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
+      kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
+    }).toDestination()
+
+    players.player("hihat").connect(this.hihatGain)
+    players.player("snare").connect(this.snareGain)
+    players.player("kick").connect(this.kickGain)
+    
     let beat = 0;
 
     await Tone.Transport.scheduleRepeat((time) => {
@@ -100,16 +121,7 @@ export default class extends Controller {
     }, "16n");
 
     Tone.Transport.bpm.value = Number(this.current_bpmTarget.textContent)
-
-    const players = new Tone.Players({
-      hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
-      snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
-      kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
-    }, function() {
-      Tone.Transport.start()
-    }).toDestination()
-
-
+    Tone.Transport.start()
 
     this.isPlaying = true
   }
@@ -190,5 +202,17 @@ export default class extends Controller {
     }
 
     event.target.value = event.target.value.toUpperCase()
+  }
+
+  hihatVolumeControl() {
+    this.hihatGain.gain.value = this.hihats_volumeTarget.value
+  }
+
+  snareVolumeControl() {
+    this.snareGain.gain.value = this.snares_volumeTarget.value
+  }
+
+  kickVolumeControl() {
+    this.kickGain.gain.value = this.kicks_volumeTarget.value
   }
 }
