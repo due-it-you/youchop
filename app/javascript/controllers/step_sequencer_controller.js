@@ -29,6 +29,10 @@ export default class extends Controller {
     this.hihatGain = new Tone.Gain(1).toDestination()
     this.snareGain = new Tone.Gain(1).toDestination()
     this.kickGain = new Tone.Gain(1).toDestination()
+
+    this.hihatGain.gain.value = this.hihats_volumeTarget.value
+    this.snareGain.gain.value = this.snares_volumeTarget.value
+    this.kickGain.gain.value = this.kicks_volumeTarget.value
   }
 
   currentBPM() {
