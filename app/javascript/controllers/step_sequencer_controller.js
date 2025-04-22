@@ -114,6 +114,10 @@ export default class extends Controller {
       kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
     }, function() {
       Tone.Transport.start()
+    }).connnect({
+      hihat : this.hihatGain,
+      snare : this.snareGain,
+      kick  : this.kickGain
     }).toDestination()
 
 
