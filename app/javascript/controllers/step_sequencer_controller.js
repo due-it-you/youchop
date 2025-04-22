@@ -83,11 +83,11 @@ export default class extends Controller {
       hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
       snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
       kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
-    }).connect({
-      hihat : this.hihatGain,
-      snare : this.snareGain,
-      kick  : this.kickGain
     }).toDestination()
+
+    players.player("hihat").connect(this.hihatGain)
+    players.player("snare").connect(this.snareGain)
+    players.player("kick").connect(this.kickGain)
     
     let beat = 0;
 
