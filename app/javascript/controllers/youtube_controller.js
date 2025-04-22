@@ -45,6 +45,7 @@ export default class extends Controller {
                     "m_end_time",
                     "m_end_time_decimal",
                     "pads_volume",
+                    "reset_confirmation"
   ]
 
   initialize() {
