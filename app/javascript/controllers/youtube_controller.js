@@ -164,6 +164,50 @@ export default class extends Controller {
   }
 
   resetAllInputTimings () {
+    this.t_start_timeTarget.value = "00:00"
+    this.t_start_time_decimalTarget.value = "0"
+    this.t_end_timeTarget.value = "00:00"
+    this.t_end_time_decimalTarget.value = "0"
+
+    this.y_start_timeTarget.value = "00:00"
+    this.y_start_time_decimalTarget.value = "0"
+    this.y_end_timeTarget.value = "00:00"
+    this.y_end_time_decimalTarget.value = "0"
+
+    this.u_start_timeTarget.value = "00:00"
+    this.u_start_time_decimalTarget.value = "0"
+    this.u_end_timeTarget.value = "00:00"
+    this.u_end_time_decimalTarget.value = "0"
+
+    this.g_start_timeTarget.value = "00:00"
+    this.g_start_time_decimalTarget.value = "0"
+    this.g_end_timeTarget.value = "00:00"
+    this.g_end_time_decimalTarget.value = "0"
+
+    this.h_start_timeTarget.value = "00:00"
+    this.h_start_time_decimalTarget.value = "0"
+    this.h_end_timeTarget.value = "00:00"
+    this.h_end_time_decimalTarget.value = "0"
+
+    this.j_start_timeTarget.value = "00:00"
+    this.j_start_time_decimalTarget.value = "0"
+    this.j_end_timeTarget.value = "00:00"
+    this.j_end_time_decimalTarget.value = "0"
+
+    this.b_start_timeTarget.value = "00:00"
+    this.b_start_time_decimalTarget.value = "0"
+    this.b_end_timeTarget.value = "00:00"
+    this.b_end_time_decimalTarget.value = "0"
+
+    this.n_start_timeTarget.value = "00:00"
+    this.n_start_time_decimalTarget.value = "0"
+    this.n_end_timeTarget.value = "00:00"
+    this.n_end_time_decimalTarget.value = "0"
+
+    this.m_start_timeTarget.value = "00:00"
+    this.m_start_time_decimalTarget.value = "0"
+    this.m_end_timeTarget.value = "00:00"
+    this.m_end_time_decimalTarget.value = "0"
   }
 
   targetTime(event) {
