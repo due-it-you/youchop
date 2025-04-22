@@ -26,6 +26,9 @@ export default class extends Controller {
   connect() {
     this.youtubeController = document.querySelector('[data-controller~="youtube"]')?.youtube
 
+    this.hihatGain = new Tone.Gain(1).toDestination()
+    this.snareGain = new Tone.Gain(1).toDestination()
+    this.kickGain = new Tone.Gain(1).toDestination()
   }
 
   currentBPM() {
