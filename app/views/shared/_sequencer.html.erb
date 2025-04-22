@@ -114,7 +114,7 @@
             <div>
               <button data-step-sequencer-target="current_kick" id="dropdownDefaultButton" data-dropdown-toggle="dropdown-kick" class="shadow-lg w-40 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-4 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">boom-bap kick #1 <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
               <!-- Dropdown menu -->
-              <div id="dropdown-kick" class="hidden shadow-lg z-10 h-28 overflow-auto bg-white divide-y divide-gray-100 rounded-lg w-44 dark:bg-gray-700">
+              <div id="dropdown-kick" class="hidden shadow-lg z-10 h-28 overflow-auto bg-w8ite divide-y divide-gray-100 rounded-lg w-44 dark:bg-gray-700">
                   <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                     <li>
                       <div class="flex">
@@ -132,7 +132,7 @@
         <div class="grid grid-cols-16 gap-2" data-step-sequencer-target="grid">
           <% 16.times do |beat| %>
             <div class="flex justify-center">
-              <div data-step-sequencer-target="indicator" index="<%= beat %>" class="rounded-full w-4 h-4 border border-black"></div>
+              <div data-step-sequencer-target="indicator" index="<%= beat %>" class="rounded-full w-4 h-4 border border-gray-400"></div>
             </div>
           <% end %>
           <% 4.times do |row| %>
@@ -140,33 +140,33 @@
               <% if row == 0 %>
                 <% if step % 4 == 0 %>
                   <div index="<%= step + 1 %>">
-                    <input data-action="input->step-sequencer#setThePad" class="ignore-keydown text-2xl font-bold aspect-square border border-black h-12 w-full rounded bg-gray-400 text-center shadow-lg" type="text" maxlength="1">
+                    <input data-action="input->step-sequencer#setThePad" class="ignore-keydown text-2xl font-bold aspect-square border border-gray-800 h-12 w-full rounded bg-gray-400 text-center shadow-lg" type="text" maxlength="1">
                   </div>
                 <% else %>
                   <div index="<%= step + 1 %>">
-                    <input data-action="input->step-sequencer#setThePad" class="ignore-keydown text-2xl font-bold aspect-square border border-black h-12 w-full rounded text-center shadow-lg" type="text" maxlength="1">
+                    <input data-action="input->step-sequencer#setThePad" class="ignore-keydown text-2xl font-bold aspect-square border border-gray-800 h-12 w-full rounded text-center shadow-lg" type="text" maxlength="1">
                   </div>
                 <% end %>
               <% end %>
               <% if row == 1 %>
                 <% if step % 4 == 0 %>
-                  <div sample="hihat" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400 shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                  <div sample="hihat" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-gray-800 h-12 rounded bg-gray-400 shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
                 <% else %>
-                  <div sample="hihat" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                  <div sample="hihat" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-gray-800 h-12 rounded shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
                 <% end %>
               <% end %>
               <% if row == 2 %>
                 <% if step % 4 == 0 %>
-                  <div sample="snare" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400 shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                  <div sample="snare" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-gray-800 h-12 rounded bg-gray-400 shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
                 <% else %>
-                  <div sample="snare" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                  <div sample="snare" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-gray-800 h-12 rounded shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
                 <% end %>
               <% end %>
               <% if row == 3 %>
                 <% if step % 4 == 0 %>
-                  <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded bg-gray-400 shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                  <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-gray-800 h-12 rounded bg-gray-400 shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
                 <% else %>
-                  <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-black h-12 rounded shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
+                  <div sample="kick" index="<%= step + 1 %>"data-active="false" class="aspect-square border border-gray-800 h-12 rounded shadow-lg" data-step-sequencer-target="step"  data-action="click->step-sequencer#stepActiveControl"></div>
                 <% end %>
               <% end %>
             <% end %>
