@@ -207,4 +207,8 @@ export default class extends Controller {
   snareVolumeControl() {
     this.snareGain.gain.value = this.snares_volumeTarget.value
   }
+
+  kickVolumeControl() {
+    this.kickGain.gain.value = this.kicks_volumeTarget.value
+  }
 }
