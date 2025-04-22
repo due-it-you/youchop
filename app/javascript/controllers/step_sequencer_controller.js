@@ -214,4 +214,24 @@ export default class extends Controller {
   kickVolumeControl() {
     this.kickGain.gain.value = this.kicks_volumeTarget.value
   }
+
+  resetAllStepsActive () {
+    const stepsCollection = this.gridTarget.children
+    const stepsArray = Array.prototype.slice.call(stepsCollection)
+    const drumsStepsArray = stepsArray.slice(32,80)
+
+    drumsStepsArray.forEach((step) => {
+      const isActive = step.dataset.active === "true"
+      if (isActive == true) {
+        if (step.getAttribute('index') % 4 == 1) {
+          step.classList.remove('bg-green-300')
+          step.classList.add('bg-gray-400')
+        } else {
+          step.classList.remove('bg-green-300')
+        }
+      }
+      
+      step.setAttribute('data-active', 'false')
+    })
+  }
 }
