@@ -20,6 +20,8 @@ export default class extends Controller {
   }
 
   connect() {
+    this.youtubeController = document.querySelector('[data-controller~="youtube"]')?.youtube
+
   }
 
   currentBPM() {
@@ -73,6 +75,18 @@ export default class extends Controller {
     let beat = 0;
 
     await Tone.Transport.scheduleRepeat((time) => {
+      const padRow = rows[1]
+      const currentStep = padRow[beat]
+      const inputEl = currentStep.querySelector("input")
+
+      if (inputEl && inputEl.value) {
+        const key = inputEl.value.toLowerCase()
+        if (this.youtubeController) {
+          const Event = new KeyboardEvent("keydown", { key: key })
+          this.youtubeController.play(Event)
+        }
+      }
+
       rows.forEach((row, index) => {
         const step = row[beat];
         if (step.dataset.active === "true") {
@@ -88,13 +102,14 @@ export default class extends Controller {
     Tone.Transport.bpm.value = Number(this.current_bpmTarget.textContent)
 
     const players = new Tone.Players({
-      chop  : '/samples/snares/boom-bap-snare.wav',
       hihat : this.fetchSampleSoundPath(this.current_hihatTarget.textContent),
       snare : this.fetchSampleSoundPath(this.current_snareTarget.textContent),
       kick  : this.fetchSampleSoundPath(this.current_kickTarget.textContent)
     }, function() {
       Tone.Transport.start()
     }).toDestination()
+
+
 
     this.isPlaying = true
   }
