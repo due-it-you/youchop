@@ -199,4 +199,8 @@ export default class extends Controller {
 
     event.target.value = event.target.value.toUpperCase()
   }
+
+  hihatVolumeControl() {
+    this.hihatGain.gain.value = this.hihats_volumeTarget.value
+  }
 }
