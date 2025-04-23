@@ -11,7 +11,7 @@
             <%= f.submit "submit" ,class: "shadow-lg bg-blue-500 text-white font-bold py-2 px-4 rounded", disabled: true, data: { youtube_target: "submit" } %>
           </div>
           <div>
-            <%= f.url_field :url, value:'drop youtube URL here' ,class: "form-control ignore-keydown bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500",data: { youtube_target: "url", action: "input->youtube#url_validation" } %>
+            <%= f.url_field :url, placeholder:'drop youtube URL here' ,class: "form-control ignore-keydown bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500",data: { youtube_target: "url", action: "input->youtube#url_validation" } %>
           </div>
         <% end %>
       </div>

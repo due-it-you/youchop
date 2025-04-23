@@ -53,12 +53,41 @@ export default class extends Controller {
   }
 
   connect() {
-    var tag = document.createElement('script');
+    this.element['youtube'] = this
+  
+    if (window.YT) {
+      this.initPlayer()
+      return
+    }
 
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    const tag = document.createElement("script")
+    tag.src = "https://www.youtube.com/iframe_api"
+    const firstScriptTag = document.getElementsByTagName("script")[0]
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+  
+    window.onYouTubeIframeAPIReady = () => {
+      this.initPlayer()
+    }
   }
+
+  initPlayer() {
+    this.youtube = new YT.Player("player", {
+      height: "390",
+      width: "640",
+      videoId: "44_qWFAdjqQ",
+      playerVars: {
+        playsinline: 1
+      },
+      events: {
+        onReady: (event) => {
+          event.target.setVolume(20)
+          event.target.playVideo()
+        }
+      }
+    })
+  }
+  
+  
 
   url_validation() {
     const urlInput = this.urlTarget
@@ -129,6 +158,7 @@ export default class extends Controller {
   }
 
   play(event) {
+    console.log(this.getPlayer)
     clearTimeout(this.timeoutId_)
     if(event.target?.closest?.(".ignore-keydown")) return
     if(this.frameTarget.tagName == "DIV") return
