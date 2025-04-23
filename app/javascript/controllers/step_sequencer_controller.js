@@ -30,6 +30,7 @@ export default class extends Controller {
       drumsStepsArray.slice(32,48)  // kicks row 
     ]
 
+    // active some of the hihats in default
     drumsRows[0].forEach((el) => {
       if (el.getAttribute('index') % 2 == 1) {
         if (el.getAttribute('index') % 4 == 1) {
@@ -43,13 +44,28 @@ export default class extends Controller {
       }
     })
 
+    // active some of the snares in default
     drumsRows[1].forEach((el) => {
       if (el.getAttribute('index') == 5 || el.getAttribute('index') == 13) {
         el.classList.remove('bg-gray-400')
         el.classList.add('bg-green-300')
         el.dataset.active = "true"
       }
-    }) 
+    })
+
+    // active some of the kicks in default
+    drumsRows[2].forEach((el) => {
+      if (el.getAttribute('index') == 1 || el.getAttribute('index') == 9 ||  el.getAttribute('index') == 11) {
+        if (el.getAttribute('index') % 4 == 1) {
+          el.classList.remove('bg-gray-400')
+          el.classList.add('bg-green-300')
+          el.dataset.active = "true"
+        } else {
+          el.classList.add('bg-green-300')
+          el.dataset.active = "true"
+        }
+      }
+    })
   }
 
   connect() {
