@@ -20,6 +20,29 @@ export default class extends Controller {
   ]
 
   initialize() {
+    const stepsCollection = this.gridTarget.children
+    const stepsArray = Array.prototype.slice.call(stepsCollection)
+    const drumsStepsArray = stepsArray.slice(32,80)
+
+    const drumsRows = [
+      drumsStepsArray.slice(0,16),  // hihats row
+      drumsStepsArray.slice(16,32), // snares row
+      drumsStepsArray.slice(32,48)  // kicks row 
+    ]
+
+    drumsRows[0].forEach((el) => {
+      if (el.getAttribute('index') % 2 == 1) {
+        if (el.getAttribute('index') % 4 == 1) {
+          el.classList.remove('bg-gray-400')
+          el.classList.add('bg-green-300')
+          el.dataset.active = "true"
+        } else {
+          el.classList.add('bg-green-300')
+          el.dataset.active = "true"
+        }
+      }
+    })
+
   }
 
   connect() {
