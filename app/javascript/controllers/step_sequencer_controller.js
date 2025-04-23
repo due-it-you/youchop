@@ -66,6 +66,30 @@ export default class extends Controller {
         }
       }
     })
+
+    // set the pads on the sequencer in default
+    const padStepsArray = stepsArray.slice(16,32)
+
+    padStepsArray.forEach((el) => {
+      console.log(el)
+      switch (el.getAttribute('index')) {
+        case "1":
+          el.firstElementChild.value = "Y";
+          break;
+        case "7":
+          el.firstElementChild.value = "Y";
+          break;
+        case "11":
+          el.firstElementChild.value = "J";
+          break;
+        case "13":
+          el.firstElementChild.value = "M";
+          break;
+        case "15":
+          el.firstElementChild.value = "T";
+          break;
+      }
+    })
   }
 
   connect() {
