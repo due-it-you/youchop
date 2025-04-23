@@ -32,9 +32,16 @@
     <div class="border border-gray-600 shadow-lg bg-gray-400 flex items-center justify-center aspect-square w-80 rounded-md">
       <div class="grid grid-cols-3 aspect-square w-full p-4 gap-3">
         <!-- T pad -->
-        <div>
-          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHoverT" data-dropdown-trigger="hover" class="border border-gray-600 bg-gray-100 aspect-square w-full rounded-md" type="button">
+        <div class="relative">
+          <button
+            id="dropdownHoverButton"
+            data-dropdown-toggle="dropdownHoverT"
+            data-dropdown-trigger="hover"
+            class="relative z-10 border border-gray-600 bg-gray-100 aspect-square w-full rounded-md"
+            type="button"
+            >
           </button>
+          <div class="absolute bottom-[-1px] left-0 z-0 border border-gray-600 bg-gray-400 aspect-square w-full rounded-md"></div>
           <!-- T pad Dropdown menu -->
           <div id="dropdownHoverT" class="hidden z-50 absolute bg-white shadow-lg rounded-lg p-4 overflow-visible">
             <div class="p-2">
@@ -59,9 +66,10 @@
           </div>
         </div>
         <!-- Y pad -->
-        <div>
-          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHoverY" data-dropdown-trigger="hover" class="border border-gray-600 bg-gray-100 aspect-square w-full rounded-md" type="button"> 
+        <div class="relative">
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHoverY" data-dropdown-trigger="hover" class="relative z-10 border border-gray-600 bg-gray-100 aspect-square w-full rounded-md" type="button"> 
           </button>
+          <div class="absolute bottom-[-1px] left-0 z-0 border border-gray-600 bg-gray-400 aspect-square w-full rounded-md"></div>
           <!-- Y pad Dropdown menu -->
           <div id="dropdownHoverY" class="hidden z-50 absolute bg-white shadow-lg rounded-lg p-4 overflow-visible">
             <div class="p-2">
