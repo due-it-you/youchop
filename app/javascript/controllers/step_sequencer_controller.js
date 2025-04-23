@@ -43,6 +43,13 @@ export default class extends Controller {
       }
     })
 
+    drumsRows[1].forEach((el) => {
+      if (el.getAttribute('index') == 5 || el.getAttribute('index') == 13) {
+        el.classList.remove('bg-gray-400')
+        el.classList.add('bg-green-300')
+        el.dataset.active = "true"
+      }
+    }) 
   }
 
   connect() {
