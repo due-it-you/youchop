@@ -96,6 +96,7 @@ export default class extends Controller {
       events: {
         onReady: (event) => {
           event.target.setVolume(20)
+          event.target.setPlaybackRate(1.2)
           event.target.playVideo()
         }
       }
