@@ -71,7 +71,7 @@ export default class extends Controller {
   }
 
   initPlayer() {
-    const player = new YT.Player("player", {
+    this.youtube = new YT.Player("player", {
       height: "390",
       width: "640",
       videoId: "44_qWFAdjqQ",
@@ -85,7 +85,6 @@ export default class extends Controller {
         }
       }
     })
-    this.youtube = player
   }
   
   
@@ -159,6 +158,7 @@ export default class extends Controller {
   }
 
   play(event) {
+    console.log(this.getPlayer)
     clearTimeout(this.timeoutId_)
     if(event.target?.closest?.(".ignore-keydown")) return
     if(this.frameTarget.tagName == "DIV") return
