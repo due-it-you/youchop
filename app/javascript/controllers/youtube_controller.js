@@ -50,6 +50,21 @@ export default class extends Controller {
 
   initialize() {
     this.element['youtube'] = this
+
+    this.y_start_timeTarget.value = "00:41"
+    this.y_end_timeTarget.value = "00:42"
+    this.y_end_time_decimalTarget.value = "1"
+
+    this.j_start_timeTarget.value = "01:25"
+    this.j_start_time_decimalTarget.value = "2"
+    this.j_end_timeTarget.value = "02:00"
+
+    this.m_start_timeTarget.value = "02:56"
+    this.m_start_time_decimalTarget.value = "1"
+    this.m_end_timeTarget.value = "12:00"
+
+    this.t_start_timeTarget.value = "01:08"
+    this.t_end_timeTarget.value = "12:00"
   }
 
   connect() {
@@ -158,7 +173,6 @@ export default class extends Controller {
   }
 
   play(event) {
-    console.log(this.getPlayer)
     clearTimeout(this.timeoutId_)
     if(event.target?.closest?.(".ignore-keydown")) return
     if(this.frameTarget.tagName == "DIV") return
