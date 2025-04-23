@@ -64,6 +64,7 @@ export default class extends Controller {
     this.m_end_timeTarget.value = "12:00"
 
     this.t_start_timeTarget.value = "01:08"
+    this.t_start_time_decimalTarget.value = "3"
     this.t_end_timeTarget.value = "12:00"
   }
 
