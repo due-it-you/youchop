@@ -85,9 +85,6 @@ export default class extends Controller {
         case "13":
           el.firstElementChild.value = "M";
           break;
-        case "15":
-          el.firstElementChild.value = "T";
-          break;
       }
     })
   }
