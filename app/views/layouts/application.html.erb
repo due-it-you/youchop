@@ -17,7 +17,9 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <%= render "shared/header" %>
+    <div class="w-full">
+      <%= render "shared/header" %>
+    </div>
     <main class="flex-grow flex items-center justify-center">
       <%= yield %>
     </main>
