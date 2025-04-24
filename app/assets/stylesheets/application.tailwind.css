@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "flowbite";
+@import 'nouislider/dist/nouislider.css';
 /*
 
 @layer components {

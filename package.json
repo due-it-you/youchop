@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.13"
+    "@hotwired/turbo-rails": "^8.0.13",
+    "flowbite": "^3.1.2",
+    "nouislider": "^15.8.1",
+    "tone": "^15.0.4"
   }
 }

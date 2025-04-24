@@ -48,6 +48,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "pry-rails"
 end
 
 group :test do
@@ -58,3 +59,4 @@ end
 
 gem "tailwindcss-rails"
 gem "tailwindcss-ruby", "3.4.17"
+gem "font-awesome-rails"

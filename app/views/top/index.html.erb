@@ -1,0 +1,34 @@
+<div>
+  <div data-controller="youtube" data-action="
+    keydown.t@document->youtube#play 
+    keydown.y@document->youtube#play
+    keydown.u@document->youtube#play
+    keydown.g@document->youtube#play
+    keydown.h@document->youtube#play
+    keydown.j@document->youtube#play
+    keydown.b@document->youtube#play
+    keydown.n@document->youtube#play
+    keydown.m@document->youtube#play
+    ">
+    <div>
+      <div class="flex justify-center items-center">
+        <div class="p-4">
+          <%= render 'shared/youtube' %>
+        </div>
+        <div>
+          <div>
+            <%= render 'shared/pad_to_set_time' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="h-px mt-5 bg-gray-200 border-0 dark:bg-gray-700">
+    <div>
+      <div>
+        <div>
+          <%= render 'shared/sequencer' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

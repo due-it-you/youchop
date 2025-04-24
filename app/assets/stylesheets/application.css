@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+/*
+ *= require font-awesome
+ */
+
+.icon-del::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
