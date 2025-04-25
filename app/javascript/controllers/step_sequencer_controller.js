@@ -71,7 +71,6 @@ export default class extends Controller {
     const padStepsArray = stepsArray.slice(16,32)
 
     padStepsArray.forEach((el) => {
-      console.log(el)
       switch (el.getAttribute('index')) {
         case "1":
           el.firstElementChild.value = "Y";
@@ -187,6 +186,7 @@ export default class extends Controller {
     }, "16n");
 
     Tone.Transport.bpm.value = Number(this.current_bpmTarget.textContent)
+    await Tone.loaded()
     Tone.Transport.start()
 
     this.isPlaying = true
