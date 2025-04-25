@@ -258,6 +258,46 @@ export default class extends Controller {
         var startTimeInput = this.t_start_timeTarget
         var startTimeDecimalPart = this.t_start_time_decimalTarget
       }
+    if (event.target.id == 'y_set_current_time_button') 
+      {
+        var startTimeInput = this.y_start_timeTarget
+        var startTimeDecimalPart = this.y_start_time_decimalTarget
+      }
+    if (event.target.id == 'u_set_current_time_button') 
+      {
+        var startTimeInput = this.u_start_timeTarget
+        var startTimeDecimalPart = this.u_start_time_decimalTarget
+      }
+    if (event.target.id == 'g_set_current_time_button') 
+      {
+        var startTimeInput = this.g_start_timeTarget
+        var startTimeDecimalPart = this.g_start_time_decimalTarget
+      }
+    if (event.target.id == 'h_set_current_time_button') 
+      {
+        var startTimeInput = this.h_start_timeTarget
+        var startTimeDecimalPart = this.h_start_time_decimalTarget
+      }
+    if (event.target.id == 'j_set_current_time_button') 
+      {
+        var startTimeInput = this.j_start_timeTarget
+        var startTimeDecimalPart = this.j_start_time_decimalTarget
+      }
+    if (event.target.id == 'b_set_current_time_button') 
+      {
+        var startTimeInput = this.b_start_timeTarget
+        var startTimeDecimalPart = this.b_start_time_decimalTarget
+      }
+    if (event.target.id == 'n_set_current_time_button') 
+      {
+        var startTimeInput = this.n_start_timeTarget
+        var startTimeDecimalPart = this.n_start_time_decimalTarget
+      }
+    if (event.target.id == 'n_set_current_time_button') 
+      {
+        var startTimeInput = this.n_start_timeTarget
+        var startTimeDecimalPart = this.n_start_time_decimalTarget
+      }
 
     startTimeInput.value = inputCurrentTimeIntPart
     startTimeDecimalPart.value = currentTimeDecimalPart
