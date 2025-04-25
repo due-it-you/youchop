@@ -45,7 +45,16 @@ export default class extends Controller {
                     "m_end_time",
                     "m_end_time_decimal",
                     "pads_volume",
-                    "reset_confirmation"
+                    "reset_confirmation",
+                    "t_pad",
+                    "y_pad",
+                    "u_pad",
+                    "g_pad",
+                    "h_pad",
+                    "j_pad",
+                    "b_pad",
+                    "n_pad",
+                    "m_pad"
   ]
 
   initialize() {
