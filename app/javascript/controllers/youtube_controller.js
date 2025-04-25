@@ -226,6 +226,88 @@ export default class extends Controller {
     this.getPlayer.setVolume(this.pads_volumeTarget.value)
   }
 
+  setTheCurrentTime (event) {
+    const currentTime = Math.floor(this.getPlayer.getCurrentTime() * 10) / 10
+    const currentTimeIntPart = Math.trunc(currentTime)
+    const currentTimeDecimalPart = Math.round((currentTime - currentTimeIntPart) * 10)
+
+    // this is the left min part of 00:00
+    const currentTimeMinPart = Math.trunc(currentTimeIntPart / 60)
+    
+    if (currentTimeMinPart.toString().length == 1) {
+      var currentTimeMinStr = '0' + currentTimeMinPart // 0x
+    } else {
+      var currentTimeMinStr = String(currentTimeMinPart) // xx
+    }
+
+    // this is the right sec part of 00:00
+    const currentTimeSecPart = currentTimeIntPart - (currentTimeMinPart * 60)
+
+    if (currentTimeSecPart.toString().length == 1) {
+      var currentTimeSecStr = '0' + currentTimeSecPart // 0x
+    } else {
+      var currentTimeSecStr = String(currentTimeSecPart) // xx
+    }
+
+    const inputCurrentTimeIntPart = currentTimeMinStr + ':' + currentTimeSecStr
+
+    // const startTimeInput = event.target.closest("#dropdownHoverT")
+    // const startTimeDecimalPart = event.target.closest("#dropdownHoverT")
+    if (event.target.id == 't_set_current_time_button') 
+      {
+        var startTimeInput = this.t_start_timeTarget
+        var startTimeDecimalPart = this.t_start_time_decimalTarget
+      }
+    if (event.target.id == 'y_set_current_time_button') 
+      {
+        var startTimeInput = this.y_start_timeTarget
+        var startTimeDecimalPart = this.y_start_time_decimalTarget
+      }
+    if (event.target.id == 'u_set_current_time_button') 
+      {
+        var startTimeInput = this.u_start_timeTarget
+        var startTimeDecimalPart = this.u_start_time_decimalTarget
+      }
+    if (event.target.id == 'g_set_current_time_button') 
+      {
+        var startTimeInput = this.g_start_timeTarget
+        var startTimeDecimalPart = this.g_start_time_decimalTarget
+      }
+    if (event.target.id == 'h_set_current_time_button') 
+      {
+        var startTimeInput = this.h_start_timeTarget
+        var startTimeDecimalPart = this.h_start_time_decimalTarget
+      }
+    if (event.target.id == 'j_set_current_time_button') 
+      {
+        var startTimeInput = this.j_start_timeTarget
+        var startTimeDecimalPart = this.j_start_time_decimalTarget
+      }
+    if (event.target.id == 'b_set_current_time_button') 
+      {
+        var startTimeInput = this.b_start_timeTarget
+        var startTimeDecimalPart = this.b_start_time_decimalTarget
+      }
+    if (event.target.id == 'n_set_current_time_button') 
+      {
+        var startTimeInput = this.n_start_timeTarget
+        var startTimeDecimalPart = this.n_start_time_decimalTarget
+      }
+    if (event.target.id == 'n_set_current_time_button') 
+      {
+        var startTimeInput = this.n_start_timeTarget
+        var startTimeDecimalPart = this.n_start_time_decimalTarget
+      }
+    if (event.target.id == 'm_set_current_time_button') 
+      {
+        var startTimeInput = this.m_start_timeTarget
+        var startTimeDecimalPart = this.m_start_time_decimalTarget
+      }
+
+    startTimeInput.value = inputCurrentTimeIntPart
+    startTimeDecimalPart.value = currentTimeDecimalPart
+  }
+
   resetAllInputTimings () {
     this.t_start_timeTarget.value = "00:00"
     this.t_start_time_decimalTarget.value = "0"
