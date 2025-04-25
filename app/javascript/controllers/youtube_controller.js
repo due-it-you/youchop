@@ -226,6 +226,34 @@ export default class extends Controller {
     this.getPlayer.setVolume(this.pads_volumeTarget.value)
   }
 
+  setTheCurrentTime () {
+    const currentTime = Math.floor(this.getPlayer.getCurrentTime() * 10) / 10
+    const currentTimeIntPart = Math.trunc(currentTime)
+    const currentTimeDecimalPart = Math.round((currentTime - currentTimeIntPart) * 10)
+
+    // this is the left min part of 00:00
+    const currentTimeMinPart = Math.trunc(currentTimeIntPart / 60)
+    
+    if (currentTimeMinPart.toString().length == 1) {
+      var currentTimeMinStr = '0' + currentTimeMinPart // 0x
+    } else {
+      var currentTimeMinStr = String(currentTimeMinPart) // xx
+    }
+
+    // this is the right sec part of 00:00
+    const currentTimeSecPart = currentTimeIntPart - (currentTimeMinPart * 60)
+
+    if (currentTimeSecPart.toString().length == 1) {
+      var currentTimeSecStr = '0' + currentTimeSecPart // 0x
+    } else {
+      var currentTimeSecStr = String(currentTimeSecPart) // xx
+    }
+
+    const inputCurrentTime = currentTimeMinStr + ':' + currentTimeSecStr
+
+    
+  }
+
   resetAllInputTimings () {
     this.t_start_timeTarget.value = "00:00"
     this.t_start_time_decimalTarget.value = "0"
