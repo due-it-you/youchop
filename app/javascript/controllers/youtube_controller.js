@@ -45,7 +45,16 @@ export default class extends Controller {
                     "m_end_time",
                     "m_end_time_decimal",
                     "pads_volume",
-                    "reset_confirmation"
+                    "reset_confirmation",
+                    "t_pad",
+                    "y_pad",
+                    "u_pad",
+                    "g_pad",
+                    "h_pad",
+                    "j_pad",
+                    "b_pad",
+                    "n_pad",
+                    "m_pad"
   ]
 
   initialize() {
@@ -203,6 +212,14 @@ export default class extends Controller {
     this.timeoutId_ = setTimeout(() => {
       this.getPlayer.pauseVideo()
     }, playingTimeTotalSecond * 1000)
+
+    // highlight the pad when the pad is played
+    this.targetTime(event).pad.classList.remove('bg-gray-100')
+    this.targetTime(event).pad.classList.add('bg-green-300')
+    setTimeout(() => {
+      this.targetTime(event).pad.classList.remove('bg-green-300')
+      this.targetTime(event).pad.classList.add('bg-gray-100')
+    }, 150)
   }
 
   padVolumeControl () {
@@ -261,55 +278,64 @@ export default class extends Controller {
       start:          this.t_start_timeTarget, 
       start_decimal:  this.t_start_time_decimalTarget,
       end:            this.t_end_timeTarget,
-      end_decimal:    this.t_end_time_decimalTarget
+      end_decimal:    this.t_end_time_decimalTarget,
+      pad:            this.t_padTarget
     }
     if(event.key == "y") return {
       start:          this.y_start_timeTarget,
       start_decimal:  this.y_start_time_decimalTarget,
       end:            this.y_end_timeTarget,
-      end_decimal:    this.y_end_time_decimalTarget
+      end_decimal:    this.y_end_time_decimalTarget,
+      pad:            this.y_padTarget
     }
     if(event.key == "u") return {
       start:          this.u_start_timeTarget,
       start_decimal:  this.u_start_time_decimalTarget,
       end:            this.u_end_timeTarget,
-      end_decimal:    this.u_end_time_decimalTarget
+      end_decimal:    this.u_end_time_decimalTarget,
+      pad:            this.u_padTarget
     }
     if(event.key == "g") return {
       start:          this.g_start_timeTarget,
       start_decimal:  this.g_start_time_decimalTarget,
       end:            this.g_end_timeTarget,
-      end_decimal:    this.g_end_time_decimalTarget
+      end_decimal:    this.g_end_time_decimalTarget,
+      pad:            this.g_padTarget
     }
     if(event.key == "h") return {
       start:          this.h_start_timeTarget,
       start_decimal:  this.h_start_time_decimalTarget,
       end:            this.h_end_timeTarget,
-      end_decimal:    this.h_end_time_decimalTarget
+      end_decimal:    this.h_end_time_decimalTarget,
+      pad:            this.h_padTarget
     }
     if(event.key == "j") return {
       start:          this.j_start_timeTarget,
       start_decimal:  this.j_start_time_decimalTarget,
       end:            this.j_end_timeTarget,
-      end_decimal:    this.j_end_time_decimalTarget
+      end_decimal:    this.j_end_time_decimalTarget,
+      pad:            this.j_padTarget
     }
     if(event.key == "b") return {
       start:          this.b_start_timeTarget,
       start_decimal:  this.b_start_time_decimalTarget,
       end:            this.b_end_timeTarget,
-      end_decimal:    this.b_end_time_decimalTarget
+      end_decimal:    this.b_end_time_decimalTarget,
+      pad:            this.b_padTarget
     }
     if(event.key == "n") return {
       start:          this.n_start_timeTarget,
       start_decimal:  this.n_start_time_decimalTarget,
       end:            this.n_end_timeTarget,
-      end_decimal:    this.n_end_time_decimalTarget
+      end_decimal:    this.n_end_time_decimalTarget,
+      pad:            this.n_padTarget
     }
     if(event.key == "m") return {
       start:          this.m_start_timeTarget,
       start_decimal:  this.m_start_time_decimalTarget,
       end:            this.m_end_timeTarget,
-      end_decimal:    this.m_end_time_decimalTarget
+      end_decimal:    this.m_end_time_decimalTarget,
+      pad:            this.m_padTarget
     }
 
     if(event.target.id == "t_pad") return this.t_start_timeTarget
