@@ -20,6 +20,7 @@ export default class extends Controller {
   ]
 
   initialize() {
+    this.loopId = null
     const stepsCollection = this.gridTarget.children
     const stepsArray = Array.prototype.slice.call(stepsCollection)
     const drumsStepsArray = stepsArray.slice(32,80)
@@ -71,7 +72,6 @@ export default class extends Controller {
     const padStepsArray = stepsArray.slice(16,32)
 
     padStepsArray.forEach((el) => {
-      console.log(el)
       switch (el.getAttribute('index')) {
         case "1":
           el.firstElementChild.value = "Y";
@@ -138,9 +138,13 @@ export default class extends Controller {
   async playSequencer() {
     if (this.isPlaying)  return
 
-    await Tone.start();
+    await Tone.start()
+
+    if (this.loopId) {
+      Tone.Transport.clear(this.loopId)
+    }
   
-    const grid_array = Array.from(this.gridTarget.children);
+    const grid_array = Array.from(this.gridTarget.children)
     const rows = [
       grid_array.slice(0,16),   // indicator
       grid_array.slice(16,32),  // chop
@@ -161,7 +165,7 @@ export default class extends Controller {
     
     let beat = 0;
 
-    await Tone.Transport.scheduleRepeat((time) => {
+    this.loopId = Tone.Transport.scheduleRepeat((time) => {
       const padRow = rows[1]
       const currentStep = padRow[beat]
       const inputEl = currentStep.querySelector("input")
@@ -177,8 +181,8 @@ export default class extends Controller {
       rows.forEach((row, index) => {
         const step = row[beat];
         if (step.dataset.active === "true") {
-          const sample = step.getAttribute("sample");
-          players.player(sample).start(time);
+          const sample = step.getAttribute("sample")
+          players.player(sample).start(time)
         }
       })
       this.highlightStep(beat)
@@ -187,6 +191,7 @@ export default class extends Controller {
     }, "16n");
 
     Tone.Transport.bpm.value = Number(this.current_bpmTarget.textContent)
+    await Tone.loaded()
     Tone.Transport.start()
 
     this.isPlaying = true
@@ -195,6 +200,10 @@ export default class extends Controller {
   stopSequencer() {
     Tone.Transport.stop()
     Tone.Transport.cancel()
+    if (this.loopId) {
+      Tone.Transport.clear(this.loopId)
+      this.loopId = null
+    }
     this.isPlaying = false
   }
 
