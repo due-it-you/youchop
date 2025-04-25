@@ -251,8 +251,13 @@ export default class extends Controller {
 
     const inputCurrentTimeIntPart = currentTimeMinStr + ':' + currentTimeSecStr
 
-    const startTimeInput = event.target.closest("#dropdownHoverT")?.querySelector('[data-youtube-target="t_start_time"]');
-    const startTimeDecimalPart = event.target.closest("#dropdownHoverT")?.querySelector('[data-youtube-target="t_start_time_decimal"]');
+    // const startTimeInput = event.target.closest("#dropdownHoverT")
+    // const startTimeDecimalPart = event.target.closest("#dropdownHoverT")
+    if (event.target.id == 't_set_current_time_button') 
+      {
+        var startTimeInput = this.t_start_timeTarget
+        var startTimeDecimalPart = this.t_start_time_decimalTarget
+      }
 
     startTimeInput.value = inputCurrentTimeIntPart
     startTimeDecimalPart.value = currentTimeDecimalPart
