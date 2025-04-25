@@ -298,6 +298,11 @@ export default class extends Controller {
         var startTimeInput = this.n_start_timeTarget
         var startTimeDecimalPart = this.n_start_time_decimalTarget
       }
+    if (event.target.id == 'm_set_current_time_button') 
+      {
+        var startTimeInput = this.m_start_timeTarget
+        var startTimeDecimalPart = this.m_start_time_decimalTarget
+      }
 
     startTimeInput.value = inputCurrentTimeIntPart
     startTimeDecimalPart.value = currentTimeDecimalPart
