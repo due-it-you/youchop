@@ -90,7 +90,7 @@ export default class extends Controller {
     this.youtube = new YT.Player("player", {
       height: "390",
       width: "640",
-      videoId: "44_qWFAdjqQ",
+      videoId: "a2LFVWBmoiw",
       playerVars: {
         playsinline: 1
       },
