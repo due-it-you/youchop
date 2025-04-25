@@ -226,7 +226,7 @@ export default class extends Controller {
     this.getPlayer.setVolume(this.pads_volumeTarget.value)
   }
 
-  setTheCurrentTime () {
+  setTheCurrentTime (event) {
     const currentTime = Math.floor(this.getPlayer.getCurrentTime() * 10) / 10
     const currentTimeIntPart = Math.trunc(currentTime)
     const currentTimeDecimalPart = Math.round((currentTime - currentTimeIntPart) * 10)
@@ -249,9 +249,13 @@ export default class extends Controller {
       var currentTimeSecStr = String(currentTimeSecPart) // xx
     }
 
-    const inputCurrentTime = currentTimeMinStr + ':' + currentTimeSecStr
+    const inputCurrentTimeIntPart = currentTimeMinStr + ':' + currentTimeSecStr
 
-    
+    const startTimeInput = event.target.closest("#dropdownHoverT")?.querySelector('[data-youtube-target="t_start_time"]');
+    const startTimeDecimalPart = event.target.closest("#dropdownHoverT")?.querySelector('[data-youtube-target="t_start_time_decimal"]');
+
+    startTimeInput.value = inputCurrentTimeIntPart
+    startTimeDecimalPart.value = currentTimeDecimalPart
   }
 
   resetAllInputTimings () {
