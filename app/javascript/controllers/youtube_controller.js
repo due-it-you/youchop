@@ -189,12 +189,12 @@ export default class extends Controller {
     if(this.frameTarget.tagName == "DIV") return
 
     // start time
-    const [m,s] = this.targetTime(event).start.value.split(":")
-    const startTimeMinSec = [m,s]
+    const [h, m, s] = this.targetTime(event).start.value.split(":")
+    const startTimeHourMinSec = [h, m, s]
     const startTimeDecimalStr = this.targetTime(event).start_decimal.value
     const startTimeDecimalNum = Number('0.' + startTimeDecimalStr)
-    const startTimeMinSecArray = startTimeMinSec.map( str => parseInt(str, 10))
-    const startTimeTotalSecond = startTimeMinSecArray[0]*60 + startTimeMinSecArray[1] + startTimeDecimalNum
+    const startTimeHourMinSecArray = startTimeHourMinSec.map( str => parseInt(str, 10))
+    const startTimeTotalSecond = startTimeHourMinSecArray[0] * 60 * 60 + startTimeHourMinSecArray[1] * 60 + startTimeHourMinSecArray[2] + startTimeDecimalNum
 
     // end time
     const [end_h, end_m, end_s] = this.targetTime(event).end.value.split(":")
