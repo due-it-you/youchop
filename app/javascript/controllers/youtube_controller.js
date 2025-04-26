@@ -59,10 +59,18 @@ export default class extends Controller {
 
   initialize() {
     this.element['youtube'] = this
+    
+    this.t_start_timeTarget.value = "00:01:08"
+    this.t_end_timeTarget.value = "00:59:10"
+    this.t_start_time_decimalTarget.value = "3"
 
     this.y_start_timeTarget.value = "00:00:41"
     this.y_end_timeTarget.value = "00:00:42"
     this.y_end_time_decimalTarget.value = "1"
+
+    this.u_start_timeTarget.value = "00:01:41"
+    this.u_end_timeTarget.value = "00:59:10"
+    this.u_end_time_decimalTarget.value = "1"
 
     this.j_start_timeTarget.value = "01:25"
     this.j_start_time_decimalTarget.value = "2"
@@ -71,10 +79,6 @@ export default class extends Controller {
     this.m_start_timeTarget.value = "02:56"
     this.m_start_time_decimalTarget.value = "1"
     this.m_end_timeTarget.value = "12:00"
-
-    this.t_start_timeTarget.value = "00:01:08"
-    this.t_start_time_decimalTarget.value = "3"
-    this.t_end_timeTarget.value = "00:59:10"
   }
 
   connect() {
