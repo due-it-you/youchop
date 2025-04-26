@@ -59,22 +59,37 @@ export default class extends Controller {
 
   initialize() {
     this.element['youtube'] = this
+    
+    this.t_start_timeTarget.value = "00:01:08"
+    this.t_start_time_decimalTarget.value = "3"
+    this.t_end_timeTarget.value = "00:59:10"
 
-    this.y_start_timeTarget.value = "00:41"
-    this.y_end_timeTarget.value = "00:42"
+    this.y_start_timeTarget.value = "00:00:41"
+    this.y_end_timeTarget.value = "00:00:42"
     this.y_end_time_decimalTarget.value = "1"
 
-    this.j_start_timeTarget.value = "01:25"
+    this.u_start_timeTarget.value = "00:01:41"
+    this.u_end_timeTarget.value = "00:59:10"
+
+    this.g_start_timeTarget.value = "00:02:10"
+    this.g_end_timeTarget.value = "00:59:10"
+
+    this.h_start_timeTarget.value = "00:02:32"
+    this.h_end_timeTarget.value = "00:59:10"
+
+    this.j_start_timeTarget.value = "00:01:25"
     this.j_start_time_decimalTarget.value = "2"
-    this.j_end_timeTarget.value = "02:00"
+    this.j_end_timeTarget.value = "00:59:10"
 
-    this.m_start_timeTarget.value = "02:56"
+    this.b_start_timeTarget.value = "00:01:59"
+    this.b_end_timeTarget.value = "00:59:10"
+
+    this.n_start_timeTarget.value = "00:00:25"
+    this.n_end_timeTarget.value = "00:59:10"
+
+    this.m_start_timeTarget.value = "00:02:56"
     this.m_start_time_decimalTarget.value = "1"
-    this.m_end_timeTarget.value = "12:00"
-
-    this.t_start_timeTarget.value = "01:08"
-    this.t_start_time_decimalTarget.value = "3"
-    this.t_end_timeTarget.value = "12:00"
+    this.m_end_timeTarget.value = "00:59:10"
   }
 
   connect() {
@@ -189,20 +204,20 @@ export default class extends Controller {
     if(this.frameTarget.tagName == "DIV") return
 
     // start time
-    const [m,s] = this.targetTime(event).start.value.split(":")
-    const startTimeMinSec = [m,s]
+    const [h, m, s] = this.targetTime(event).start.value.split(":")
+    const startTimeHourMinSec = [h, m, s]
     const startTimeDecimalStr = this.targetTime(event).start_decimal.value
     const startTimeDecimalNum = Number('0.' + startTimeDecimalStr)
-    const startTimeMinSecArray = startTimeMinSec.map( str => parseInt(str, 10))
-    const startTimeTotalSecond = startTimeMinSecArray[0]*60 + startTimeMinSecArray[1] + startTimeDecimalNum
+    const startTimeHourMinSecArray = startTimeHourMinSec.map( str => parseInt(str, 10))
+    const startTimeTotalSecond = startTimeHourMinSecArray[0] * 60 * 60 + startTimeHourMinSecArray[1] * 60 + startTimeHourMinSecArray[2] + startTimeDecimalNum
 
     // end time
-    const [end_m,end_s] = this.targetTime(event).end.value.split(":")
-    const endTimeMinSec = [end_m,end_s]
+    const [end_h, end_m, end_s] = this.targetTime(event).end.value.split(":")
+    const endTimeHourMinSec = [end_h, end_m, end_s]
     const endTimeDecimalStr = this.targetTime(event).end_decimal.value
     const endTimeDecimalNum = Number('0.' + endTimeDecimalStr)
-    const endTimeMinSecArray = endTimeMinSec.map( str => parseInt(str, 10))
-    const endTimeTotalSecond = endTimeMinSecArray[0]*60 + endTimeMinSecArray[1] + endTimeDecimalNum
+    const endTimeHourMinSecArray = endTimeHourMinSec.map( str => parseInt(str, 10))
+    const endTimeTotalSecond = endTimeHourMinSecArray[0] * 60 * 60 + endTimeHourMinSecArray[1] * 60 + endTimeHourMinSecArray[2] + endTimeDecimalNum
 
     // playing length
     const playingTimeTotalSecond = endTimeTotalSecond - startTimeTotalSecond
@@ -231,8 +246,23 @@ export default class extends Controller {
     const currentTimeIntPart = Math.trunc(currentTime)
     const currentTimeDecimalPart = Math.round((currentTime - currentTimeIntPart) * 10)
 
-    // this is the left min part of 00:00
-    const currentTimeMinPart = Math.trunc(currentTimeIntPart / 60)
+    // this is the hour part of 00:00:00
+    if (currentTimeIntPart >= 3600) {
+      var currentTimeHourPart = Math.trunc(currentTimeIntPart / 3600)
+
+      if (currentTimeHourPart.toString().length == 1) {
+        var currentTimeHourStr = '0' + currentTimeHourPart // 0x
+      } else {
+        var currentTimeHourStr = String(currentTimeHourPart) // xx
+      }
+    }
+
+    // this is the min part of 00:00:00
+    if (currentTimeIntPart >= 3600) {
+      var currentTimeMinPart = Math.trunc((currentTimeIntPart / 60) - (currentTimeHourPart * 60))
+    } else {
+      var currentTimeMinPart = Math.trunc(currentTimeIntPart / 60)
+    }
     
     if (currentTimeMinPart.toString().length == 1) {
       var currentTimeMinStr = '0' + currentTimeMinPart // 0x
@@ -240,8 +270,12 @@ export default class extends Controller {
       var currentTimeMinStr = String(currentTimeMinPart) // xx
     }
 
-    // this is the right sec part of 00:00
-    const currentTimeSecPart = currentTimeIntPart - (currentTimeMinPart * 60)
+    // this is the sec part of 00:00:00
+    if (currentTimeIntPart >= 3600) {
+      var currentTimeSecPart = currentTimeIntPart - (currentTimeMinPart * 60) - (currentTimeHourPart * 3600)
+    } else {
+      var currentTimeSecPart = currentTimeIntPart - (currentTimeMinPart * 60)
+    }
 
     if (currentTimeSecPart.toString().length == 1) {
       var currentTimeSecStr = '0' + currentTimeSecPart // 0x
@@ -249,60 +283,58 @@ export default class extends Controller {
       var currentTimeSecStr = String(currentTimeSecPart) // xx
     }
 
-    const inputCurrentTimeIntPart = currentTimeMinStr + ':' + currentTimeSecStr
+    if (currentTimeHourStr) {
+      var inputCurrentTimeIntPart = currentTimeHourStr + ':' + currentTimeMinStr + ':' + currentTimeSecStr
+    } else {
+      var inputCurrentTimeIntPart = '00:' + currentTimeMinStr + ':' + currentTimeSecStr
+    }
 
-    // const startTimeInput = event.target.closest("#dropdownHoverT")
-    // const startTimeDecimalPart = event.target.closest("#dropdownHoverT")
-    if (event.target.id == 't_set_current_time_button') 
-      {
+    switch (event.target.id) {
+      case 't_set_current_time_button':
         var startTimeInput = this.t_start_timeTarget
         var startTimeDecimalPart = this.t_start_time_decimalTarget
-      }
-    if (event.target.id == 'y_set_current_time_button') 
-      {
+        break;
+      
+      case 'y_set_current_time_button':
         var startTimeInput = this.y_start_timeTarget
         var startTimeDecimalPart = this.y_start_time_decimalTarget
-      }
-    if (event.target.id == 'u_set_current_time_button') 
-      {
+        break;
+      
+      case 'u_set_current_time_button':
         var startTimeInput = this.u_start_timeTarget
         var startTimeDecimalPart = this.u_start_time_decimalTarget
-      }
-    if (event.target.id == 'g_set_current_time_button') 
-      {
+        break;
+      
+      case 'g_set_current_time_button':
         var startTimeInput = this.g_start_timeTarget
         var startTimeDecimalPart = this.g_start_time_decimalTarget
-      }
-    if (event.target.id == 'h_set_current_time_button') 
-      {
+        break;
+      
+      case 'h_set_current_time_button':
         var startTimeInput = this.h_start_timeTarget
         var startTimeDecimalPart = this.h_start_time_decimalTarget
-      }
-    if (event.target.id == 'j_set_current_time_button') 
-      {
+        break;
+
+      case 'j_set_current_time_button':
         var startTimeInput = this.j_start_timeTarget
         var startTimeDecimalPart = this.j_start_time_decimalTarget
-      }
-    if (event.target.id == 'b_set_current_time_button') 
-      {
+        break;
+
+      case 'b_set_current_time_button':
         var startTimeInput = this.b_start_timeTarget
         var startTimeDecimalPart = this.b_start_time_decimalTarget
-      }
-    if (event.target.id == 'n_set_current_time_button') 
-      {
+        break;
+
+      case 'n_set_current_time_button':
         var startTimeInput = this.n_start_timeTarget
         var startTimeDecimalPart = this.n_start_time_decimalTarget
-      }
-    if (event.target.id == 'n_set_current_time_button') 
-      {
-        var startTimeInput = this.n_start_timeTarget
-        var startTimeDecimalPart = this.n_start_time_decimalTarget
-      }
-    if (event.target.id == 'm_set_current_time_button') 
-      {
+        break;
+
+      case 'm_set_current_time_button':
         var startTimeInput = this.m_start_timeTarget
         var startTimeDecimalPart = this.m_start_time_decimalTarget
-      }
+        break;
+    }
 
     startTimeInput.value = inputCurrentTimeIntPart
     startTimeDecimalPart.value = currentTimeDecimalPart
