@@ -60,8 +60,8 @@ export default class extends Controller {
   initialize() {
     this.element['youtube'] = this
 
-    this.y_start_timeTarget.value = "00:41"
-    this.y_end_timeTarget.value = "00:42"
+    this.y_start_timeTarget.value = "00:00:41"
+    this.y_end_timeTarget.value = "00:00:42"
     this.y_end_time_decimalTarget.value = "1"
 
     this.j_start_timeTarget.value = "01:25"
