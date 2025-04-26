@@ -197,12 +197,12 @@ export default class extends Controller {
     const startTimeTotalSecond = startTimeMinSecArray[0]*60 + startTimeMinSecArray[1] + startTimeDecimalNum
 
     // end time
-    const [end_m,end_s] = this.targetTime(event).end.value.split(":")
-    const endTimeMinSec = [end_m,end_s]
+    const [end_h, end_m, end_s] = this.targetTime(event).end.value.split(":")
+    const endTimeHourMinSec = [end_h, end_m, end_s]
     const endTimeDecimalStr = this.targetTime(event).end_decimal.value
     const endTimeDecimalNum = Number('0.' + endTimeDecimalStr)
-    const endTimeMinSecArray = endTimeMinSec.map( str => parseInt(str, 10))
-    const endTimeTotalSecond = endTimeMinSecArray[0]*60 + endTimeMinSecArray[1] + endTimeDecimalNum
+    const endTimeHourMinSecArray = endTimeHourMinSec.map( str => parseInt(str, 10))
+    const endTimeTotalSecond = endTimeHourMinSecArray[0] * 60 * 60 + endTimeHourMinSecArray[1] * 60 + endTimeHourMinSecArray[2] + endTimeDecimalNum
 
     // playing length
     const playingTimeTotalSecond = endTimeTotalSecond - startTimeTotalSecond
