@@ -231,7 +231,7 @@ export default class extends Controller {
     const currentTimeIntPart = Math.trunc(currentTime)
     const currentTimeDecimalPart = Math.round((currentTime - currentTimeIntPart) * 10)
 
-    // this is the left min part of 00:00
+    // this is the left min part of 00:00:00
     const currentTimeMinPart = Math.trunc(currentTimeIntPart / 60)
     
     if (currentTimeMinPart.toString().length == 1) {
@@ -240,7 +240,7 @@ export default class extends Controller {
       var currentTimeMinStr = String(currentTimeMinPart) // xx
     }
 
-    // this is the right sec part of 00:00
+    // this is the right sec part of 00:00:00
     const currentTimeSecPart = currentTimeIntPart - (currentTimeMinPart * 60)
 
     if (currentTimeSecPart.toString().length == 1) {
