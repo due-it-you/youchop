@@ -81,8 +81,11 @@ export default class extends Controller {
     this.h_end_time_decimalTarget.value = "1"
 
     this.j_start_timeTarget.value = "00:01:25"
-    this.j_end_timeTarget.value = "00:59:10"
     this.j_start_time_decimalTarget.value = "2"
+    this.j_end_timeTarget.value = "00:59:10"
+
+    this.b_start_timeTarget.value = "00:01:59"
+    this.b_end_timeTarget.value = "00:59:10"
 
     this.m_start_timeTarget.value = "02:56"
     this.m_start_time_decimalTarget.value = "1"
