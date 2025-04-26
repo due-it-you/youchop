@@ -231,8 +231,23 @@ export default class extends Controller {
     const currentTimeIntPart = Math.trunc(currentTime)
     const currentTimeDecimalPart = Math.round((currentTime - currentTimeIntPart) * 10)
 
-    // this is the left min part of 00:00:00
-    const currentTimeMinPart = Math.trunc(currentTimeIntPart / 60)
+    // this is the hour part of 00:00:00
+    if (currentTimeIntPart >= 3600) {
+      var currentTimeHourPart = Math.trunc(currentTimeIntPart / 3600)
+
+      if (currentTimeHourPart.toString().length == 1) {
+        var currentTimeHourStr = '0' + currentTimeHourPart // 0x
+      } else {
+        var currentTimeHourStr = String(currentTimeHourPart) // xx
+      }
+    }
+
+    // this is the min part of 00:00:00
+    if (currentTimeIntPart >= 3600) {
+      var currentTimeMinPart = Math.trunc((currentTimeIntPart / 60) - (currentTimeHourPart * 60))
+    } else {
+      var currentTimeMinPart = Math.trunc(currentTimeIntPart / 60)
+    }
     
     if (currentTimeMinPart.toString().length == 1) {
       var currentTimeMinStr = '0' + currentTimeMinPart // 0x
@@ -240,8 +255,12 @@ export default class extends Controller {
       var currentTimeMinStr = String(currentTimeMinPart) // xx
     }
 
-    // this is the right sec part of 00:00:00
-    const currentTimeSecPart = currentTimeIntPart - (currentTimeMinPart * 60)
+    // this is the sec part of 00:00:00
+    if (currentTimeIntPart >= 3600) {
+      var currentTimeSecPart = currentTimeIntPart - (currentTimeMinPart * 60) - (currentTimeHourPart * 3600)
+    } else {
+      var currentTimeSecPart = currentTimeIntPart - (currentTimeMinPart * 60)
+    }
 
     if (currentTimeSecPart.toString().length == 1) {
       var currentTimeSecStr = '0' + currentTimeSecPart // 0x
@@ -249,7 +268,11 @@ export default class extends Controller {
       var currentTimeSecStr = String(currentTimeSecPart) // xx
     }
 
-    const inputCurrentTimeIntPart = currentTimeMinStr + ':' + currentTimeSecStr
+    if (currentTimeHourStr) {
+      var inputCurrentTimeIntPart = currentTimeHourStr + ':' + currentTimeMinStr + ':' + currentTimeSecStr
+    } else {
+      var inputCurrentTimeIntPart = '00:' + currentTimeMinStr + ':' + currentTimeSecStr
+    }
 
     // const startTimeInput = event.target.closest("#dropdownHoverT")
     // const startTimeDecimalPart = event.target.closest("#dropdownHoverT")
