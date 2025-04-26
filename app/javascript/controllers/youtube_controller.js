@@ -289,8 +289,6 @@ export default class extends Controller {
       var inputCurrentTimeIntPart = '00:' + currentTimeMinStr + ':' + currentTimeSecStr
     }
 
-    // const startTimeInput = event.target.closest("#dropdownHoverT")
-    // const startTimeDecimalPart = event.target.closest("#dropdownHoverT")
     switch (event.target.id) {
       case 't_set_current_time_button':
         var startTimeInput = this.t_start_timeTarget
