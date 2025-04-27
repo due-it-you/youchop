@@ -7,11 +7,11 @@
 one: 
   username: "one_user"
   email: "one@example.com"
-  password: <%= User.new(password: 'password1').password_digest %>
+  password: password1
 # column: value
 #
 two: 
   username: "two_user"
   email: "two@example.com"
-  password: <%= User.new(password: 'password2').password_digest %>
+  password: password2
 # column: value
