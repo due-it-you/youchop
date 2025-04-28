@@ -17,7 +17,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     super
   end
-  
+
   def respond_to_on_destroy
     respond_to do |format|
       format.all { head :no_content }
