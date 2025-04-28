@@ -119,6 +119,10 @@
                         <div class="text-white">
                             <%= button_to "Logout", destroy_user_session_path, method: :delete %>
                         </div>
+                    <% else %>
+                        <div class="text-white">
+                            <%= button_to "Log in", new_user_session_path %>
+                        </div>
                     <% end %>
                 </li>
             </ul>
