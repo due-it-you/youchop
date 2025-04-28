@@ -114,6 +114,13 @@
                         </div>
                     </div>
                 </li>
+                <li>
+                    <% if user_signed_in? %>
+                        <div class="text-white">
+                            <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+                        </div>
+                    <% end %>
+                </li>
             </ul>
         </div>
         </div>
