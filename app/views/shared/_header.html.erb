@@ -114,6 +114,24 @@
                         </div>
                     </div>
                 </li>
+                    <% if user_signed_in? %>
+                        <li>
+                            <div class="text-white">
+                                <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+                            </div>
+                        </li>
+                    <% else %>
+                        <li>
+                            <div class="text-white">
+                                <%= link_to "Log in", new_user_session_path %>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="text-white">
+                                <%= link_to "Sign up", new_user_registration_path %>
+                            </div>
+                        </li>
+                    <% end %>
             </ul>
         </div>
         </div>
