@@ -10,7 +10,20 @@
     keydown.n@document->youtube#play
     keydown.m@document->youtube#play
     ">
-    <div>
+    <div class="pt-4">
+      <% flash.each do |type, message| %>
+        <div class="flex items-center justify-center">
+          <% if type == 'notice' %>
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+              <%= content_tag(:div, message, class: "alert alert-danger") %>
+            </div>
+          <% else %>
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+              <%= content_tag(:div, message, class: "alert alert-success") %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
       <div class="flex justify-center items-center">
         <div class="p-4">
           <%= render 'shared/youtube' %>
@@ -22,7 +35,7 @@
         </div>
       </div>
     </div>
-    <hr class="h-px mt-5 bg-gray-200 border-0 dark:bg-gray-700">
+    <hr class="h-px mt-5 bg-gray-200 border-0">
     <div>
       <div>
         <div>
