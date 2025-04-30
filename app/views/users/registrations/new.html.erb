@@ -1,0 +1,83 @@
+<div>
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto my-auto">
+    <div class="bg-white  shadow-lg rounded-lg px-12 w-2/5">
+      <div class="flex items-center justify-center p-4">
+        <p class="pt-8 font-bold text-xl text-gray-800">Create a new Account</p>
+      </div>
+      <div class="p-4">
+        <%= form_with model: @user, url: registration_path(resource_name), local: true do |f| %>
+          <% if resource.errors.any? %>
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+              <div class="flex items-center justify-center">
+                <%= render "users/shared/error_messages", resource: resource, class: "alert alert-danger" %>
+              </div>
+            </div>
+          <% end %>
+          <div>
+            <div class="px-4 pb-4">
+              <%= f.label :username %>
+              <%= f.text_field :username, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" %>
+            </div>
+            <div class="p-4">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, placeholder: "example@example.com", autocomplete: "email", class: "placeholder-gray-400 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" %>
+            </div>
+            <div class="p-4">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minumum)</em>
+              <% end %>
+              <%= f.password_field :password, placeholder: "••••••••", autocomplete: "new-password", class: "placeholder-gray-400 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" %>
+            </div>
+            <div class="p-4">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, placeholder: "••••••••",class: "placeholder-gray-400 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" %>
+            </div>
+            <div class="p-4">
+              <div class="flex justify-center">
+                <button class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700">
+                  <%= f.submit "Sign up", class: "text-white font-medium" %>
+                </button>
+              </div>
+            </div>
+          </div>  
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if false %>
+  <div class="border border-black">
+    <h2>Sign up test</h2>
+    <div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+<% end %>
