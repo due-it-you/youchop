@@ -4,8 +4,16 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
+  title: "beat1"
+  user: one
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
 # column: value
 #
-two: {}
+two:
+  title: "beat2"
+  user: two
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
 # column: value
