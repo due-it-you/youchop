@@ -1,0 +1,2 @@
+class Beat < ApplicationRecord
+end
