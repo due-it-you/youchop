@@ -3,7 +3,6 @@ class CreateSequencers < ActiveRecord::Migration[7.2]
     create_table :sequencers do |t|
       t.references :beat, null: false, foreign_key: true
       t.integer :bpm, null: false
-      t.string :drums_row_type, null: false
       t.string :drums_active_index, null: false
       t.string :set_pad_key, null: false
       t.string :pad_active_index, null: false

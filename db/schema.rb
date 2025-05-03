@@ -41,7 +41,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_03_130641) do
   create_table "sequencers", force: :cascade do |t|
     t.bigint "beat_id", null: false
     t.integer "bpm", null: false
-    t.string "drums_row_type", null: false
     t.string "drums_active_index", null: false
     t.string "set_pad_key", null: false
     t.string "pad_active_index", null: false
