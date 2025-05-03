@@ -3,9 +3,8 @@
 one:
   beat: one
   bpm: 1
-  drums_row_type: MyString
   drums_active_index: MyString
-  set_pad_key: MyString
+  pads_assigned: MyString
   pad_active_index: MyString
   youtube_volume: MyString
   hihat_volume: MyString
@@ -15,9 +14,8 @@ one:
 two:
   beat: two
   bpm: 1
-  drums_row_type: MyString
   drums_active_index: MyString
-  set_pad_key: MyString
+  pads_assigned: MyString
   pad_active_index: MyString
   youtube_volume: MyString
   hihat_volume: MyString
