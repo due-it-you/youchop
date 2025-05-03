@@ -4,7 +4,7 @@ class CreateSequencers < ActiveRecord::Migration[7.2]
       t.references :beat, null: false, foreign_key: true
       t.integer :bpm, null: false
       t.string :drums_active_index, null: false
-      t.string :pad_keys_assigned, null: false
+      t.string :pads_assigned, null: false
       t.string :pad_active_index, null: false
       t.string :youtube_volume, null: false
       t.string :hihat_volume, null: false
