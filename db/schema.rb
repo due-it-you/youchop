@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_03_102148) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_03_121704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,22 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_03_102148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_beats_on_user_id"
+  end
+
+  create_table "pad_timings", force: :cascade do |t|
+    t.bigint "beat_id", null: false
+    t.string "t_time", null: false
+    t.string "y_time", null: false
+    t.string "u_time", null: false
+    t.string "g_time", null: false
+    t.string "h_time", null: false
+    t.string "j_time", null: false
+    t.string "b_time", null: false
+    t.string "n_time", null: false
+    t.string "m_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beat_id"], name: "index_pad_timings_on_beat_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,5 +60,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_03_102148) do
   end
 
   add_foreign_key "beats", "users"
+  add_foreign_key "pad_timings", "beats"
   add_foreign_key "youtubes", "beats"
 end
