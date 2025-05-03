@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_03_121704) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_03_130641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,22 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_03_121704) do
     t.index ["beat_id"], name: "index_pad_timings_on_beat_id"
   end
 
+  create_table "sequencers", force: :cascade do |t|
+    t.bigint "beat_id", null: false
+    t.integer "bpm", null: false
+    t.string "drums_row_type", null: false
+    t.string "drums_active_index", null: false
+    t.string "set_pad_key", null: false
+    t.string "pad_active_index", null: false
+    t.string "youtube_volume", null: false
+    t.string "hihat_volume", null: false
+    t.string "snare_volume", null: false
+    t.string "kick_volume", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beat_id"], name: "index_sequencers_on_beat_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -61,5 +77,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_03_121704) do
 
   add_foreign_key "beats", "users"
   add_foreign_key "pad_timings", "beats"
+  add_foreign_key "sequencers", "beats"
   add_foreign_key "youtubes", "beats"
 end
