@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_03_130641) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_04_130618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_03_130641) do
     t.bigint "beat_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "video_title", null: false
     t.index ["beat_id"], name: "index_youtubes_on_beat_id"
   end
 
