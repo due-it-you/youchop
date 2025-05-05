@@ -160,6 +160,7 @@ export default class extends Controller {
     }
 
     const sequencer_data_to_save = {
+      bpm: Number(this.stepSequencerOutlet.bpmTarget.value),
       hihats_active_index: hihatsActiveStr,
       snares_active_index: snaresActiveStr,
       kicks_active_index: kicksActiveStr
