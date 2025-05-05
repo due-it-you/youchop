@@ -54,8 +54,11 @@ export default class extends Controller {
                     "j_pad",
                     "b_pad",
                     "n_pad",
-                    "m_pad"
+                    "m_pad",
+                    "beat_title"
   ]
+
+  static outlets = [ "step-sequencer" ]
 
   initialize() {
     this.element['youtube'] = this
@@ -107,6 +110,59 @@ export default class extends Controller {
   
     window.onYouTubeIframeAPIReady = () => {
       this.initPlayer()
+    }
+  }
+
+  setTheDataToSave () {
+    const stepsCollection = this.stepSequencerOutlet.gridTarget.children
+    const stepsArray = Array.prototype.slice.call(stepsCollection)
+    const drumsStepsArray = stepsArray.slice(32,80)
+
+    const hihatsActiveArray = []
+    const snaresActiveArray = []
+    const kicksActiveArray = []
+
+    const drumsRows = [
+      drumsStepsArray.slice(0,16),  // hihats row
+      drumsStepsArray.slice(16,32), // snares row
+      drumsStepsArray.slice(32,48)  // kicks row 
+    ]
+
+    drumsRows[0].forEach((step) => {
+      if (step.dataset.active == "true") {
+        hihatsActiveArray.push(step.getAttribute('index'))
+      }
+    })
+
+    drumsRows[1].forEach((step) => {
+      if (step.dataset.active == "true") {
+        snaresActiveArray.push(step.getAttribute('index'))
+      }
+    })
+
+    drumsRows[2].forEach((step) => {
+      if (step.dataset.active == "true") {
+        kicksActiveArray.push(step.getAttribute('index'))
+      }
+    })
+
+    hihatsActiveStr = hihatsActiveArray.toString()
+    snaresActiveStr = hihatsActiveArray.toString()
+    kicksActiveStr = hihatsActiveArray.toString()
+
+    const youtube_data_to_save = {
+      video_title: this.getPlayer.getVideoData().title,
+      video_id: this.getPlayer.getVideoData().video_id
+    }
+
+    const beat_title_data_to_save = {
+      title: this.beat_titleTarget.value
+    }
+
+    const sequencer_data_to_save = {
+      hihats_active_index: hihatsActiveStr,
+      snares_active_index: snaresActiveStr,
+      kicks_active_index: kicksActiveStr
     }
   }
 

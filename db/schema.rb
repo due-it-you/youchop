@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_04_130618) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_05_153044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,7 +41,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_04_130618) do
   create_table "sequencers", force: :cascade do |t|
     t.bigint "beat_id", null: false
     t.integer "bpm", null: false
-    t.string "drums_active_index", null: false
     t.string "pads_assigned", null: false
     t.string "pad_active_index", null: false
     t.string "youtube_volume", null: false
@@ -50,6 +49,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_04_130618) do
     t.string "kick_volume", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "hihats_active_index", default: "", null: false
+    t.string "snares_active_index", default: "", null: false
+    t.string "kicks_active_index", default: "", null: false
     t.index ["beat_id"], name: "index_sequencers_on_beat_id"
   end
 
