@@ -3,7 +3,9 @@
 one:
   beat: one
   bpm: 1
-  drums_active_index: MyString
+  hihats_active_index: MyString
+  snares_active_index: MyString
+  kicks_active_index: MyString
   pads_assigned: MyString
   pad_active_index: MyString
   youtube_volume: MyString
@@ -14,7 +16,9 @@ one:
 two:
   beat: two
   bpm: 1
-  drums_active_index: MyString
+  hihats_active_index: MyString
+  snares_active_index: MyString
+  kicks_active_index: MyString
   pads_assigned: MyString
   pad_active_index: MyString
   youtube_volume: MyString
