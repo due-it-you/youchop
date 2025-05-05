@@ -184,7 +184,8 @@ export default class extends Controller {
       kicks_active_index: kicksActiveStr,
       pads_assigned: padsAssignedStr,
       pad_active_index: padActiveIndexStr,
-      youtube_volume: this.stepSequencerOutlet.pads_volumeTarget.value
+      youtube_volume: this.stepSequencerOutlet.pads_volumeTarget.value,
+      hihats_volume: this.stepSequencerOutlet.hihats_volumeTarget.value
     }
   }
 
