@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     confirmations: "users/confirmations"
   }
   
-  resources :beats
+  resources :beats, except: %i[ new ]
 
   get "top/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
