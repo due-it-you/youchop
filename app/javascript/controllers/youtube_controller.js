@@ -114,6 +114,7 @@ export default class extends Controller {
   }
 
   setTheDataToSave () {
+    // hihats_active_index, snares_active_index, kicks_active_index
     const stepsCollection = this.stepSequencerOutlet.gridTarget.children
     const stepsArray = Array.prototype.slice.call(stepsCollection)
     const drumsStepsArray = stepsArray.slice(32,80)
@@ -146,9 +147,10 @@ export default class extends Controller {
       }
     })
 
-    hihatsActiveStr = hihatsActiveArray.toString()
-    snaresActiveStr = hihatsActiveArray.toString()
-    kicksActiveStr = hihatsActiveArray.toString()
+    const hihatsActiveStr = hihatsActiveArray.toString()
+    const snaresActiveStr = hihatsActiveArray.toString()
+    const kicksActiveStr = hihatsActiveArray.toString()
+
 
     const youtube_data_to_save = {
       video_title: this.getPlayer.getVideoData().title,
