@@ -114,14 +114,41 @@ export default class extends Controller {
   }
 
   setTheDataToSave () {
-    const steps = Array.from(this.stepSequencerOutlet.gridTarget.children)
-    const drums_active_index_array = []
-    steps.forEach((step) => {
-      console.log(step.getAttribute('index'))
+    const stepsCollection = this.stepSequencerOutlet.gridTarget.children
+    const stepsArray = Array.prototype.slice.call(stepsCollection)
+    const drumsStepsArray = stepsArray.slice(32,80)
+
+    const hihatsActiveArray = []
+    const snaresActiveArray = []
+    const kicksActiveArray = []
+
+    const drumsRows = [
+      drumsStepsArray.slice(0,16),  // hihats row
+      drumsStepsArray.slice(16,32), // snares row
+      drumsStepsArray.slice(32,48)  // kicks row 
+    ]
+
+    drumsRows[0].forEach((step) => {
       if (step.dataset.active == "true") {
-        drums_active_index_array.push(step.getAttribute('index'))
+        hihatsActiveArray.push(step.getAttribute('index'))
       }
     })
+
+    drumsRows[1].forEach((step) => {
+      if (step.dataset.active == "true") {
+        snaresActiveArray.push(step.getAttribute('index'))
+      }
+    })
+
+    drumsRows[2].forEach((step) => {
+      if (step.dataset.active == "true") {
+        kicksActiveArray.push(step.getAttribute('index'))
+      }
+    })
+
+    hihatsActiveStr = hihatsActiveArray.toString()
+    snaresActiveStr = hihatsActiveArray.toString()
+    kicksActiveStr = hihatsActiveArray.toString()
 
     const youtube_data_to_save = {
       video_title: this.getPlayer.getVideoData().title,
@@ -130,6 +157,12 @@ export default class extends Controller {
 
     const beat_title_data_to_save = {
       title: this.beat_titleTarget.value
+    }
+
+    const sequencer_data_to_save = {
+      hihats_active_index: hihatsActiveStr,
+      snares_active_index: snaresActiveStr,
+      kicks_active_index: kicksActiveStr
     }
   }
 
