@@ -114,6 +114,7 @@ export default class extends Controller {
   }
 
   setTheDataToSave () {
+    // hihats_active_index, snares_active_index, kicks_active_index
     const stepsCollection = this.stepSequencerOutlet.gridTarget.children
     const stepsArray = Array.prototype.slice.call(stepsCollection)
     const drumsStepsArray = stepsArray.slice(32,80)
@@ -146,10 +147,27 @@ export default class extends Controller {
       }
     })
 
-    hihatsActiveStr = hihatsActiveArray.toString()
-    snaresActiveStr = hihatsActiveArray.toString()
-    kicksActiveStr = hihatsActiveArray.toString()
+    const hihatsActiveStr = hihatsActiveArray.toString()
+    const snaresActiveStr = hihatsActiveArray.toString()
+    const kicksActiveStr = hihatsActiveArray.toString()
 
+    // pads_assigned
+    const padsStepsArray = stepsArray.slice(16,32)
+    const padsAssignedArray = []
+
+    const padActiveIndexArray = []
+
+    padsStepsArray.forEach((step) => {
+      if (['T','Y','U','G','H','J','B','N','M'].includes(step.firstElementChild.value)) {
+        padsAssignedArray.push(step.firstElementChild.value)
+        padActiveIndexArray.push(step.getAttribute('index'))
+      }
+    })
+
+    const padsAssignedStr = padsAssignedArray.toString()
+    const padActiveIndexStr = padActiveIndexArray.toString()
+
+    // data_to_save
     const youtube_data_to_save = {
       video_title: this.getPlayer.getVideoData().title,
       video_id: this.getPlayer.getVideoData().video_id
@@ -160,9 +178,16 @@ export default class extends Controller {
     }
 
     const sequencer_data_to_save = {
+      bpm: Number(this.stepSequencerOutlet.bpmTarget.value),
       hihats_active_index: hihatsActiveStr,
       snares_active_index: snaresActiveStr,
-      kicks_active_index: kicksActiveStr
+      kicks_active_index: kicksActiveStr,
+      pads_assigned: padsAssignedStr,
+      pad_active_index: padActiveIndexStr,
+      youtube_volume: this.stepSequencerOutlet.pads_volumeTarget.value,
+      hihats_volume: this.stepSequencerOutlet.hihats_volumeTarget.value,
+      snares_volume: this.stepSequencerOutlet.snares_volumeTarget.value,
+      kicks_volume: this.stepSequencerOutlet.kicks_volumeTarget.value
     }
   }
 
