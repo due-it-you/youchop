@@ -118,6 +118,10 @@ export default class extends Controller {
       video_title: this.getPlayer.getVideoData().title,
       video_id: this.getPlayer.getVideoData().video_id
     }
+
+    const beat_title_data_to_save = {
+      title: this.beat_titleTarget.value
+    }
   }
 
   initPlayer() {
