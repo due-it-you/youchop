@@ -151,7 +151,19 @@ export default class extends Controller {
     const snaresActiveStr = hihatsActiveArray.toString()
     const kicksActiveStr = hihatsActiveArray.toString()
 
+    // pads_assigned
+    const padsStepsArray = stepsArray.slice(16,32)
+    const padsAssignedArray = []
 
+    padsStepsArray.forEach((step) => {
+      if (['T','Y','U','G','H','J','B','N','M'].includes(step.firstElementChild.value)) {
+        padsAssignedArray.push(step.firstElementChild.value)
+      }
+    })
+
+    const padsAssignedStr = padsAssignedArray.toString()
+
+    // data_to_save
     const youtube_data_to_save = {
       video_title: this.getPlayer.getVideoData().title,
       video_id: this.getPlayer.getVideoData().video_id
@@ -165,7 +177,8 @@ export default class extends Controller {
       bpm: Number(this.stepSequencerOutlet.bpmTarget.value),
       hihats_active_index: hihatsActiveStr,
       snares_active_index: snaresActiveStr,
-      kicks_active_index: kicksActiveStr
+      kicks_active_index: kicksActiveStr,
+      pads_assigned: padsAssignedStr
     }
   }
 
