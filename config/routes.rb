@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     passwords: "users/passwords",
     confirmations: "users/confirmations"
   }
-  
+
   resources :beats, except: %i[ new ]
 
   get "top/index"
