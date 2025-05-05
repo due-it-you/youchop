@@ -110,6 +110,15 @@ export default class extends Controller {
     }
   }
 
+  setTheDataToSave () {
+    console.log(this.getPlayer.getVideoData().video_id)
+
+    const youtube_data_to_save = {
+      video_title: this.getPlayer.getVideoData().title,
+      video_id: this.getPlayer.getVideoData().video_id
+    }
+  }
+
   initPlayer() {
     this.youtube = new YT.Player("player", {
       height: "390",

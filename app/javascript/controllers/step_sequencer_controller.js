@@ -101,6 +101,9 @@ export default class extends Controller {
     this.kickGain.gain.value = this.kicks_volumeTarget.value
   }
 
+  setTheDataToSave () {
+  }
+
   currentBPM() {
     this.current_bpmTarget.textContent = this.bpmTarget.value
   }
