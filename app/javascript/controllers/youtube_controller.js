@@ -114,6 +114,15 @@ export default class extends Controller {
   }
 
   setTheDataToSave () {
+    const steps = Array.from(this.stepSequencerOutlet.gridTarget.children)
+    const drums_active_index_array = []
+    steps.forEach((step) => {
+      console.log(step.getAttribute('index'))
+      if (step.dataset.active == "true") {
+        drums_active_index_array.push(step.getAttribute('index'))
+      }
+    })
+
     const youtube_data_to_save = {
       video_title: this.getPlayer.getVideoData().title,
       video_id: this.getPlayer.getVideoData().video_id
