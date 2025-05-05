@@ -155,13 +155,17 @@ export default class extends Controller {
     const padsStepsArray = stepsArray.slice(16,32)
     const padsAssignedArray = []
 
+    const padActiveIndexArray = []
+
     padsStepsArray.forEach((step) => {
       if (['T','Y','U','G','H','J','B','N','M'].includes(step.firstElementChild.value)) {
         padsAssignedArray.push(step.firstElementChild.value)
+        padActiveIndexArray.push(step.getAttribute('index'))
       }
     })
 
     const padsAssignedStr = padsAssignedArray.toString()
+    const padActiveIndexStr = padActiveIndexArray.toString()
 
     // data_to_save
     const youtube_data_to_save = {
@@ -178,7 +182,8 @@ export default class extends Controller {
       hihats_active_index: hihatsActiveStr,
       snares_active_index: snaresActiveStr,
       kicks_active_index: kicksActiveStr,
-      pads_assigned: padsAssignedStr
+      pads_assigned: padsAssignedStr,
+      pad_active_index: padActiveIndexStr
     }
   }
 
