@@ -9,6 +9,7 @@
         <input type="range" id="bpm" min="60" max="240" value="94" data-action="input->step-sequencer#currentBPM" data-step-sequencer-target="bpm">
         <button class="shadow-lg bg-blue-500 text-white font-bold py-2 px-4 rounded" data-action="click->step-sequencer#playSequencer">Play</button>
         <button class="shadow-lg bg-blue-500 text-white font-bold py-2 px-4 rounded" data-action="click->step-sequencer#stopSequencer">Stop</button>
+        <%= link_to "save this beat", new_beat_path, class: "shadow-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" %>
         <!-- Modal toggle -->
         <div class="mb-1 w-[16px] px-2">
             <div id="resetStepsActiveButton" data-modal-target="deleteStepsModal" data-modal-toggle="deleteStepsModal" type="button">
