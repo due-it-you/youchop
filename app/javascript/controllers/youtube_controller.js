@@ -54,7 +54,8 @@ export default class extends Controller {
                     "j_pad",
                     "b_pad",
                     "n_pad",
-                    "m_pad"
+                    "m_pad",
+                    "beat_title"
   ]
 
   initialize() {
@@ -111,7 +112,7 @@ export default class extends Controller {
   }
 
   setTheDataToSave () {
-    console.log(this.getPlayer.getVideoData().video_id)
+    console.log(this.beat_titleTarget.value)
 
     const youtube_data_to_save = {
       video_title: this.getPlayer.getVideoData().title,
