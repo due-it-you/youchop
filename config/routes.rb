@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     passwords: "users/passwords",
     confirmations: "users/confirmations"
   }
+
+  resources :beats, except: %i[ new ]
+
   get "top/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
