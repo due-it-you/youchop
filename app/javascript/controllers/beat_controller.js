@@ -122,6 +122,6 @@ export default class extends Controller {
       pad_timings: pad_timings_data_to_save
     }
 
-    console.log(data_to_save)
+    return data_to_save
   }
 }
