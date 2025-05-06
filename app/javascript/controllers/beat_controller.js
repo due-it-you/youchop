@@ -124,4 +124,8 @@ export default class extends Controller {
 
     return data_to_save
   }
+
+  createTheBeat () {
+    const data_to_save = this.setTheDataToSave()
+  }
 }
