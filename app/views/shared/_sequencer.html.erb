@@ -21,15 +21,17 @@
                   <p class="pt-8 font-bold text-xl text-gray-800">Let's save this beat!</p>
                 </div>
                 <div class="p-4">
-                  <div class="px-4 pb-4">
-                    <p>Beat title</p>
-                    <input data-beat-target="beat_title" data-youtube-target="beat_title" data-action="input->beat#validateBeatTitleInput" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-                  </div>
-                  <div class="p-4">
-                    <div class="flex justify-center">
-                      <button data-beat-target="save_button" data-action="click->beat#createTheBeat" class="shadow-lg bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-2 px-4 rounded">save</button>
+                  <%= form_with url: '/beats', method: :post do |f| %>
+                    <div class="px-4 pb-4">
+                      <%= f.label :beat_title %>
+                      <%= f.text_field :beat_title, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5", data: { beat_target: "beat_title", youtube_target: "beat_title", action: "input->beat#validateBeatTitleInput"} %>
                     </div>
-                  </div>
+                    <div class="p-4">
+                      <div class="flex justify-center">
+                        <%= f.submit 'Save', class: "shadow-lg bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-2 px-4 rounded", data: { beat_target: "save_button", action: "click->beat#createTheBeat" } %>
+                      </div>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
