@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BeatController from "./beat_controller"
+application.register("beat", BeatController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
