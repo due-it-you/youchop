@@ -10,6 +10,8 @@ export default class extends Controller {
 
   ]
 
+  static outlets = [ "step-sequencer", "youtube" ]
+
   connect() {
   }
 }

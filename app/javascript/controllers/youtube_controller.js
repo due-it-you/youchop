@@ -212,6 +212,15 @@ export default class extends Controller {
       n_time: n_time_to_save,
       m_time: m_time_to_save
     }
+
+    const data_to_save = {
+      beats: beat_title_data_to_save,
+      youtubes: youtube_data_to_save,
+      sequencers: sequencer_data_to_save,
+      pad_timings: pad_timings_data_to_save
+    }
+
+    return data_to_save
   }
 
   initPlayer() {
