@@ -200,6 +200,18 @@ export default class extends Controller {
       snares_volume: this.stepSequencerOutlet.snares_volumeTarget.value,
       kicks_volume: this.stepSequencerOutlet.kicks_volumeTarget.value
     }
+
+    const pad_timings_data_to_save = {
+      t_time: t_time_to_save,
+      y_time: y_time_to_save,
+      u_time: u_time_to_save,
+      g_time: g_time_to_save,
+      h_time: h_time_to_save,
+      j_time: j_time_to_save,
+      b_time: b_time_to_save,
+      n_time: n_time_to_save,
+      m_time: m_time_to_save
+    }
   }
 
   initPlayer() {
