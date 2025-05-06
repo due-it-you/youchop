@@ -114,7 +114,7 @@ export default class extends Controller {
   }
 
   setTheDataToSave () {
-    // hihats_active_index, snares_active_index, kicks_active_index
+    // hihats_active_index, snares_active_index, kicks_active_index | ex) "1,3,11,14"
     const stepsCollection = this.stepSequencerOutlet.gridTarget.children
     const stepsArray = Array.prototype.slice.call(stepsCollection)
     const drumsStepsArray = stepsArray.slice(32,80)
@@ -151,7 +151,7 @@ export default class extends Controller {
     const snaresActiveStr = hihatsActiveArray.toString()
     const kicksActiveStr = hihatsActiveArray.toString()
 
-    // pads_assigned
+    // pads_assigned | "T,H,B"
     const padsStepsArray = stepsArray.slice(16,32)
     const padsAssignedArray = []
 
@@ -167,7 +167,7 @@ export default class extends Controller {
     const padsAssignedStr = padsAssignedArray.toString()
     const padActiveIndexStr = padActiveIndexArray.toString()
 
-    // pad_timings
+    // pad_timings | ex) "00:00:00.0"
     const t_time_to_save = this.t_start_timeTarget.value + '.' + this.t_start_time_decimalTarget.value + ',' + this.t_end_timeTarget.value + '.' + this.t_end_time_decimalTarget.value
     const y_time_to_save = this.y_start_timeTarget.value + '.' + this.y_start_time_decimalTarget.value + ',' + this.y_end_timeTarget.value + '.' + this.y_end_time_decimalTarget.value
     const u_time_to_save = this.u_start_timeTarget.value + '.' + this.u_start_time_decimalTarget.value + ',' + this.u_end_timeTarget.value + '.' + this.u_end_time_decimalTarget.value
