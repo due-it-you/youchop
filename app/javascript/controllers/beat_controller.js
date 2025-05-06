@@ -132,6 +132,10 @@ export default class extends Controller {
   createTheBeat (event) {
     const data_to_save = this.setTheDataToSave()
 
-    this.event.requestSubmit()
+    this.hidden_beats_data_fieldTarget.value = JSON.stringify(data_to_save.beats)
+    this.hidden_youtubes_data_fieldTarget.value = JSON.stringify(data_to_save.youtubes)
+    this.hidden_sequencers_data_fieldTarget.value = JSON.stringify(data_to_save.sequencers)
+    this.hidden_pad_timings_data_fieldTarget.value = JSON.stringify(data_to_save.pad_timings)
+    // this.event.requestSubmit()
   }
 }
