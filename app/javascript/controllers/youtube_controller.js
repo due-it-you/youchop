@@ -167,6 +167,17 @@ export default class extends Controller {
     const padsAssignedStr = padsAssignedArray.toString()
     const padActiveIndexStr = padActiveIndexArray.toString()
 
+    // pad_timings
+    const t_time = this.t_start_timeTarget.value + '.' + this.t_start_time_decimalTarget.value + ',' + this.t_end_timeTarget.value + '.' + this.t_end_time_decimalTarget.value
+    const y_time = this.y_start_timeTarget.value + '.' + this.y_start_time_decimalTarget.value + ',' + this.y_end_timeTarget.value + '.' + this.y_end_time_decimalTarget.value
+    const u_time = this.u_start_timeTarget.value + '.' + this.u_start_time_decimalTarget.value + ',' + this.u_end_timeTarget.value + '.' + this.u_end_time_decimalTarget.value
+    const g_time = this.g_start_timeTarget.value + '.' + this.g_start_time_decimalTarget.value + ',' + this.g_end_timeTarget.value + '.' + this.g_end_time_decimalTarget.value
+    const h_time = this.h_start_timeTarget.value + '.' + this.h_start_time_decimalTarget.value + ',' + this.h_end_timeTarget.value + '.' + this.h_end_time_decimalTarget.value
+    const j_time = this.j_start_timeTarget.value + '.' + this.j_start_time_decimalTarget.value + ',' + this.j_end_timeTarget.value + '.' + this.j_end_time_decimalTarget.value
+    const b_time = this.b_start_timeTarget.value + '.' + this.b_start_time_decimalTarget.value + ',' + this.b_end_timeTarget.value + '.' + this.b_end_time_decimalTarget.value
+    const n_time = this.n_start_timeTarget.value + '.' + this.n_start_time_decimalTarget.value + ',' + this.n_end_timeTarget.value + '.' + this.n_end_time_decimalTarget.value
+    const m_time = this.m_start_timeTarget.value + '.' + this.m_start_time_decimalTarget.value + ',' + this.m_end_timeTarget.value + '.' + this.m_end_time_decimalTarget.value
+
     // data_to_save
     const youtube_data_to_save = {
       video_title: this.getPlayer.getVideoData().title,
