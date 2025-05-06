@@ -5,10 +5,11 @@ export default class extends Controller {
 
   static targets = [
 
-    "beat_title"
+    "beat_title",
+    "save_button"
 
   ]
-  
+
   connect() {
   }
 }
