@@ -28,7 +28,7 @@
                     </div>
                     <div class="p-4">
                       <div class="flex justify-center">
-                        <%= f.submit 'Save', class: "shadow-lg bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-2 px-4 rounded", data: { beat_target: "save_button", action: "click->beat#createTheBeat" } %>
+                        <%= button_tag 'Save', type: 'button',class: "shadow-lg bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-2 px-4 rounded", data: { beat_target: "save_button", action: "click->beat#createTheBeat" } %>
                       </div>
                     </div>
                   <% end %>
