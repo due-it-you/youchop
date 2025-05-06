@@ -7,7 +7,8 @@ export default class extends Controller {
 
     "beat_title",
     "save_button",
-    "hidden_beats_data_field"
+    "hidden_beats_data_field",
+    "hidden_youtubes_data_field",
 
   ]
 
