@@ -11,6 +11,7 @@ export default class extends Controller {
     "hidden_youtubes_data_field",
     "hidden_sequencers_data_field",
     "hidden_pad_timings_data_field",
+    "beat_save_form"
 
   ]
 
