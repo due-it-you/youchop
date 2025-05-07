@@ -1,4 +1,8 @@
 class BeatsController < ApplicationController
+  def create
+    ActiveRecord::Base.transaction do
+    end
+  end
 
   private
 
