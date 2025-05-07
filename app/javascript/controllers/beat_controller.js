@@ -5,7 +5,7 @@ export default class extends Controller {
 
   static targets = [
 
-    "beat_title",
+    "beat_title_field",
     "save_button",
     "hidden_beats_data_field",
     "hidden_youtubes_data_field",
@@ -91,7 +91,7 @@ export default class extends Controller {
     }
 
     const beat_title_data_to_save = {
-      title: this.beat_titleTarget.value
+      title: this.beat_title_fieldTarget.value
     }
 
     const sequencer_data_to_save = {
