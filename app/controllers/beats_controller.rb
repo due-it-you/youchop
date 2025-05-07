@@ -19,6 +19,10 @@ class BeatsController < ApplicationController
     end
   end
 
+  def mybeats
+    
+  end
+
   private
 
   def beat_params
