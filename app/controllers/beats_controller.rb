@@ -1,6 +1,10 @@
 class BeatsController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
+      beats_data_json = JSON.parse(beat_params[:beats_data])
+      youtubes_data_json = JSON.parse(beat_params[:youtubes_data])
+      sequencers_data_json = JSON.parse(beat_params[:sequencers_data])
+      pad_timings_data_json = JSON.parse(beat_params[:pad_timings_data])
     end
   end
 
