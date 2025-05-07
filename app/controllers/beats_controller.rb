@@ -5,6 +5,8 @@ class BeatsController < ApplicationController
       youtubes_data_json = JSON.parse(beat_params[:youtubes_data])
       sequencers_data_json = JSON.parse(beat_params[:sequencers_data])
       pad_timings_data_json = JSON.parse(beat_params[:pad_timings_data])
+
+      raise if beats_data_json["title"].blank?
     end
   end
 
