@@ -21,7 +21,7 @@
                   <p class="pt-8 font-bold text-xl text-gray-800">Let's save this beat!</p>
                 </div>
                 <div class="p-4">
-                  <%= form_with url: '/beats', method: :post, data: { beat_target: "beat_save_form" } do |f| %>
+                  <%= form_with model: @beat, url: beats_path, method: :post, data: { beat_target: "beat_save_form" } do |f| %>
                     <div class="px-4 pb-4">
                       <%= f.label :beat_title %>
                       <%= f.text_field :beat_title, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5", data: { beat_target: "beat_title_field", youtube_target: "beat_title", action: "input->beat#validateBeatTitleInput"}, maxlength: "50" %>
