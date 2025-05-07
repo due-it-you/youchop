@@ -11,6 +11,7 @@ export default class extends Controller {
     "hidden_youtubes_data_field",
     "hidden_sequencers_data_field",
     "hidden_pad_timings_data_field",
+    "beat_save_form"
 
   ]
 
@@ -102,9 +103,9 @@ export default class extends Controller {
       pads_assigned: padsAssignedStr,
       pad_active_index: padActiveIndexStr,
       youtube_volume: this.stepSequencerOutlet.pads_volumeTarget.value,
-      hihats_volume: this.stepSequencerOutlet.hihats_volumeTarget.value,
-      snares_volume: this.stepSequencerOutlet.snares_volumeTarget.value,
-      kicks_volume: this.stepSequencerOutlet.kicks_volumeTarget.value
+      hihat_volume: this.stepSequencerOutlet.hihats_volumeTarget.value,
+      snare_volume: this.stepSequencerOutlet.snares_volumeTarget.value,
+      kick_volume: this.stepSequencerOutlet.kicks_volumeTarget.value
     }
 
     const pad_timings_data_to_save = {
@@ -129,13 +130,14 @@ export default class extends Controller {
     return data_to_save
   }
 
-  createTheBeat (event) {
+  createTheBeat () {
     const data_to_save = this.setTheDataToSave()
 
     this.hidden_beats_data_fieldTarget.value = JSON.stringify(data_to_save.beats)
     this.hidden_youtubes_data_fieldTarget.value = JSON.stringify(data_to_save.youtubes)
     this.hidden_sequencers_data_fieldTarget.value = JSON.stringify(data_to_save.sequencers)
     this.hidden_pad_timings_data_fieldTarget.value = JSON.stringify(data_to_save.pad_timings)
-    // this.event.requestSubmit()
+
+    this.beat_save_formTarget.requestSubmit()
   }
 }
