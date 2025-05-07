@@ -17,10 +17,11 @@ class BeatsController < ApplicationController
 
       @beat.create_pad_timing!(pad_timings_data_json)
     end
+    redirect_to mybeats_beats_path, notice: 'The beat was saved successfully.'
   end
 
   def mybeats
-    
+
   end
 
   private
