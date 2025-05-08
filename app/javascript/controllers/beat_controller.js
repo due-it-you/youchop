@@ -18,6 +18,16 @@ export default class extends Controller {
   static outlets = [ "step-sequencer", "youtube" ]
 
   connect() {
+    // re-open the modal after the turbo-frame is re-rendered
+    // caution:  When using Flowbite, simply removing the hidden class does not show the modal.
+    // you must use modalElement.show() method.
+    document.addEventListener('turbo:frame-render', (event) => {
+      if (event.target.id === "save_beat_form") {
+        const modalElement = document.getElementById("SaveThisBeatModal")
+        const modal = new Modal(modalElement)
+        modal.show()
+      }
+    })
   }
 
   setTheDataToSave () {
