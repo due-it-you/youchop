@@ -6,8 +6,6 @@ class BeatsController < ApplicationController
       sequencers_data_json = JSON.parse(beat_params[:sequencers_data])
       pad_timings_data_json = JSON.parse(beat_params[:pad_timings_data])
 
-      # raise if beats_data_json["title"].blank?
-
       @beat = current_user.beats.new(beats_data_json)
       @beat.save!
 
@@ -20,7 +18,10 @@ class BeatsController < ApplicationController
     redirect_to mybeats_beats_path, notice: "The beat was saved successfully."
   rescue ActiveRecord::RecordInvalid => e
     flash.now[:danger] = "The beat could not be saved."
-    render partial: "shared/beats/form", status: :unprocessable_entity
+    render turbo_stream: turbo_stream.replace(
+      "error_messages",
+      render_to_string(partial: "shared/danger")
+    ), status: :unprocessable_entity
   end
 
   def mybeats
