@@ -18,6 +18,8 @@ class BeatsController < ApplicationController
       @beat.create_pad_timing!(pad_timings_data_json)
     end
     redirect_to mybeats_beats_path, notice: 'The beat was saved successfully.'
+  rescue ActiveRecord::RecordInvalid => e
+    render "top/index", status: :unprocessable_entity
   end
 
   def mybeats
