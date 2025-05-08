@@ -19,7 +19,8 @@ class BeatsController < ApplicationController
     end
     redirect_to mybeats_beats_path, notice: 'The beat was saved successfully.'
   rescue ActiveRecord::RecordInvalid => e
-    render "top/index", status: :unprocessable_entity
+    flash.now[:danger] = "The beat could not be saved."
+    render partial: "shared/beats/form", status: :unprocessable_entity
   end
 
   def mybeats
