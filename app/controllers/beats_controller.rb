@@ -17,6 +17,13 @@ class BeatsController < ApplicationController
 
       @beat.create_pad_timing!(pad_timings_data_json)
     end
+    redirect_to mybeats_beats_path, notice: "The beat was saved successfully."
+  rescue ActiveRecord::RecordInvalid => e
+    flash.now[:danger] = "The beat could not be saved."
+    render partial: "shared/beats/form", status: :unprocessable_entity
+  end
+
+  def mybeats
   end
 
   private
