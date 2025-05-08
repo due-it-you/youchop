@@ -1,0 +1,26 @@
+<% beats.each do |beat| %>
+  <div class="my-8">
+    <div class="border border-gray-300 rounded-md shadow-sm">
+      <div class="py-6 px-8">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="flex">
+              <div class="mr-2 font-bold text-lg"><%= beat.title %></div>
+              <div class="text-lg">BPM:</div>
+              <div class="text-lg"><%= beat.sequencer.bpm %></div>
+            </div>
+            <div class="font-medium text-md"><%= beat.youtube.video_title %></div>
+          </div>
+          <div class="flex">
+            <div class="mr-2">
+              <%= button_to "Assign To Play", '#', class: 'px-4 py-2 border border-black rounded-md' %>
+            </div>
+            <div>
+              <%= button_to "Delete", '#', class: 'px-4 py-2 border border-black rounded-md' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

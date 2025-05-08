@@ -25,6 +25,7 @@ class BeatsController < ApplicationController
   end
 
   def mybeats
+    @beats = Beat.where(user_id: current_user.id)
   end
 
   private
