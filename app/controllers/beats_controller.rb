@@ -25,7 +25,6 @@ class BeatsController < ApplicationController
   end
 
   def show
-    
   end
 
   def mybeats
