@@ -112,6 +112,54 @@ export default class extends Controller {
 
     const data = await response.json()
     this.videoId = data.youtubes_data.video_id
+
+    // pad_timings variables
+
+    const t_start_time = data.pad_timings_data.t_time.split('~')[0] // 00:00:00.0
+    const t_end_time = data.pad_timings_data.t_time.split('~')[1]   // 00:00:00.0
+    const t_start_time_integer = t_start_time.split('.')[0] // 00:00:00
+    const t_start_time_decimal = t_start_time.split('.')[1] // 0
+
+    const y_start_time = data.pad_timings_data.y_time.split('~')[0] // 00:00:00.0
+    const y_end_time = data.pad_timings_data.y_time.split('~')[1]   // 00:00:00.0
+    const y_start_time_integer = y_start_time.split('.')[0] // 00:00:00
+    const y_start_time_decimal = y_start_time.split('.')[1] // 0
+
+    const u_start_time = data.pad_timings_data.u_time.split('~')[0] // 00:00:00.0
+    const u_end_time = data.pad_timings_data.u_time.split('~')[1]   // 00:00:00.0
+    const u_start_time_integer = u_start_time.split('.')[0] // 00:00:00
+    const u_start_time_decimal = u_start_time.split('.')[1] // 0
+
+    const g_start_time = data.pad_timings_data.g_time.split('~')[0] // 00:00:00.0
+    const g_end_time = data.pad_timings_data.g_time.split('~')[1]   // 00:00:00.0
+    const g_start_time_integer = g_start_time.split('.')[0] // 00:00:00
+    const g_start_time_decimal = g_start_time.split('.')[1] // 0
+
+    const h_start_time = data.pad_timings_data.h_time.split('~')[0] // 00:00:00.0
+    const h_end_time = data.pad_timings_data.h_time.split('~')[1]   // 00:00:00.0
+    const h_start_time_integer = h_start_time.split('.')[0] // 00:00:00
+    const h_start_time_decimal = h_start_time.split('.')[1] // 0
+
+    const j_start_time = data.pad_timings_data.j_time.split('~')[0] // 00:00:00.0
+    const j_end_time = data.pad_timings_data.j_time.split('~')[1]   // 00:00:00.0
+    const j_start_time_integer = j_start_time.split('.')[0] // 00:00:00
+    const j_start_time_decimal = j_start_time.split('.')[1] // 0
+
+    const b_start_time = data.pad_timings_data.b_time.split('~')[0] // 00:00:00.0
+    const b_end_time = data.pad_timings_data.b_time.split('~')[1]   // 00:00:00.0
+    const b_start_time_integer = b_start_time.split('.')[0] // 00:00:00
+    const b_start_time_decimal = b_start_time.split('.')[1] // 0
+
+    const n_start_time = data.pad_timings_data.n_time.split('~')[0] // 00:00:00.0
+    const n_end_time = data.pad_timings_data.n_time.split('~')[1]   // 00:00:00.0
+    const n_start_time_integer = n_start_time.split('.')[0] // 00:00:00
+    const n_start_time_decimal = n_start_time.split('.')[1] // 0
+
+    const m_start_time = data.pad_timings_data.m_time.split('~')[0] // 00:00:00.0
+    const m_end_time = data.pad_timings_data.m_time.split('~')[1]   // 00:00:00.0
+    const m_start_time_integer = m_start_time.split('.')[0] // 00:00:00
+    const m_start_time_decimal = m_start_time.split('.')[1] // 0
+
   }
 
   connect() {
