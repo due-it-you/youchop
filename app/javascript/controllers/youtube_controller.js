@@ -228,13 +228,31 @@ export default class extends Controller {
     this.stepSequencerOutlet.current_bpmTarget.textContent = data.sequencers_data.bpm
 
     // assign the active index (hihats,  snares, kicks)
+    const activatedHihatSteps = data.sequencers_data.hihats_active_index.split(',')
+
     const grid_steps_arr = Array.from(this.stepSequencerOutlet.gridTarget.children)
-    const steps_row_arr = [
+    const stepsRowArr = [
       grid_steps_arr.slice(16, 32), //pads
       grid_steps_arr.slice(32, 48), //hihats
       grid_steps_arr.slice(48, 64), //snares
       grid_steps_arr.slice(64, 80)  //kicks
     ]
+
+    stepsRowArr[1].forEach((step) => {
+      activatedHihatSteps.forEach((stepActivated) => {
+        if (step.getAttribute('index') == stepActivated) {
+          if (step.classList.contains('bg-gray-400')) {
+            step.classList.remove('bg-gray-400')
+            step.classList.add('bg-green-300')
+            step.dataset.active = "true"
+          } else {
+            step.classList.add('bg-green-300')
+            step.dataset.active = "true"
+          }
+        }
+      })
+    })
+    
   }
 
   async connect() {
