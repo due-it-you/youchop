@@ -1,3 +1,15 @@
-<div>
-  <%= render 'shared/play_beat' %>
+<div id="topIndex" class="hidden md:block">
+  <div id="youtube" data-controller="youtube" data-action="
+    keydown.t@document->youtube#play 
+    keydown.y@document->youtube#play
+    keydown.u@document->youtube#play
+    keydown.g@document->youtube#play
+    keydown.h@document->youtube#play
+    keydown.j@document->youtube#play
+    keydown.b@document->youtube#play
+    keydown.n@document->youtube#play
+    keydown.m@document->youtube#play
+    ">
+    <%= render 'shared/play_beat' %>
+  </div>
 </div>
