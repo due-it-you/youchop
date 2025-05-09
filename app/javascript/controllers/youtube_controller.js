@@ -226,6 +226,15 @@ export default class extends Controller {
     // assign the bpm
     this.stepSequencerOutlet.bpmTarget.value = data.sequencers_data.bpm
     this.stepSequencerOutlet.current_bpmTarget.textContent = data.sequencers_data.bpm
+
+    // assign the active index (hihats,  snares, kicks)
+    const grid_steps_arr = Array.from(this.stepSequencerOutlet.gridTarget.children)
+    const steps_row_arr = [
+      grid_steps_arr.slice(16, 32), //pads
+      grid_steps_arr.slice(32, 48), //hihats
+      grid_steps_arr.slice(48, 64), //snares
+      grid_steps_arr.slice(64, 80)  //kicks
+    ]
   }
 
   async connect() {
