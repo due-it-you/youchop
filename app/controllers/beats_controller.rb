@@ -31,8 +31,8 @@ class BeatsController < ApplicationController
     @pad_timing = @beat.pad_timing
     respond_to do |format|
       format.html
-      format.json { render json: { 
-        beats_data:            @beat.slice(:title), 
+      format.json { render json: {
+        beats_data:            @beat.slice(:title),
         youtubes_data:      @youtube.slice(:video_title, :video_id),
         sequencers_data:  @sequencer.slice(
                                           :bpm,
