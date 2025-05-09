@@ -64,7 +64,7 @@ export default class extends Controller {
                     beatId: String
   }
 
-  initialize() {
+  async initialize() {
     this.element['youtube'] = this
     
     this.t_start_timeTarget.value = "00:01:08"
@@ -101,6 +101,14 @@ export default class extends Controller {
     if (document.querySelector("#topIndex")) {
       return
     }
+
+    // assign the selected beat in the show.html.erb
+
+    const response = await fetch(`/beats/${this.beatIdValue}.json`, {
+      method: 'GET'
+    })
+
+    const data = await response.json()
   }
 
   connect() {
