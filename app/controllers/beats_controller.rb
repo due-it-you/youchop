@@ -25,6 +25,40 @@ class BeatsController < ApplicationController
   end
 
   def show
+    @beat = Beat.find(params[:id])
+    @youtube = @beat.youtube
+    @sequencer = @beat.sequencer
+    @pad_timing = @beat.pad_timing
+    respond_to do |format|
+      format.html
+      format.json { render json: {
+        beats_data:            @beat.slice(:title),
+        youtubes_data:      @youtube.slice(:video_title, :video_id),
+        sequencers_data:  @sequencer.slice(
+                                          :bpm,
+                                          :hihats_active_index,
+                                          :snares_active_index,
+                                          :kicks_active_index,
+                                          :pads_assigned,
+                                          :pad_active_index,
+                                          :youtube_volume,
+                                          :hihat_volume,
+                                          :snare_volume,
+                                          :kick_volume
+                                        ),
+        pad_timings_data: @pad_timing.slice(
+                                          :t_time,
+                                          :y_time,
+                                          :u_time,
+                                          :g_time,
+                                          :h_time,
+                                          :j_time,
+                                          :b_time,
+                                          :n_time,
+                                          :m_time
+                                        )
+                                        }}
+    end
   end
 
   def mybeats
