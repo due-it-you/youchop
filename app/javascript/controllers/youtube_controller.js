@@ -114,118 +114,145 @@ export default class extends Controller {
 
     // pad_timings variables
 
-    const t_start_time = data.pad_timings_data.t_time.split('~')[0] // 00:00:00.0
-    const t_end_time = data.pad_timings_data.t_time.split('~')[1]   // 00:00:00.0
-    const t_start_time_integer = t_start_time.split('.')[0] // 00:00:00
-    const t_start_time_decimal = t_start_time.split('.')[1] // 0
-    const t_end_time_integer = t_end_time.split('.')[0] // 00:00:00
-    const t_end_time_decimal = t_end_time.split('.')[1] // 0
+    const tStartTime = data.pad_timings_data.t_time.split('~')[0] // 00:00:00.0
+    const tEndTime = data.pad_timings_data.t_time.split('~')[1]   // 00:00:00.0
+    const tStartTimeInteger = tStartTime.split('.')[0] // 00:00:00
+    const tStartTimeDecimal = tStartTime.split('.')[1] // 0
+    const tEndTimeInteger = tEndTime.split('.')[0] // 00:00:00
+    const tEndTimeDecimal = tEndTime.split('.')[1] // 0
 
-    const y_start_time = data.pad_timings_data.y_time.split('~')[0] // 00:00:00.0
-    const y_end_time = data.pad_timings_data.y_time.split('~')[1]   // 00:00:00.0
-    const y_start_time_integer = y_start_time.split('.')[0] // 00:00:00
-    const y_start_time_decimal = y_start_time.split('.')[1] // 0
-    const y_end_time_integer = y_end_time.split('.')[0] // 00:00:00
-    const y_end_time_decimal = y_end_time.split('.')[1] // 0
+    const yStartTime = data.pad_timings_data.y_time.split('~')[0] // 00:00:00.0
+    const yEndTime = data.pad_timings_data.y_time.split('~')[1]   // 00:00:00.0
+    const yStartTimeInteger = yStartTime.split('.')[0] // 00:00:00
+    const yStartTimeDecimal = yStartTime.split('.')[1] // 0
+    const yEndTimeInteger = yEndTime.split('.')[0] // 00:00:00
+    const yEndTimeDecimal = yEndTime.split('.')[1] // 0
 
-    const u_start_time = data.pad_timings_data.u_time.split('~')[0] // 00:00:00.0
-    const u_end_time = data.pad_timings_data.u_time.split('~')[1]   // 00:00:00.0
-    const u_start_time_integer = u_start_time.split('.')[0] // 00:00:00
-    const u_start_time_decimal = u_start_time.split('.')[1] // 0
-    const u_end_time_integer = u_end_time.split('.')[0] // 00:00:00
-    const u_end_time_decimal = u_end_time.split('.')[1]
+    const uStartTime = data.pad_timings_data.u_time.split('~')[0] // 00:00:00.0
+    const uEndTime = data.pad_timings_data.u_time.split('~')[1]   // 00:00:00.0
+    const uStartTimeInteger = uStartTime.split('.')[0] // 00:00:00
+    const uStartTimeDecimal = uStartTime.split('.')[1] // 0
+    const uEndTimeInteger = uEndTime.split('.')[0] // 00:00:00
+    const uEndTimeDecimal = uEndTime.split('.')[1]
 
-    const g_start_time = data.pad_timings_data.g_time.split('~')[0] // 00:00:00.0
-    const g_end_time = data.pad_timings_data.g_time.split('~')[1]   // 00:00:00.0
-    const g_start_time_integer = g_start_time.split('.')[0] // 00:00:00
-    const g_start_time_decimal = g_start_time.split('.')[1] // 0
-    const g_end_time_integer = g_end_time.split('.')[0] // 00:00:00
-    const g_end_time_decimal = g_end_time.split('.')[1] // 0
+    const gStartTime = data.pad_timings_data.g_time.split('~')[0] // 00:00:00.0
+    const gEndTime = data.pad_timings_data.g_time.split('~')[1]   // 00:00:00.0
+    const gStartTimeInteger = gStartTime.split('.')[0] // 00:00:00
+    const gStartTimeDecimal = gStartTime.split('.')[1] // 0
+    const gEndTimeInteger = gEndTime.split('.')[0] // 00:00:00
+    const gEndTimeDecimal = gEndTime.split('.')[1] // 0
 
-    const h_start_time = data.pad_timings_data.h_time.split('~')[0] // 00:00:00.0
-    const h_end_time = data.pad_timings_data.h_time.split('~')[1]   // 00:00:00.0
-    const h_start_time_integer = h_start_time.split('.')[0] // 00:00:00
-    const h_start_time_decimal = h_start_time.split('.')[1] // 0
-    const h_end_time_integer = h_end_time.split('.')[0] // 00:00:00
-    const h_end_time_decimal = h_end_time.split('.')[1] // 0
+    const hStartTime = data.pad_timings_data.h_time.split('~')[0] // 00:00:00.0
+    const hEndTime = data.pad_timings_data.h_time.split('~')[1]   // 00:00:00.0
+    const hStartTimeInteger = hStartTime.split('.')[0] // 00:00:00
+    const hStartTimeDecimal = hStartTime.split('.')[1] // 0
+    const hEndTimeInteger = hEndTime.split('.')[0] // 00:00:00
+    const hEndTimeDecimal = hEndTime.split('.')[1] // 0
 
-    const j_start_time = data.pad_timings_data.j_time.split('~')[0] // 00:00:00.0
-    const j_end_time = data.pad_timings_data.j_time.split('~')[1]   // 00:00:00.0
-    const j_start_time_integer = j_start_time.split('.')[0] // 00:00:00
-    const j_start_time_decimal = j_start_time.split('.')[1] // 0
-    const j_end_time_integer = j_end_time.split('.')[0] // 00:00:00
-    const j_end_time_decimal = j_end_time.split('.')[1] // 0
+    const jStartTime = data.pad_timings_data.j_time.split('~')[0] // 00:00:00.0
+    const jEndTime = data.pad_timings_data.j_time.split('~')[1]   // 00:00:00.0
+    const jStartTimeInteger = jStartTime.split('.')[0] // 00:00:00
+    const jStartTimeDecimal = jStartTime.split('.')[1] // 0
+    const jEndTimeInteger = jEndTime.split('.')[0] // 00:00:00
+    const jEndTimeDecimal = jEndTime.split('.')[1] // 0
 
-    const b_start_time = data.pad_timings_data.b_time.split('~')[0] // 00:00:00.0
-    const b_end_time = data.pad_timings_data.b_time.split('~')[1]   // 00:00:00.0
-    const b_start_time_integer = b_start_time.split('.')[0] // 00:00:00
-    const b_start_time_decimal = b_start_time.split('.')[1] // 0
-    const b_end_time_integer = b_end_time.split('.')[0] // 00:00:00
-    const b_end_time_decimal = b_end_time.split('.')[1] // 0
+    const bStartTime = data.pad_timings_data.b_time.split('~')[0] // 00:00:00.0
+    const bEndTime = data.pad_timings_data.b_time.split('~')[1]   // 00:00:00.0
+    const bStartTimeInteger = bStartTime.split('.')[0] // 00:00:00
+    const bStartTimeDecimal = bStartTime.split('.')[1] // 0
+    const bEndTimeInteger = bEndTime.split('.')[0] // 00:00:00
+    const bEndTimeDecimal = bEndTime.split('.')[1] // 0
 
-    const n_start_time = data.pad_timings_data.n_time.split('~')[0] // 00:00:00.0
-    const n_end_time = data.pad_timings_data.n_time.split('~')[1]   // 00:00:00.0
-    const n_start_time_integer = n_start_time.split('.')[0] // 00:00:00
-    const n_start_time_decimal = n_start_time.split('.')[1] // 0
-    const n_end_time_integer = n_end_time.split('.')[0] // 00:00:00
-    const n_end_time_decimal = n_end_time.split('.')[1] // 0
+    const nStartTime = data.pad_timings_data.n_time.split('~')[0] // 00:00:00.0
+    const nEndTime = data.pad_timings_data.n_time.split('~')[1]   // 00:00:00.0
+    const nStartTimeInteger = nStartTime.split('.')[0] // 00:00:00
+    const n_starttime_decimal = nStartTime.split('.')[1] // 0
+    const nEndTimeInteger = nEndTime.split('.')[0] // 00:00:00
+    const nEndTimeDecimal = nEndTime.split('.')[1] // 0
 
-    const m_start_time = data.pad_timings_data.m_time.split('~')[0] // 00:00:00.0
-    const m_end_time = data.pad_timings_data.m_time.split('~')[1]   // 00:00:00.0
-    const m_start_time_integer = m_start_time.split('.')[0] // 00:00:00
-    const m_start_time_decimal = m_start_time.split('.')[1] // 0
-    const m_end_time_integer = m_end_time.split('.')[0] // 00:00:00
-    const m_end_time_decimal = m_end_time.split('.')[1] // 0
+    const mStartTime = data.pad_timings_data.m_time.split('~')[0] // 00:00:00.0
+    const mEndTime = data.pad_timings_data.m_time.split('~')[1]   // 00:00:00.0
+    const mStartTimeInteger = mStartTime.split('.')[0] // 00:00:00
+    const mStartTimeDecimal = mStartTime.split('.')[1] // 0
+    const mEndTimeInteger = mEndTime.split('.')[0] // 00:00:00
+    const mEndTimeDecimal = mEndTime.split('.')[1] // 0
 
     // assign the pad timings
-    this.t_start_timeTarget.value = t_start_time_integer
-    this.t_start_time_decimalTarget.value = t_start_time_decimal
-    this.t_end_timeTarget.value = t_end_time_integer
-    this.t_end_time_decimalTarget.value = t_end_time_decimal
+    this.t_start_timeTarget.value = tStartTimeInteger
+    this.t_start_time_decimalTarget.value = tStartTimeDecimal
+    this.t_end_timeTarget.value = tEndTimeInteger
+    this.t_end_time_decimalTarget.value = tEndTimeDecimal
 
-    this.y_start_timeTarget.value = y_start_time_integer
-    this.y_start_time_decimalTarget.value = y_start_time_decimal
-    this.y_end_timeTarget.value = y_end_time_integer
-    this.y_end_time_decimalTarget.value = y_end_time_decimal
+    this.y_start_timeTarget.value = yStartTimeInteger
+    this.y_start_time_decimalTarget.value = yStartTimeDecimal
+    this.y_end_timeTarget.value = yEndTimeInteger
+    this.y_end_time_decimalTarget.value = yEndTimeDecimal
 
-    this.u_start_timeTarget.value = u_start_time_integer
-    this.u_start_time_decimalTarget.value = u_start_time_decimal
-    this.u_end_timeTarget.value = u_end_time_integer
-    this.u_end_time_decimalTarget.value = u_end_time_decimal
+    this.u_start_timeTarget.value = uStartTimeInteger
+    this.u_start_time_decimalTarget.value = uStartTimeDecimal
+    this.u_end_timeTarget.value = uEndTimeInteger
+    this.u_end_time_decimalTarget.value = uEndTimeDecimal
 
-    this.g_start_timeTarget.value = g_start_time_integer
-    this.g_start_time_decimalTarget.value = g_start_time_decimal
-    this.g_end_timeTarget.value = g_end_time_integer
-    this.g_end_time_decimalTarget.value = g_end_time_decimal
+    this.g_start_timeTarget.value = gStartTimeInteger
+    this.g_start_time_decimalTarget.value = gStartTimeDecimal
+    this.g_end_timeTarget.value = gEndTimeInteger
+    this.g_end_time_decimalTarget.value = gEndTimeDecimal
 
-    this.h_start_timeTarget.value = h_start_time_integer
-    this.h_start_time_decimalTarget.value = h_start_time_decimal
-    this.h_end_timeTarget.value = h_end_time_integer
-    this.h_end_time_decimalTarget.value = h_end_time_decimal
+    this.h_start_timeTarget.value = hStartTimeInteger
+    this.h_start_time_decimalTarget.value = hStartTimeDecimal
+    this.h_end_timeTarget.value = hEndTimeInteger
+    this.h_end_time_decimalTarget.value = hEndTimeDecimal
 
-    this.j_start_timeTarget.value = j_start_time_integer
-    this.j_start_time_decimalTarget.value = j_start_time_decimal
-    this.j_end_timeTarget.value = j_end_time_integer
-    this.j_end_time_decimalTarget.value = j_end_time_decimal
+    this.j_start_timeTarget.value = jStartTimeInteger
+    this.j_start_time_decimalTarget.value = jStartTimeDecimal
+    this.j_end_timeTarget.value = jEndTimeInteger
+    this.j_end_time_decimalTarget.value = jEndTimeDecimal
 
-    this.b_start_timeTarget.value = b_start_time_integer
-    this.b_start_time_decimalTarget.value = b_start_time_decimal
-    this.b_end_timeTarget.value = b_end_time_integer
-    this.b_end_time_decimalTarget.value = b_end_time_decimal
+    this.b_start_timeTarget.value = bStartTimeInteger
+    this.b_start_time_decimalTarget.value = bStartTimeDecimal
+    this.b_end_timeTarget.value = bEndTimeInteger
+    this.b_end_time_decimalTarget.value = bEndTimeDecimal
 
-    this.n_start_timeTarget.value = n_start_time_integer
-    this.n_start_time_decimalTarget.value = n_start_time_decimal
-    this.n_end_timeTarget.value = n_end_time_integer
-    this.n_end_time_decimalTarget.value = n_end_time_decimal
+    this.n_start_timeTarget.value = nStartTimeInteger
+    this.n_start_time_decimalTarget.value = nStartTimeDecimal
+    this.n_end_timeTarget.value = nEndTimeInteger
+    this.n_end_time_decimalTarget.value = nEndTimeDecimal
 
-    this.m_start_timeTarget.value = m_start_time_integer
-    this.m_start_time_decimalTarget.value = m_start_time_decimal
-    this.m_end_timeTarget.value = m_end_time_integer
-    this.m_end_time_decimalTarget.value = m_end_time_decimal
+    this.m_start_timeTarget.value = mStartTimeInteger
+    this.m_start_time_decimalTarget.value = mStartTimeDecimal
+    this.m_end_timeTarget.value = mEndTimeInteger
+    this.m_end_time_decimalTarget.value = mEndTimeDecimal
 
     // assign the bpm
     this.stepSequencerOutlet.bpmTarget.value = data.sequencers_data.bpm
     this.stepSequencerOutlet.current_bpmTarget.textContent = data.sequencers_data.bpm
+
+    // assign the active index (hihats,  snares, kicks)
+    const activatedHihatSteps = data.sequencers_data.hihats_active_index.split(',')
+
+    const gridStepsArr = Array.from(this.stepSequencerOutlet.gridTarget.children)
+    const stepsRowArr = [
+      gridStepsArr.slice(16, 32), //pads
+      gridStepsArr.slice(32, 48), //hihats
+      gridStepsArr.slice(48, 64), //snares
+      gridStepsArr.slice(64, 80)  //kicks
+    ]
+
+    stepsRowArr[1].forEach((step) => {
+      activatedHihatSteps.forEach((stepActivated) => {
+        if (step.getAttribute('index') == stepActivated) {
+          if (step.classList.contains('bg-gray-400')) {
+            step.classList.remove('bg-gray-400')
+            step.classList.add('bg-green-300')
+            step.dataset.active = "true"
+          } else {
+            step.classList.add('bg-green-300')
+            step.dataset.active = "true"
+          }
+        }
+      })
+    })
+    
   }
 
   async connect() {

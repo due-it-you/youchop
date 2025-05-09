@@ -85,27 +85,27 @@ export default class extends Controller {
     const padActiveIndexStr = padActiveIndexArray.toString()
 
     // pad_timings | ex) "00:00:00.0"
-    const t_time_to_save = this.youtubeOutlet.t_start_timeTarget.value + '.' + this.youtubeOutlet.t_start_time_decimalTarget.value + '~' + this.youtubeOutlet.t_end_timeTarget.value + '.' + this.youtubeOutlet.t_end_time_decimalTarget.value
-    const y_time_to_save = this.youtubeOutlet.y_start_timeTarget.value + '.' + this.youtubeOutlet.y_start_time_decimalTarget.value + '~' + this.youtubeOutlet.y_end_timeTarget.value + '.' + this.youtubeOutlet.y_end_time_decimalTarget.value
-    const u_time_to_save = this.youtubeOutlet.u_start_timeTarget.value + '.' + this.youtubeOutlet.u_start_time_decimalTarget.value + '~' + this.youtubeOutlet.u_end_timeTarget.value + '.' + this.youtubeOutlet.u_end_time_decimalTarget.value
-    const g_time_to_save = this.youtubeOutlet.g_start_timeTarget.value + '.' + this.youtubeOutlet.g_start_time_decimalTarget.value + '~' + this.youtubeOutlet.g_end_timeTarget.value + '.' + this.youtubeOutlet.g_end_time_decimalTarget.value
-    const h_time_to_save = this.youtubeOutlet.h_start_timeTarget.value + '.' + this.youtubeOutlet.h_start_time_decimalTarget.value + '~' + this.youtubeOutlet.h_end_timeTarget.value + '.' + this.youtubeOutlet.h_end_time_decimalTarget.value
-    const j_time_to_save = this.youtubeOutlet.j_start_timeTarget.value + '.' + this.youtubeOutlet.j_start_time_decimalTarget.value + '~' + this.youtubeOutlet.j_end_timeTarget.value + '.' + this.youtubeOutlet.j_end_time_decimalTarget.value
-    const b_time_to_save = this.youtubeOutlet.b_start_timeTarget.value + '.' + this.youtubeOutlet.b_start_time_decimalTarget.value + '~' + this.youtubeOutlet.b_end_timeTarget.value + '.' + this.youtubeOutlet.b_end_time_decimalTarget.value
-    const n_time_to_save = this.youtubeOutlet.n_start_timeTarget.value + '.' + this.youtubeOutlet.n_start_time_decimalTarget.value + '~' + this.youtubeOutlet.n_end_timeTarget.value + '.' + this.youtubeOutlet.n_end_time_decimalTarget.value
-    const m_time_to_save = this.youtubeOutlet.m_start_timeTarget.value + '.' + this.youtubeOutlet.m_start_time_decimalTarget.value + '~' + this.youtubeOutlet.m_end_timeTarget.value + '.' + this.youtubeOutlet.m_end_time_decimalTarget.value
+    const tTimeToSave = this.youtubeOutlet.t_start_timeTarget.value + '.' + this.youtubeOutlet.t_start_time_decimalTarget.value + '~' + this.youtubeOutlet.t_end_timeTarget.value + '.' + this.youtubeOutlet.t_end_time_decimalTarget.value
+    const yTimeToSave = this.youtubeOutlet.y_start_timeTarget.value + '.' + this.youtubeOutlet.y_start_time_decimalTarget.value + '~' + this.youtubeOutlet.y_end_timeTarget.value + '.' + this.youtubeOutlet.y_end_time_decimalTarget.value
+    const uTimeToSave = this.youtubeOutlet.u_start_timeTarget.value + '.' + this.youtubeOutlet.u_start_time_decimalTarget.value + '~' + this.youtubeOutlet.u_end_timeTarget.value + '.' + this.youtubeOutlet.u_end_time_decimalTarget.value
+    const gTimeToSave = this.youtubeOutlet.g_start_timeTarget.value + '.' + this.youtubeOutlet.g_start_time_decimalTarget.value + '~' + this.youtubeOutlet.g_end_timeTarget.value + '.' + this.youtubeOutlet.g_end_time_decimalTarget.value
+    const hTimeToSave = this.youtubeOutlet.h_start_timeTarget.value + '.' + this.youtubeOutlet.h_start_time_decimalTarget.value + '~' + this.youtubeOutlet.h_end_timeTarget.value + '.' + this.youtubeOutlet.h_end_time_decimalTarget.value
+    const jTimeToSave = this.youtubeOutlet.j_start_timeTarget.value + '.' + this.youtubeOutlet.j_start_time_decimalTarget.value + '~' + this.youtubeOutlet.j_end_timeTarget.value + '.' + this.youtubeOutlet.j_end_time_decimalTarget.value
+    const bTimeToSave = this.youtubeOutlet.b_start_timeTarget.value + '.' + this.youtubeOutlet.b_start_time_decimalTarget.value + '~' + this.youtubeOutlet.b_end_timeTarget.value + '.' + this.youtubeOutlet.b_end_time_decimalTarget.value
+    const nTimeToSave = this.youtubeOutlet.n_start_timeTarget.value + '.' + this.youtubeOutlet.n_start_time_decimalTarget.value + '~' + this.youtubeOutlet.n_end_timeTarget.value + '.' + this.youtubeOutlet.n_end_time_decimalTarget.value
+    const mTimeToSave = this.youtubeOutlet.m_start_timeTarget.value + '.' + this.youtubeOutlet.m_start_time_decimalTarget.value + '~' + this.youtubeOutlet.m_end_timeTarget.value + '.' + this.youtubeOutlet.m_end_time_decimalTarget.value
 
     // data_to_save
-    const youtube_data_to_save = {
+    const youtubeDataToSave = {
       video_title: this.youtubeOutlet.getPlayer.getVideoData().title,
       video_id: this.youtubeOutlet.getPlayer.getVideoData().video_id
     }
 
-    const beat_title_data_to_save = {
+    const beatTitleDataToSave = {
       title: this.beat_title_fieldTarget.value
     }
 
-    const sequencer_data_to_save = {
+    const sequencerDataToSave = {
       bpm: Number(this.stepSequencerOutlet.bpmTarget.value),
       hihats_active_index: hihatsActiveStr,
       snares_active_index: snaresActiveStr,
@@ -118,35 +118,35 @@ export default class extends Controller {
       kick_volume: this.stepSequencerOutlet.kicks_volumeTarget.value
     }
 
-    const pad_timings_data_to_save = {
-      t_time: t_time_to_save,
-      y_time: y_time_to_save,
-      u_time: u_time_to_save,
-      g_time: g_time_to_save,
-      h_time: h_time_to_save,
-      j_time: j_time_to_save,
-      b_time: b_time_to_save,
-      n_time: n_time_to_save,
-      m_time: m_time_to_save
+    const padTimingsDataToSave = {
+      t_time: tTimeToSave,
+      y_time: yTimeToSave,
+      u_time: uTimeToSave,
+      g_time: gTimeToSave,
+      h_time: hTimeToSave,
+      j_time: jTimeToSave,
+      b_time: bTimeToSave,
+      n_time: nTimeToSave,
+      m_time: mTimeToSave
     }
 
-    const data_to_save = {
-      beats: beat_title_data_to_save,
-      youtubes: youtube_data_to_save,
-      sequencers: sequencer_data_to_save,
-      pad_timings: pad_timings_data_to_save
+    const dataToSave = {
+      beats: beatTitleDataToSave,
+      youtubes: youtubeDataToSave,
+      sequencers: sequencerDataToSave,
+      pad_timings: padTimingsDataToSave
     }
 
-    return data_to_save
+    return dataToSave
   }
 
   createTheBeat () {
-    const data_to_save = this.setTheDataToSave()
+    const dataToSave = this.setTheDataToSave()
 
-    this.hidden_beats_data_fieldTarget.value = JSON.stringify(data_to_save.beats)
-    this.hidden_youtubes_data_fieldTarget.value = JSON.stringify(data_to_save.youtubes)
-    this.hidden_sequencers_data_fieldTarget.value = JSON.stringify(data_to_save.sequencers)
-    this.hidden_pad_timings_data_fieldTarget.value = JSON.stringify(data_to_save.pad_timings)
+    this.hidden_beats_data_fieldTarget.value = JSON.stringify(dataToSave.beats)
+    this.hidden_youtubes_data_fieldTarget.value = JSON.stringify(dataToSave.youtubes)
+    this.hidden_sequencers_data_fieldTarget.value = JSON.stringify(dataToSave.sequencers)
+    this.hidden_pad_timings_data_fieldTarget.value = JSON.stringify(dataToSave.pad_timings)
 
     this.beat_save_formTarget.requestSubmit()
   }
