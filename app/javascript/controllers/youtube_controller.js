@@ -60,6 +60,10 @@ export default class extends Controller {
 
   static outlets = [ "step-sequencer" ]
 
+  static values = {
+                    beatId: String
+  }
+
   initialize() {
     this.element['youtube'] = this
     
