@@ -97,6 +97,10 @@ export default class extends Controller {
     this.m_start_timeTarget.value = "00:02:56"
     this.m_start_time_decimalTarget.value = "1"
     this.m_end_timeTarget.value = "00:59:10"
+
+    if (document.querySelector("#topIndex")) {
+      return
+    }
   }
 
   connect() {
