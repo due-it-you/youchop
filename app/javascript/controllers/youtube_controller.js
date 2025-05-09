@@ -109,6 +109,7 @@ export default class extends Controller {
     })
 
     const data = await response.json()
+    this.videoId = data.youtubes_data.video_id
   }
 
   connect() {
@@ -130,21 +131,21 @@ export default class extends Controller {
   }
 
   initPlayer() {
-    this.youtube = new YT.Player("player", {
-      height: "390",
-      width: "640",
-      videoId: "a2LFVWBmoiw",
-      playerVars: {
-        playsinline: 1
-      },
-      events: {
-        onReady: (event) => {
-          event.target.setVolume(20)
-          event.target.setPlaybackRate(1.2)
-          event.target.playVideo()
+      this.youtube = new YT.Player("player", {
+        height: "390",
+        width: "640",
+        videoId: document.querySelector('#topIndex') ? "a2LFVWBmoiw" : `${this.videoId}`,
+        playerVars: {
+          playsinline: 1
+        },
+        events: {
+          onReady: (event) => {
+            event.target.setVolume(20)
+            event.target.setPlaybackRate(1.2)
+            event.target.playVideo()
+          }
         }
-      }
-    })
+      })
   }
   
   
