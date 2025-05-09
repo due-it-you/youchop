@@ -24,6 +24,9 @@ class BeatsController < ApplicationController
     ), status: :unprocessable_entity
   end
 
+  def show
+  end
+
   def mybeats
     @beats = Beat.where(user_id: current_user.id)
   end
