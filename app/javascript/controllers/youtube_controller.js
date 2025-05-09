@@ -222,6 +222,10 @@ export default class extends Controller {
     this.m_start_time_decimalTarget.value = m_start_time_decimal
     this.m_end_timeTarget.value = m_end_time_integer
     this.m_end_time_decimalTarget.value = m_end_time_decimal
+
+    // assign the bpm
+    this.stepSequencerOutlet.bpmTarget.value = data.sequencers_data.bpm
+    this.stepSequencerOutlet.current_bpmTarget.textContent = data.sequencers_data.bpm
   }
 
   async connect() {
