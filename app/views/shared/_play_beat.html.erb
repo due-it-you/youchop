@@ -1,0 +1,51 @@
+<div class="hidden md:block">
+  <div id="youtube" data-controller="youtube" data-action="
+    keydown.t@document->youtube#play 
+    keydown.y@document->youtube#play
+    keydown.u@document->youtube#play
+    keydown.g@document->youtube#play
+    keydown.h@document->youtube#play
+    keydown.j@document->youtube#play
+    keydown.b@document->youtube#play
+    keydown.n@document->youtube#play
+    keydown.m@document->youtube#play
+    ">
+    <div class="pt-4">
+      <% flash.each do |type, message| %>
+        <div class="flex items-center justify-center">
+          <% if type == 'notice' %>
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+              <%= content_tag(:div, message, class: "alert alert-danger") %>
+            </div>
+          <% else %>
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+              <%= content_tag(:div, message, class: "alert alert-success") %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="flex justify-center items-center">
+        <div class="p-4">
+          <%= render 'shared/youtube' %>
+        </div>
+        <div>
+          <div>
+            <%= render 'shared/pad_to_set_time' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="h-px mt-5 bg-gray-200 border-0">
+    <div>
+      <div>
+        <div>
+          <%= render 'shared/sequencer' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="md:hidden text-center font-medium">
+  <p>For the best experience, please access this site from a desktop or laptop computer,</p>
+  <p>as it may be too heavy for mobile devices.</p>
+</div>
