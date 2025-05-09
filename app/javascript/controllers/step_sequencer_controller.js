@@ -224,45 +224,45 @@ export default class extends Controller {
   }
 
   fetchSampleSoundPath(input) {
-    let sample_name
+    let sampleName
     
     if (input instanceof Event) {
-      sample_name = input.target.parentNode.previousElementSibling.textContent
+      sampleName = input.target.parentNode.previousElementSibling.textContent
     } else {
-      sample_name = input
+      sampleName = input
     }
     
-    if (sample_name.includes('hihat')) {
-      if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
-      if(sample_name.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
+    if (sampleName.includes('hihat')) {
+      if(sampleName.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
+      if(sampleName.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
     }
 
-    if (sample_name.includes('snare')) {
-      if (sample_name.includes('#1')) return '/samples/snares/boom-bap-snare.wav'
-      if (sample_name.includes('#2')) return '/samples/snares/old-school-snare.wav'
+    if (sampleName.includes('snare')) {
+      if (sampleName.includes('#1')) return '/samples/snares/boom-bap-snare.wav'
+      if (sampleName.includes('#2')) return '/samples/snares/old-school-snare.wav'
     }
 
-    if (sample_name.includes('kick')) {
-      if (sample_name.includes('#1')) return '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
+    if (sampleName.includes('kick')) {
+      if (sampleName.includes('#1')) return '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
     }
   }
 
   setSelectedHihat(event) {
-    const current_hihat_name = event.target.textContent
+    const currentHihatName = event.target.textContent
     this.current_hihatTarget.textContent = ""
-    this.current_hihatTarget.textContent = current_hihat_name
+    this.current_hihatTarget.textContent = currentHihatName
   }
 
   setSelectedSnare(event) {
-    const current_snare_name = event.target.textContent
+    const currentSnareName = event.target.textContent
     this.current_snareTarget.textContent = ""
-    this.current_snareTarget.textContent = current_snare_name
+    this.current_snareTarget.textContent = currentSnareName
   }
 
   setSelectedKick(event) {
-    const current_kick_name = event.target.textContent
+    const currentKickName = event.target.textContent
     this.current_kickTarget.textContent = ""
-    this.current_kickTarget.textContent = current_kick_name
+    this.current_kickTarget.textContent = currentKickName
   }
 
   setThePad(event) {
