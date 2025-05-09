@@ -25,6 +25,11 @@ class BeatsController < ApplicationController
   end
 
   def show
+    @beat = Beat.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: { beats_data: @beat.slice(:title)} }
+    end
   end
 
   def mybeats
