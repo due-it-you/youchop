@@ -111,7 +111,6 @@ export default class extends Controller {
     })
 
     const data = await response.json()
-    this.videoId = data.youtubes_data.video_id
 
     // pad_timings variables
 
@@ -225,8 +224,19 @@ export default class extends Controller {
     this.m_end_time_decimalTarget.value = m_end_time_decimal
   }
 
-  connect() {
+  async connect() {
     this.element['youtube'] = this
+
+    if (!document.querySelector('#topIndex')) {
+
+    const response = await fetch(`/beats/${this.beatIdValue}.json`, {
+      method: 'GET'
+    })
+
+    const data = await response.json()
+    this.videoId = await data.youtubes_data.video_id
+
+    }
   
     if (window.YT) {
       this.initPlayer()
