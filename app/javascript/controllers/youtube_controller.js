@@ -60,8 +60,14 @@ export default class extends Controller {
 
   static outlets = [ "step-sequencer" ]
 
-  initialize() {
+  static values = {
+                    beatId: String
+  }
+
+  async initialize() {
     this.element['youtube'] = this
+
+    // assign the default beat in top/index.html.erb
     
     this.t_start_timeTarget.value = "00:01:08"
     this.t_start_time_decimalTarget.value = "3"
@@ -93,6 +99,130 @@ export default class extends Controller {
     this.m_start_timeTarget.value = "00:02:56"
     this.m_start_time_decimalTarget.value = "1"
     this.m_end_timeTarget.value = "00:59:10"
+
+    if (document.querySelector("#topIndex")) {
+      return
+    }
+
+    // assign the selected beat in the show.html.erb
+
+    const response = await fetch(`/beats/${this.beatIdValue}.json`, {
+      method: 'GET'
+    })
+
+    const data = await response.json()
+    this.videoId = data.youtubes_data.video_id
+
+    // pad_timings variables
+
+    const t_start_time = data.pad_timings_data.t_time.split('~')[0] // 00:00:00.0
+    const t_end_time = data.pad_timings_data.t_time.split('~')[1]   // 00:00:00.0
+    const t_start_time_integer = t_start_time.split('.')[0] // 00:00:00
+    const t_start_time_decimal = t_start_time.split('.')[1] // 0
+    const t_end_time_integer = t_end_time.split('.')[0] // 00:00:00
+    const t_end_time_decimal = t_end_time.split('.')[1] // 0
+
+    const y_start_time = data.pad_timings_data.y_time.split('~')[0] // 00:00:00.0
+    const y_end_time = data.pad_timings_data.y_time.split('~')[1]   // 00:00:00.0
+    const y_start_time_integer = y_start_time.split('.')[0] // 00:00:00
+    const y_start_time_decimal = y_start_time.split('.')[1] // 0
+    const y_end_time_integer = y_end_time.split('.')[0] // 00:00:00
+    const y_end_time_decimal = y_end_time.split('.')[1] // 0
+
+    const u_start_time = data.pad_timings_data.u_time.split('~')[0] // 00:00:00.0
+    const u_end_time = data.pad_timings_data.u_time.split('~')[1]   // 00:00:00.0
+    const u_start_time_integer = u_start_time.split('.')[0] // 00:00:00
+    const u_start_time_decimal = u_start_time.split('.')[1] // 0
+    const u_end_time_integer = u_end_time.split('.')[0] // 00:00:00
+    const u_end_time_decimal = u_end_time.split('.')[1]
+
+    const g_start_time = data.pad_timings_data.g_time.split('~')[0] // 00:00:00.0
+    const g_end_time = data.pad_timings_data.g_time.split('~')[1]   // 00:00:00.0
+    const g_start_time_integer = g_start_time.split('.')[0] // 00:00:00
+    const g_start_time_decimal = g_start_time.split('.')[1] // 0
+    const g_end_time_integer = g_end_time.split('.')[0] // 00:00:00
+    const g_end_time_decimal = g_end_time.split('.')[1] // 0
+
+    const h_start_time = data.pad_timings_data.h_time.split('~')[0] // 00:00:00.0
+    const h_end_time = data.pad_timings_data.h_time.split('~')[1]   // 00:00:00.0
+    const h_start_time_integer = h_start_time.split('.')[0] // 00:00:00
+    const h_start_time_decimal = h_start_time.split('.')[1] // 0
+    const h_end_time_integer = h_end_time.split('.')[0] // 00:00:00
+    const h_end_time_decimal = h_end_time.split('.')[1] // 0
+
+    const j_start_time = data.pad_timings_data.j_time.split('~')[0] // 00:00:00.0
+    const j_end_time = data.pad_timings_data.j_time.split('~')[1]   // 00:00:00.0
+    const j_start_time_integer = j_start_time.split('.')[0] // 00:00:00
+    const j_start_time_decimal = j_start_time.split('.')[1] // 0
+    const j_end_time_integer = j_end_time.split('.')[0] // 00:00:00
+    const j_end_time_decimal = j_end_time.split('.')[1] // 0
+
+    const b_start_time = data.pad_timings_data.b_time.split('~')[0] // 00:00:00.0
+    const b_end_time = data.pad_timings_data.b_time.split('~')[1]   // 00:00:00.0
+    const b_start_time_integer = b_start_time.split('.')[0] // 00:00:00
+    const b_start_time_decimal = b_start_time.split('.')[1] // 0
+    const b_end_time_integer = b_end_time.split('.')[0] // 00:00:00
+    const b_end_time_decimal = b_end_time.split('.')[1] // 0
+
+    const n_start_time = data.pad_timings_data.n_time.split('~')[0] // 00:00:00.0
+    const n_end_time = data.pad_timings_data.n_time.split('~')[1]   // 00:00:00.0
+    const n_start_time_integer = n_start_time.split('.')[0] // 00:00:00
+    const n_start_time_decimal = n_start_time.split('.')[1] // 0
+    const n_end_time_integer = n_end_time.split('.')[0] // 00:00:00
+    const n_end_time_decimal = n_end_time.split('.')[1] // 0
+
+    const m_start_time = data.pad_timings_data.m_time.split('~')[0] // 00:00:00.0
+    const m_end_time = data.pad_timings_data.m_time.split('~')[1]   // 00:00:00.0
+    const m_start_time_integer = m_start_time.split('.')[0] // 00:00:00
+    const m_start_time_decimal = m_start_time.split('.')[1] // 0
+    const m_end_time_integer = m_end_time.split('.')[0] // 00:00:00
+    const m_end_time_decimal = m_end_time.split('.')[1] // 0
+
+    // assign the pad timings
+    this.t_start_timeTarget.value = t_start_time_integer
+    this.t_start_time_decimalTarget.value = t_start_time_decimal
+    this.t_end_timeTarget.value = t_end_time_integer
+    this.t_end_time_decimalTarget.value = t_end_time_decimal
+
+    this.y_start_timeTarget.value = y_start_time_integer
+    this.y_start_time_decimalTarget.value = y_start_time_decimal
+    this.y_end_timeTarget.value = y_end_time_integer
+    this.y_end_time_decimalTarget.value = y_end_time_decimal
+
+    this.u_start_timeTarget.value = u_start_time_integer
+    this.u_start_time_decimalTarget.value = u_start_time_decimal
+    this.u_end_timeTarget.value = u_end_time_integer
+    this.u_end_time_decimalTarget.value = u_end_time_decimal
+
+    this.g_start_timeTarget.value = g_start_time_integer
+    this.g_start_time_decimalTarget.value = g_start_time_decimal
+    this.g_end_timeTarget.value = g_end_time_integer
+    this.g_end_time_decimalTarget.value = g_end_time_decimal
+
+    this.h_start_timeTarget.value = h_start_time_integer
+    this.h_start_time_decimalTarget.value = h_start_time_decimal
+    this.h_end_timeTarget.value = h_end_time_integer
+    this.h_end_time_decimalTarget.value = h_end_time_decimal
+
+    this.j_start_timeTarget.value = j_start_time_integer
+    this.j_start_time_decimalTarget.value = j_start_time_decimal
+    this.j_end_timeTarget.value = j_end_time_integer
+    this.j_end_time_decimalTarget.value = j_end_time_decimal
+
+    this.b_start_timeTarget.value = b_start_time_integer
+    this.b_start_time_decimalTarget.value = b_start_time_decimal
+    this.b_end_timeTarget.value = b_end_time_integer
+    this.b_end_time_decimalTarget.value = b_end_time_decimal
+
+    this.n_start_timeTarget.value = n_start_time_integer
+    this.n_start_time_decimalTarget.value = n_start_time_decimal
+    this.n_end_timeTarget.value = n_end_time_integer
+    this.n_end_time_decimalTarget.value = n_end_time_decimal
+
+    this.m_start_timeTarget.value = m_start_time_integer
+    this.m_start_time_decimalTarget.value = m_start_time_decimal
+    this.m_end_timeTarget.value = m_end_time_integer
+    this.m_end_time_decimalTarget.value = m_end_time_decimal
   }
 
   connect() {
@@ -114,21 +244,21 @@ export default class extends Controller {
   }
 
   initPlayer() {
-    this.youtube = new YT.Player("player", {
-      height: "390",
-      width: "640",
-      videoId: "a2LFVWBmoiw",
-      playerVars: {
-        playsinline: 1
-      },
-      events: {
-        onReady: (event) => {
-          event.target.setVolume(20)
-          event.target.setPlaybackRate(1.2)
-          event.target.playVideo()
+      this.youtube = new YT.Player("player", {
+        height: "390",
+        width: "640",
+        videoId: document.querySelector('#topIndex') ? "a2LFVWBmoiw" : `${this.videoId}`,
+        playerVars: {
+          playsinline: 1
+        },
+        events: {
+          onReady: (event) => {
+            event.target.setVolume(20)
+            event.target.setPlaybackRate(1.2)
+            event.target.playVideo()
+          }
         }
-      }
-    })
+      })
   }
   
   
