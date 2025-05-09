@@ -66,6 +66,8 @@ export default class extends Controller {
 
   async initialize() {
     this.element['youtube'] = this
+
+    // assign the default beat in top/index.html.erb
     
     this.t_start_timeTarget.value = "00:01:08"
     this.t_start_time_decimalTarget.value = "3"
