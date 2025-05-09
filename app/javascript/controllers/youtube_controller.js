@@ -181,6 +181,48 @@ export default class extends Controller {
     // assign the pad timings
     this.t_start_timeTarget.value = t_start_time_integer
     this.t_start_time_decimalTarget.value = t_start_time_decimal
+    this.t_end_timeTarget.value = t_end_time_integer
+    this.t_end_time_decimalTarget.value = t_end_time_decimal
+
+    this.y_start_timeTarget.value = y_start_time_integer
+    this.y_start_time_decimalTarget.value = y_start_time_decimal
+    this.y_end_timeTarget.value = y_end_time_integer
+    this.y_end_time_decimalTarget.value = y_end_time_decimal
+
+    this.u_start_timeTarget.value = u_start_time_integer
+    this.u_start_time_decimalTarget.value = u_start_time_decimal
+    this.u_end_timeTarget.value = u_end_time_integer
+    this.u_end_time_decimalTarget.value = u_end_time_decimal
+
+    this.g_start_timeTarget.value = g_start_time_integer
+    this.g_start_time_decimalTarget.value = g_start_time_decimal
+    this.g_end_timeTarget.value = g_end_time_integer
+    this.g_end_time_decimalTarget.value = g_end_time_decimal
+
+    this.h_start_timeTarget.value = h_start_time_integer
+    this.h_start_time_decimalTarget.value = h_start_time_decimal
+    this.h_end_timeTarget.value = h_end_time_integer
+    this.h_end_time_decimalTarget.value = h_end_time_decimal
+
+    this.j_start_timeTarget.value = j_start_time_integer
+    this.j_start_time_decimalTarget.value = j_start_time_decimal
+    this.j_end_timeTarget.value = j_end_time_integer
+    this.j_end_time_decimalTarget.value = j_end_time_decimal
+
+    this.b_start_timeTarget.value = b_start_time_integer
+    this.b_start_time_decimalTarget.value = b_start_time_decimal
+    this.b_end_timeTarget.value = b_end_time_integer
+    this.b_end_time_decimalTarget.value = b_end_time_decimal
+
+    this.n_start_timeTarget.value = n_start_time_integer
+    this.n_start_time_decimalTarget.value = n_start_time_decimal
+    this.n_end_timeTarget.value = n_end_time_integer
+    this.n_end_time_decimalTarget.value = n_end_time_decimal
+
+    this.m_start_timeTarget.value = m_start_time_integer
+    this.m_start_time_decimalTarget.value = m_start_time_decimal
+    this.m_end_timeTarget.value = m_end_time_integer
+    this.m_end_time_decimalTarget.value = m_end_time_decimal
   }
 
   connect() {
