@@ -114,6 +114,17 @@ export default class extends Controller {
           }
         })
       })
+
+      // assign the volumes
+      const youtubeVolume = data.sequencers_data.youtube_volume
+      const hihatVolume = data.sequencers_data.hihat_volume
+      const snareVolume = data.sequencers_data.snare_volume
+      const kickVolume = data.sequencers_data.kick_volume
+
+      this.pads_volumeTarget.value = youtubeVolume
+      this.hihats_volumeTarget.value = hihatVolume
+      this.snares_volumeTarget.value = snareVolume
+      this.kicks_volumeTarget.value = kickVolume
     }
 
     if (document.querySelector('#topIndex')) {
