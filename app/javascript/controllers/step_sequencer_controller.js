@@ -25,20 +25,11 @@ export default class extends Controller {
   }
 
   async initialize() {
+    console.log(this.beatIdValue)
     this.loopId = null
 
     this._inactiveFirstStepBgColor = 'bg-gray-400'
     this._activeStepBgColor = 'bg-green-300'
-
-    // fetch the selected beat json data
-    const response = await fetch(`/beats/${this.beatIdValue}.json`, {
-      method: 'GET'
-    })
-
-    const data = await response.json()
-
-    // assign the active index (hihats,  snares, kicks)
-    const activatedHihatSteps = data.sequencers_data.hihats_active_index.split(',')
 
     const stepsCollection = this.gridTarget.children
     const stepsArray = Array.prototype.slice.call(stepsCollection)
@@ -51,8 +42,36 @@ export default class extends Controller {
     ]
 
     if (document.querySelector('#beatShow')) {
+      // fetch the selected beat json data
+      const response = await fetch(`/beats/${this.beatIdValue}.json`, {
+        method: 'GET'
+      })
+
+      const data = await response.json()
+
+      // assign the active index (hihats,  snares, kicks)
+      const activatedHihatSteps = data.sequencers_data.hihats_active_index.split(',')
+      const activatedSnareSteps = data.sequencers_data.snares_active_index.split(',')
+
+      // assign hihat active step
       drumsRows[0].forEach((step) => {
         activatedHihatSteps.forEach((activatedStep) => {
+          if (step.getAttribute('index') == activatedStep) {
+            if (step.classList.contains(this._inactiveFirstStepBgColor)) {
+              step.classList.remove(this._inactiveFirstStepBgColor)
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            } else {
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            }
+          }
+        })
+      })
+
+      // assign snare active step
+      drumsRows[1].forEach((step) => {
+        activatedSnareSteps.forEach((activatedStep) => {
           if (step.getAttribute('index') == activatedStep) {
             if (step.classList.contains(this._inactiveFirstStepBgColor)) {
               step.classList.remove(this._inactiveFirstStepBgColor)
