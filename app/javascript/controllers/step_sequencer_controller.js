@@ -41,6 +41,8 @@ export default class extends Controller {
       drumsStepsArray.slice(32,48)  // kicks row 
     ]
 
+    const padStepsArray = stepsArray.slice(16,32)
+
     if (document.querySelector('#beatShow')) {
       // fetch the selected beat json data
       const response = await fetch(`/beats/${this.beatIdValue}.json`, {
@@ -53,6 +55,8 @@ export default class extends Controller {
       const activatedHihatSteps = data.sequencers_data.hihats_active_index.split(',')
       const activatedSnareSteps = data.sequencers_data.snares_active_index.split(',')
       const activatedKickSteps = data.sequencers_data.kicks_active_index.split(',')
+      const activatedPadSteps = data.sequencers_data.pad_active_index.split(',')
+      const activatedPadStepsLetter = data.sequencers_data.pads_assigned.split(',')
 
       // assign hihat active steps
       drumsRows[0].forEach((step) => {
@@ -101,6 +105,15 @@ export default class extends Controller {
           }
         })
       })
+
+      // assign pads into steps
+      padStepsArray.forEach((step) => {
+        activatedPadSteps.forEach((activatedStep, i) => {
+          if (step.getAttribute('index') == activatedStep) {
+            step.firstElementChild.value = activatedPadStepsLetter[i]
+          }
+        })
+      })
     }
 
     if (document.querySelector('#topIndex')) {
@@ -142,7 +155,6 @@ export default class extends Controller {
       })
 
       // set the pads on the sequencer in default
-      const padStepsArray = stepsArray.slice(16,32)
 
       padStepsArray.forEach((el) => {
         switch (el.getAttribute('index')) {
