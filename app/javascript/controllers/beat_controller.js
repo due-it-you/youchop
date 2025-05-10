@@ -65,8 +65,8 @@ export default class extends Controller {
     })
 
     const hihatsActiveStr = hihatsActiveArray.toString()
-    const snaresActiveStr = hihatsActiveArray.toString()
-    const kicksActiveStr = hihatsActiveArray.toString()
+    const snaresActiveStr = snaresActiveArray.toString()
+    const kicksActiveStr = kicksActiveArray.toString()
 
     // pads_assigned | "T,H,B"
     const padsStepsArray = stepsArray.slice(16,32)
