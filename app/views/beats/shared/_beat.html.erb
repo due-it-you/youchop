@@ -16,7 +16,7 @@
               <%= button_to "Assign To Play", beat_path(beat.id), method: :get, class: 'px-4 py-2 border border-black rounded-md' %>
             </div>
             <div>
-              <%= button_to "Delete", '#', class: 'px-4 py-2 border border-black rounded-md' %>
+              <%= button_to "Delete", beat_path(beat.id), { method: :delete, data: { confirm: 'Are you sure you want to delete this beat?' },class: 'px-4 py-2 border border-black rounded-md' } %>
             </div>
           </div>
         </div>
