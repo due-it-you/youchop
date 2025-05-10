@@ -240,7 +240,6 @@ export default class extends Controller {
 
     stepsRowArr[1].forEach((step) => {
       activatedHihatSteps.forEach((stepActivated) => {
-        console.log(stepActivated)
         if (step.getAttribute('index') == stepActivated) {
           if (step.classList.contains('bg-gray-400')) {
             step.classList.remove('bg-gray-400')
