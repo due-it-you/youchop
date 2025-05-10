@@ -14,13 +14,23 @@ export default class extends Controller {
                     "current_snare",
                     "current_kick",
                     "indicator",
+                    "pads_volume",
                     "hihats_volume",
                     "snares_volume",
                     "kicks_volume",
   ]
 
-  initialize() {
+  static values = {
+    beatId: String
+  }
+
+  async initialize() {
+    console.log(this.beatIdValue)
     this.loopId = null
+
+    this._inactiveFirstStepBgColor = 'bg-gray-400'
+    this._activeStepBgColor = 'bg-green-300'
+
     const stepsCollection = this.gridTarget.children
     const stepsArray = Array.prototype.slice.call(stepsCollection)
     const drumsStepsArray = stepsArray.slice(32,80)
@@ -31,62 +41,149 @@ export default class extends Controller {
       drumsStepsArray.slice(32,48)  // kicks row 
     ]
 
-    // active some of the hihats in default
-    drumsRows[0].forEach((el) => {
-      if (el.getAttribute('index') % 2 == 1) {
-        if (el.getAttribute('index') % 4 == 1) {
-          el.classList.remove('bg-gray-400')
-          el.classList.add('bg-green-300')
-          el.dataset.active = "true"
-        } else {
-          el.classList.add('bg-green-300')
-          el.dataset.active = "true"
-        }
-      }
-    })
-
-    // active some of the snares in default
-    drumsRows[1].forEach((el) => {
-      if (el.getAttribute('index') == 5 || el.getAttribute('index') == 13) {
-        el.classList.remove('bg-gray-400')
-        el.classList.add('bg-green-300')
-        el.dataset.active = "true"
-      }
-    })
-
-    // active some of the kicks in default
-    drumsRows[2].forEach((el) => {
-      if (el.getAttribute('index') == 1 || el.getAttribute('index') == 9 ||  el.getAttribute('index') == 11) {
-        if (el.getAttribute('index') % 4 == 1) {
-          el.classList.remove('bg-gray-400')
-          el.classList.add('bg-green-300')
-          el.dataset.active = "true"
-        } else {
-          el.classList.add('bg-green-300')
-          el.dataset.active = "true"
-        }
-      }
-    })
-
-    // set the pads on the sequencer in default
     const padStepsArray = stepsArray.slice(16,32)
 
-    padStepsArray.forEach((el) => {
-      switch (el.getAttribute('index')) {
-        case "1":
-          el.firstElementChild.value = "Y";
-          break;
-        case "7":
-          el.firstElementChild.value = "Y";
-          break;
-        case "11":
-          el.firstElementChild.value = "J";
-          break;
-        case "13":
-          el.firstElementChild.value = "M";
-          break;
-      }
-    })
+    if (document.querySelector('#beatShow')) {
+      // fetch the selected beat json data
+      const response = await fetch(`/beats/${this.beatIdValue}.json`, {
+        method: 'GET'
+      })
+
+      const data = await response.json()
+
+      // assign the active index (hihats,  snares, kicks)
+      const activatedHihatSteps = data.sequencers_data.hihats_active_index.split(',')
+      const activatedSnareSteps = data.sequencers_data.snares_active_index.split(',')
+      const activatedKickSteps = data.sequencers_data.kicks_active_index.split(',')
+      const activatedPadSteps = data.sequencers_data.pad_active_index.split(',')
+      const activatedPadStepsLetter = data.sequencers_data.pads_assigned.split(',')
+
+      // assign hihat active steps
+      drumsRows[0].forEach((step) => {
+        activatedHihatSteps.forEach((activatedStep) => {
+          if (step.getAttribute('index') == activatedStep) {
+            if (step.classList.contains(this._inactiveFirstStepBgColor)) {
+              step.classList.remove(this._inactiveFirstStepBgColor)
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            } else {
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            }
+          }
+        })
+      })
+
+      // assign snare active steps
+      drumsRows[1].forEach((step) => {
+        activatedSnareSteps.forEach((activatedStep) => {
+          if (step.getAttribute('index') == activatedStep) {
+            if (step.classList.contains(this._inactiveFirstStepBgColor)) {
+              step.classList.remove(this._inactiveFirstStepBgColor)
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            } else {
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            }
+          }
+        })
+      })
+
+      // assign kick active steps
+      drumsRows[2].forEach((step) => {
+        activatedKickSteps.forEach((activatedStep) => {
+          if (step.getAttribute('index') == activatedStep) {
+            if (step.classList.contains(this._inactiveFirstStepBgColor)) {
+              step.classList.remove(this._inactiveFirstStepBgColor)
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            } else {
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            }
+          }
+        })
+      })
+
+      // assign pads into steps
+      padStepsArray.forEach((step) => {
+        activatedPadSteps.forEach((activatedStep, i) => {
+          if (step.getAttribute('index') == activatedStep) {
+            step.firstElementChild.value = activatedPadStepsLetter[i]
+          }
+        })
+      })
+
+      // assign the volumes
+      const youtubeVolume = data.sequencers_data.youtube_volume
+      const hihatVolume = data.sequencers_data.hihat_volume
+      const snareVolume = data.sequencers_data.snare_volume
+      const kickVolume = data.sequencers_data.kick_volume
+
+      this.pads_volumeTarget.value = youtubeVolume
+      this.hihats_volumeTarget.value = hihatVolume
+      this.snares_volumeTarget.value = snareVolume
+      this.kicks_volumeTarget.value = kickVolume
+    }
+
+    if (document.querySelector('#topIndex')) {
+      // active some of the hihats in default
+      drumsRows[0].forEach((el) => {
+        if (el.getAttribute('index') % 2 == 1) {
+          if (el.getAttribute('index') % 4 == 1) {
+            el.classList.remove(this._inactiveFirstStepBgColor)
+            el.classList.add(this._activeStepBgColor)
+            el.dataset.active = "true"
+          } else {
+            el.classList.add(this._activeStepBgColor)
+            el.dataset.active = "true"
+          }
+        }
+      })
+
+      // active some of the snares in default
+      drumsRows[1].forEach((el) => {
+        if (el.getAttribute('index') == 5 || el.getAttribute('index') == 13) {
+          el.classList.remove(this._inactiveFirstStepBgColor)
+          el.classList.add(this._activeStepBgColor)
+          el.dataset.active = "true"
+        }
+      })
+
+      // active some of the kicks in default
+      drumsRows[2].forEach((el) => {
+        if (el.getAttribute('index') == 1 || el.getAttribute('index') == 9 ||  el.getAttribute('index') == 11) {
+          if (el.getAttribute('index') % 4 == 1) {
+            el.classList.remove(this._inactiveFirstStepBgColor)
+            el.classList.add(this._activeStepBgColor)
+            el.dataset.active = "true"
+          } else {
+            el.classList.add(this._activeStepBgColor)
+            el.dataset.active = "true"
+          }
+        }
+      })
+
+      // set the pads on the sequencer in default
+
+      padStepsArray.forEach((el) => {
+        switch (el.getAttribute('index')) {
+          case "1":
+            el.firstElementChild.value = "Y";
+            break;
+          case "7":
+            el.firstElementChild.value = "Y";
+            break;
+          case "11":
+            el.firstElementChild.value = "J";
+            break;
+          case "13":
+            el.firstElementChild.value = "M";
+            break;
+        }
+      })
+    }
   }
 
   connect() {
@@ -101,6 +198,9 @@ export default class extends Controller {
     this.kickGain.gain.value = this.kicks_volumeTarget.value
   }
 
+  setTheDataToSave () {
+  }
+
   currentBPM() {
     this.current_bpmTarget.textContent = this.bpmTarget.value
   }
@@ -111,19 +211,19 @@ export default class extends Controller {
     
     if (isActive == false) {
       if (stepClicked.getAttribute('index') % 4 == 1) {
-        stepClicked.classList.remove('bg-gray-400')
-        stepClicked.classList.add('bg-green-300')
+        stepClicked.classList.remove(this._inactiveFirstStepBgColor)
+        stepClicked.classList.add(this._activeStepBgColor)
       } else {
-        stepClicked.classList.add('bg-green-300')
+        stepClicked.classList.add(this._activeStepBgColor)
       }
     }
 
     if (isActive == true) {
       if (stepClicked.getAttribute('index') % 4 == 1) {
-        stepClicked.classList.remove('bg-green-300')
-        stepClicked.classList.add('bg-gray-400')
+        stepClicked.classList.remove(this._activeStepBgColor)
+        stepClicked.classList.add(this._inactiveFirstStepBgColor)
       } else {
-        stepClicked.classList.remove('bg-green-300')
+        stepClicked.classList.remove(this._activeStepBgColor)
       }
     }
 
@@ -210,53 +310,53 @@ export default class extends Controller {
   highlightStep(beat) {
     this.indicatorTargets.forEach((el, index) => {
       if (index === beat) {
-        el.classList.add('bg-green-300')
+        el.classList.add(this._activeStepBgColor)
       } else {
-        el.classList.remove('bg-green-300')
+        el.classList.remove(this._activeStepBgColor)
       }
     })
   }
 
   fetchSampleSoundPath(input) {
-    let sample_name
+    let sampleName
     
     if (input instanceof Event) {
-      sample_name = input.target.parentNode.previousElementSibling.textContent
+      sampleName = input.target.parentNode.previousElementSibling.textContent
     } else {
-      sample_name = input
+      sampleName = input
     }
     
-    if (sample_name.includes('hihat')) {
-      if(sample_name.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
-      if(sample_name.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
+    if (sampleName.includes('hihat')) {
+      if(sampleName.includes('#1')) return "/samples/hihats/short-bouncy-hi-hat-one-shot_C_minor.wav"
+      if(sampleName.includes('#2')) return "/samples/hihats/aggressive-short-hi-hat-one-shot.wav"
     }
 
-    if (sample_name.includes('snare')) {
-      if (sample_name.includes('#1')) return '/samples/snares/boom-bap-snare.wav'
-      if (sample_name.includes('#2')) return '/samples/snares/old-school-snare.wav'
+    if (sampleName.includes('snare')) {
+      if (sampleName.includes('#1')) return '/samples/snares/boom-bap-snare.wav'
+      if (sampleName.includes('#2')) return '/samples/snares/old-school-snare.wav'
     }
 
-    if (sample_name.includes('kick')) {
-      if (sample_name.includes('#1')) return '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
+    if (sampleName.includes('kick')) {
+      if (sampleName.includes('#1')) return '/samples/kicks/drum-boom-bap-kick_C_minor.wav'
     }
   }
 
   setSelectedHihat(event) {
-    const current_hihat_name = event.target.textContent
+    const currentHihatName = event.target.textContent
     this.current_hihatTarget.textContent = ""
-    this.current_hihatTarget.textContent = current_hihat_name
+    this.current_hihatTarget.textContent = currentHihatName
   }
 
   setSelectedSnare(event) {
-    const current_snare_name = event.target.textContent
+    const currentSnareName = event.target.textContent
     this.current_snareTarget.textContent = ""
-    this.current_snareTarget.textContent = current_snare_name
+    this.current_snareTarget.textContent = currentSnareName
   }
 
   setSelectedKick(event) {
-    const current_kick_name = event.target.textContent
+    const currentKickName = event.target.textContent
     this.current_kickTarget.textContent = ""
-    this.current_kickTarget.textContent = current_kick_name
+    this.current_kickTarget.textContent = currentKickName
   }
 
   setThePad(event) {
@@ -300,14 +400,22 @@ export default class extends Controller {
       const isActive = step.dataset.active === "true"
       if (isActive == true) {
         if (step.getAttribute('index') % 4 == 1) {
-          step.classList.remove('bg-green-300')
-          step.classList.add('bg-gray-400')
+          step.classList.remove(this._activeStepBgColor)
+          step.classList.add(this._inactiveFirstStepBgColor)
         } else {
-          step.classList.remove('bg-green-300')
+          step.classList.remove(this._activeStepBgColor)
         }
       }
       
       step.setAttribute('data-active', 'false')
     })
+  }
+
+  get inactiveFirstStepBgColor () {
+    return this._inactiveFirstStepBgColor
+  }
+  
+  get activeStepBgColor () {
+    return this._activeStepBgColor
   }
 }

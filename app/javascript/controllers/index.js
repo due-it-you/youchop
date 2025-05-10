@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import BeatController from "./beat_controller"
+application.register("beat", BeatController)
 
 import StepSequencerController from "./step_sequencer_controller"
 application.register("step-sequencer", StepSequencerController)

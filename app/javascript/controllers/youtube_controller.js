@@ -54,11 +54,20 @@ export default class extends Controller {
                     "j_pad",
                     "b_pad",
                     "n_pad",
-                    "m_pad"
+                    "m_pad",
+                    "beat_title"
   ]
 
-  initialize() {
+  static outlets = [ "step-sequencer" ]
+
+  static values = {
+                    beatId: String
+  }
+
+  async initialize() {
     this.element['youtube'] = this
+
+    // assign the default beat in top/index.html.erb
     
     this.t_start_timeTarget.value = "00:01:08"
     this.t_start_time_decimalTarget.value = "3"
@@ -90,10 +99,148 @@ export default class extends Controller {
     this.m_start_timeTarget.value = "00:02:56"
     this.m_start_time_decimalTarget.value = "1"
     this.m_end_timeTarget.value = "00:59:10"
+
+    if (document.querySelector("#topIndex")) {
+      return
+    }
+
+    // assign the selected beat in the show.html.erb
+
+    const response = await fetch(`/beats/${this.beatIdValue}.json`, {
+      method: 'GET'
+    })
+
+    const data = await response.json()
+
+    // pad_timings variables
+
+    const tStartTime = data.pad_timings_data.t_time.split('~')[0] // 00:00:00.0
+    const tEndTime = data.pad_timings_data.t_time.split('~')[1]   // 00:00:00.0
+    const tStartTimeInteger = tStartTime.split('.')[0] // 00:00:00
+    const tStartTimeDecimal = tStartTime.split('.')[1] // 0
+    const tEndTimeInteger = tEndTime.split('.')[0] // 00:00:00
+    const tEndTimeDecimal = tEndTime.split('.')[1] // 0
+
+    const yStartTime = data.pad_timings_data.y_time.split('~')[0] // 00:00:00.0
+    const yEndTime = data.pad_timings_data.y_time.split('~')[1]   // 00:00:00.0
+    const yStartTimeInteger = yStartTime.split('.')[0] // 00:00:00
+    const yStartTimeDecimal = yStartTime.split('.')[1] // 0
+    const yEndTimeInteger = yEndTime.split('.')[0] // 00:00:00
+    const yEndTimeDecimal = yEndTime.split('.')[1] // 0
+
+    const uStartTime = data.pad_timings_data.u_time.split('~')[0] // 00:00:00.0
+    const uEndTime = data.pad_timings_data.u_time.split('~')[1]   // 00:00:00.0
+    const uStartTimeInteger = uStartTime.split('.')[0] // 00:00:00
+    const uStartTimeDecimal = uStartTime.split('.')[1] // 0
+    const uEndTimeInteger = uEndTime.split('.')[0] // 00:00:00
+    const uEndTimeDecimal = uEndTime.split('.')[1]
+
+    const gStartTime = data.pad_timings_data.g_time.split('~')[0] // 00:00:00.0
+    const gEndTime = data.pad_timings_data.g_time.split('~')[1]   // 00:00:00.0
+    const gStartTimeInteger = gStartTime.split('.')[0] // 00:00:00
+    const gStartTimeDecimal = gStartTime.split('.')[1] // 0
+    const gEndTimeInteger = gEndTime.split('.')[0] // 00:00:00
+    const gEndTimeDecimal = gEndTime.split('.')[1] // 0
+
+    const hStartTime = data.pad_timings_data.h_time.split('~')[0] // 00:00:00.0
+    const hEndTime = data.pad_timings_data.h_time.split('~')[1]   // 00:00:00.0
+    const hStartTimeInteger = hStartTime.split('.')[0] // 00:00:00
+    const hStartTimeDecimal = hStartTime.split('.')[1] // 0
+    const hEndTimeInteger = hEndTime.split('.')[0] // 00:00:00
+    const hEndTimeDecimal = hEndTime.split('.')[1] // 0
+
+    const jStartTime = data.pad_timings_data.j_time.split('~')[0] // 00:00:00.0
+    const jEndTime = data.pad_timings_data.j_time.split('~')[1]   // 00:00:00.0
+    const jStartTimeInteger = jStartTime.split('.')[0] // 00:00:00
+    const jStartTimeDecimal = jStartTime.split('.')[1] // 0
+    const jEndTimeInteger = jEndTime.split('.')[0] // 00:00:00
+    const jEndTimeDecimal = jEndTime.split('.')[1] // 0
+
+    const bStartTime = data.pad_timings_data.b_time.split('~')[0] // 00:00:00.0
+    const bEndTime = data.pad_timings_data.b_time.split('~')[1]   // 00:00:00.0
+    const bStartTimeInteger = bStartTime.split('.')[0] // 00:00:00
+    const bStartTimeDecimal = bStartTime.split('.')[1] // 0
+    const bEndTimeInteger = bEndTime.split('.')[0] // 00:00:00
+    const bEndTimeDecimal = bEndTime.split('.')[1] // 0
+
+    const nStartTime = data.pad_timings_data.n_time.split('~')[0] // 00:00:00.0
+    const nEndTime = data.pad_timings_data.n_time.split('~')[1]   // 00:00:00.0
+    const nStartTimeInteger = nStartTime.split('.')[0] // 00:00:00
+    const nStartTimeDecimal = nStartTime.split('.')[1] // 0
+    const nEndTimeInteger = nEndTime.split('.')[0] // 00:00:00
+    const nEndTimeDecimal = nEndTime.split('.')[1] // 0
+
+    const mStartTime = data.pad_timings_data.m_time.split('~')[0] // 00:00:00.0
+    const mEndTime = data.pad_timings_data.m_time.split('~')[1]   // 00:00:00.0
+    const mStartTimeInteger = mStartTime.split('.')[0] // 00:00:00
+    const mStartTimeDecimal = mStartTime.split('.')[1] // 0
+    const mEndTimeInteger = mEndTime.split('.')[0] // 00:00:00
+    const mEndTimeDecimal = mEndTime.split('.')[1] // 0
+
+    // assign the pad timings
+    this.t_start_timeTarget.value = tStartTimeInteger
+    this.t_start_time_decimalTarget.value = tStartTimeDecimal
+    this.t_end_timeTarget.value = tEndTimeInteger
+    this.t_end_time_decimalTarget.value = tEndTimeDecimal
+
+    this.y_start_timeTarget.value = yStartTimeInteger
+    this.y_start_time_decimalTarget.value = yStartTimeDecimal
+    this.y_end_timeTarget.value = yEndTimeInteger
+    this.y_end_time_decimalTarget.value = yEndTimeDecimal
+
+    this.u_start_timeTarget.value = uStartTimeInteger
+    this.u_start_time_decimalTarget.value = uStartTimeDecimal
+    this.u_end_timeTarget.value = uEndTimeInteger
+    this.u_end_time_decimalTarget.value = uEndTimeDecimal
+
+    this.g_start_timeTarget.value = gStartTimeInteger
+    this.g_start_time_decimalTarget.value = gStartTimeDecimal
+    this.g_end_timeTarget.value = gEndTimeInteger
+    this.g_end_time_decimalTarget.value = gEndTimeDecimal
+
+    this.h_start_timeTarget.value = hStartTimeInteger
+    this.h_start_time_decimalTarget.value = hStartTimeDecimal
+    this.h_end_timeTarget.value = hEndTimeInteger
+    this.h_end_time_decimalTarget.value = hEndTimeDecimal
+
+    this.j_start_timeTarget.value = jStartTimeInteger
+    this.j_start_time_decimalTarget.value = jStartTimeDecimal
+    this.j_end_timeTarget.value = jEndTimeInteger
+    this.j_end_time_decimalTarget.value = jEndTimeDecimal
+
+    this.b_start_timeTarget.value = bStartTimeInteger
+    this.b_start_time_decimalTarget.value = bStartTimeDecimal
+    this.b_end_timeTarget.value = bEndTimeInteger
+    this.b_end_time_decimalTarget.value = bEndTimeDecimal
+
+    this.n_start_timeTarget.value = nStartTimeInteger
+    this.n_start_time_decimalTarget.value = nStartTimeDecimal
+    this.n_end_timeTarget.value = nEndTimeInteger
+    this.n_end_time_decimalTarget.value = nEndTimeDecimal
+
+    this.m_start_timeTarget.value = mStartTimeInteger
+    this.m_start_time_decimalTarget.value = mStartTimeDecimal
+    this.m_end_timeTarget.value = mEndTimeInteger
+    this.m_end_time_decimalTarget.value = mEndTimeDecimal
+
+    // assign the bpm
+    this.stepSequencerOutlet.bpmTarget.value = data.sequencers_data.bpm
+    this.stepSequencerOutlet.current_bpmTarget.textContent = data.sequencers_data.bpm
   }
 
-  connect() {
+  async connect() {
     this.element['youtube'] = this
+
+    if (!document.querySelector('#topIndex')) {
+
+    const response = await fetch(`/beats/${this.beatIdValue}.json`, {
+      method: 'GET'
+    })
+
+    const data = await response.json()
+    this.videoId = await data.youtubes_data.video_id
+
+    }
   
     if (window.YT) {
       this.initPlayer()
@@ -111,21 +258,21 @@ export default class extends Controller {
   }
 
   initPlayer() {
-    this.youtube = new YT.Player("player", {
-      height: "390",
-      width: "640",
-      videoId: "a2LFVWBmoiw",
-      playerVars: {
-        playsinline: 1
-      },
-      events: {
-        onReady: (event) => {
-          event.target.setVolume(20)
-          event.target.setPlaybackRate(1.2)
-          event.target.playVideo()
+      this.youtube = new YT.Player("player", {
+        height: "390",
+        width: "640",
+        videoId: document.querySelector('#topIndex') ? "a2LFVWBmoiw" : `${this.videoId}`,
+        playerVars: {
+          playsinline: 1
+        },
+        events: {
+          onReady: (event) => {
+            event.target.setVolume(20)
+            event.target.setPlaybackRate(1.2)
+            event.target.playVideo()
+          }
         }
-      }
-    })
+      })
   }
   
   

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  video_id: MyString
+  video_title: "first_video"
+  beat: one
+
+two:
+  video_id: MyString
+  video_title: "second_video"
+  beat: two

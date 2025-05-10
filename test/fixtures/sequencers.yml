@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  beat: one
+  bpm: 1
+  hihats_active_index: MyString
+  snares_active_index: MyString
+  kicks_active_index: MyString
+  pads_assigned: MyString
+  pad_active_index: MyString
+  youtube_volume: MyString
+  hihat_volume: MyString
+  snare_volume: MyString
+  kick_volume: MyString
+
+two:
+  beat: two
+  bpm: 1
+  hihats_active_index: MyString
+  snares_active_index: MyString
+  kicks_active_index: MyString
+  pads_assigned: MyString
+  pad_active_index: MyString
+  youtube_volume: MyString
+  hihat_volume: MyString
+  snare_volume: MyString
+  kick_volume: MyString
