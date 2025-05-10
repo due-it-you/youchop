@@ -20,8 +20,26 @@ export default class extends Controller {
                     "kicks_volume",
   ]
 
-  initialize() {
+  static values = {
+    beatId: String
+  }
+
+  async initialize() {
     this.loopId = null
+
+    this._inactiveFirstStepBgColor = 'bg-gray-400'
+    this._activeStepBgColor = 'bg-green-300'
+
+    // fetch the selected beat json data
+    const response = await fetch(`/beats/${this.beatIdValue}.json`, {
+      method: 'GET'
+    })
+
+    const data = await response.json()
+
+    // assign the active index (hihats,  snares, kicks)
+    const activatedHihatSteps = data.sequencers_data.hihats_active_index.split(',')
+
     const stepsCollection = this.gridTarget.children
     const stepsArray = Array.prototype.slice.call(stepsCollection)
     const drumsStepsArray = stepsArray.slice(32,80)
@@ -32,16 +50,33 @@ export default class extends Controller {
       drumsStepsArray.slice(32,48)  // kicks row 
     ]
 
+    if (document.querySelector('#beatShow')) {
+      drumsRows[0].forEach((step) => {
+        activatedHihatSteps.forEach((activatedStep) => {
+          if (step.getAttribute('index') == activatedStep) {
+            if (step.classList.contains(this._inactiveFirstStepBgColor)) {
+              step.classList.remove(this._inactiveFirstStepBgColor)
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            } else {
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            }
+          }
+        })
+      })
+    }
+
     if (document.querySelector('#topIndex')) {
       // active some of the hihats in default
       drumsRows[0].forEach((el) => {
         if (el.getAttribute('index') % 2 == 1) {
           if (el.getAttribute('index') % 4 == 1) {
-            el.classList.remove('bg-gray-400')
-            el.classList.add('bg-green-300')
+            el.classList.remove(this._inactiveFirstStepBgColor)
+            el.classList.add(this._activeStepBgColor)
             el.dataset.active = "true"
           } else {
-            el.classList.add('bg-green-300')
+            el.classList.add(this._activeStepBgColor)
             el.dataset.active = "true"
           }
         }
@@ -50,8 +85,8 @@ export default class extends Controller {
       // active some of the snares in default
       drumsRows[1].forEach((el) => {
         if (el.getAttribute('index') == 5 || el.getAttribute('index') == 13) {
-          el.classList.remove('bg-gray-400')
-          el.classList.add('bg-green-300')
+          el.classList.remove(this._inactiveFirstStepBgColor)
+          el.classList.add(this._activeStepBgColor)
           el.dataset.active = "true"
         }
       })
@@ -60,11 +95,11 @@ export default class extends Controller {
       drumsRows[2].forEach((el) => {
         if (el.getAttribute('index') == 1 || el.getAttribute('index') == 9 ||  el.getAttribute('index') == 11) {
           if (el.getAttribute('index') % 4 == 1) {
-            el.classList.remove('bg-gray-400')
-            el.classList.add('bg-green-300')
+            el.classList.remove(this._inactiveFirstStepBgColor)
+            el.classList.add(this._activeStepBgColor)
             el.dataset.active = "true"
           } else {
-            el.classList.add('bg-green-300')
+            el.classList.add(this._activeStepBgColor)
             el.dataset.active = "true"
           }
         }
@@ -117,19 +152,19 @@ export default class extends Controller {
     
     if (isActive == false) {
       if (stepClicked.getAttribute('index') % 4 == 1) {
-        stepClicked.classList.remove('bg-gray-400')
-        stepClicked.classList.add('bg-green-300')
+        stepClicked.classList.remove(this._inactiveFirstStepBgColor)
+        stepClicked.classList.add(this._activeStepBgColor)
       } else {
-        stepClicked.classList.add('bg-green-300')
+        stepClicked.classList.add(this._activeStepBgColor)
       }
     }
 
     if (isActive == true) {
       if (stepClicked.getAttribute('index') % 4 == 1) {
-        stepClicked.classList.remove('bg-green-300')
-        stepClicked.classList.add('bg-gray-400')
+        stepClicked.classList.remove(this._activeStepBgColor)
+        stepClicked.classList.add(this._inactiveFirstStepBgColor)
       } else {
-        stepClicked.classList.remove('bg-green-300')
+        stepClicked.classList.remove(this._activeStepBgColor)
       }
     }
 
@@ -216,9 +251,9 @@ export default class extends Controller {
   highlightStep(beat) {
     this.indicatorTargets.forEach((el, index) => {
       if (index === beat) {
-        el.classList.add('bg-green-300')
+        el.classList.add(this._activeStepBgColor)
       } else {
-        el.classList.remove('bg-green-300')
+        el.classList.remove(this._activeStepBgColor)
       }
     })
   }
@@ -306,14 +341,22 @@ export default class extends Controller {
       const isActive = step.dataset.active === "true"
       if (isActive == true) {
         if (step.getAttribute('index') % 4 == 1) {
-          step.classList.remove('bg-green-300')
-          step.classList.add('bg-gray-400')
+          step.classList.remove(this._activeStepBgColor)
+          step.classList.add(this._inactiveFirstStepBgColor)
         } else {
-          step.classList.remove('bg-green-300')
+          step.classList.remove(this._activeStepBgColor)
         }
       }
       
       step.setAttribute('data-active', 'false')
     })
+  }
+
+  get inactiveFirstStepBgColor () {
+    return this._inactiveFirstStepBgColor
+  }
+  
+  get activeStepBgColor () {
+    return this._activeStepBgColor
   }
 }
