@@ -52,8 +52,9 @@ export default class extends Controller {
       // assign the active index (hihats,  snares, kicks)
       const activatedHihatSteps = data.sequencers_data.hihats_active_index.split(',')
       const activatedSnareSteps = data.sequencers_data.snares_active_index.split(',')
+      const activatedKickSteps = data.sequencers_data.kicks_active_index.split(',')
 
-      // assign hihat active step
+      // assign hihat active steps
       drumsRows[0].forEach((step) => {
         activatedHihatSteps.forEach((activatedStep) => {
           if (step.getAttribute('index') == activatedStep) {
@@ -69,9 +70,25 @@ export default class extends Controller {
         })
       })
 
-      // assign snare active step
+      // assign snare active steps
       drumsRows[1].forEach((step) => {
         activatedSnareSteps.forEach((activatedStep) => {
+          if (step.getAttribute('index') == activatedStep) {
+            if (step.classList.contains(this._inactiveFirstStepBgColor)) {
+              step.classList.remove(this._inactiveFirstStepBgColor)
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            } else {
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            }
+          }
+        })
+      })
+
+      // assign kick active steps
+      drumsRows[2].forEach((step) => {
+        activatedKickSteps.forEach((activatedStep) => {
           if (step.getAttribute('index') == activatedStep) {
             if (step.classList.contains(this._inactiveFirstStepBgColor)) {
               step.classList.remove(this._inactiveFirstStepBgColor)
