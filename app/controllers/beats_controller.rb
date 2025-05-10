@@ -1,5 +1,8 @@
 class BeatsController < ApplicationController
   def create
+    if !user_signed_in?
+      return
+    end
     ActiveRecord::Base.transaction do
       beats_data_json = JSON.parse(beat_params[:beats_data])
       youtubes_data_json = JSON.parse(beat_params[:youtubes_data])
