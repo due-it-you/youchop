@@ -65,6 +65,17 @@ class BeatsController < ApplicationController
     @beats = Beat.where(user_id: current_user.id)
   end
 
+  def destroy
+    @beat = Beat.find(params[:id])
+    if @beat.destroy!
+      flash.now[:notice] = 'the beat is deleted successfully.'
+      redirect_to mybeats_beats_path, status: :see_other
+    else
+      flash.now[:danger] = 'Error: Could not delete the beat.'
+      redirect_to mybeats_beats_path, status: :see_other
+    end
+  end
+
   private
 
   def beat_params
