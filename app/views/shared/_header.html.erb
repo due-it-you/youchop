@@ -117,6 +117,11 @@
                     <% if user_signed_in? %>
                         <li>
                             <div class="text-white">
+                                <%= button_to "My Beats", mybeats_beats_path, method: :get %>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="text-white">
                                 <%= button_to "Logout", destroy_user_session_path, method: :delete %>
                             </div>
                         </li>

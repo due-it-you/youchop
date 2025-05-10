@@ -1,3 +1,5 @@
 class TopController < ApplicationController
-  def index; end
+  def index
+    @beat = Beat.new
+  end
 end

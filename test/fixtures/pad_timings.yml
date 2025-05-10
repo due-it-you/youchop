@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  beat: one
+  t_time: MyString
+  y_time: MyString
+  u_time: MyString
+  g_time: MyString
+  h_time: MyString
+  j_time: MyString
+  b_time: MyString
+  n_time: MyString
+  m_time: MyString
+
+two:
+  beat: two
+  t_time: MyString
+  y_time: MyString
+  u_time: MyString
+  g_time: MyString
+  h_time: MyString
+  j_time: MyString
+  b_time: MyString
+  n_time: MyString
+  m_time: MyString
