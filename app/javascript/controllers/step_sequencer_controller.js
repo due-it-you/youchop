@@ -20,11 +20,25 @@ export default class extends Controller {
                     "kicks_volume",
   ]
 
-  initialize() {
+  static values = {
+    beatId: String
+  }
+
+  async initialize() {
     this.loopId = null
 
     this._inactiveFirstStepBgColor = 'bg-gray-400'
     this._activeStepBgColor = 'bg-green-300'
+
+    // fetch the selected beat json data
+    const response = await fetch(`/beats/${this.beatIdValue}.json`, {
+      method: 'GET'
+    })
+
+    const data = await response.json()
+
+    // assign the active index (hihats,  snares, kicks)
+    const activatedHihatSteps = data.sequencers_data.hihats_active_index.split(',')
 
     const stepsCollection = this.gridTarget.children
     const stepsArray = Array.prototype.slice.call(stepsCollection)
@@ -35,6 +49,23 @@ export default class extends Controller {
       drumsStepsArray.slice(16,32), // snares row
       drumsStepsArray.slice(32,48)  // kicks row 
     ]
+
+    if (document.querySelector('#beatShow')) {
+      drumsRows[0].forEach((step) => {
+        activatedHihatSteps.forEach((activatedStep) => {
+          if (step.getAttribute('index') == activatedStep) {
+            if (step.classList.contains(this._inactiveFirstStepBgColor)) {
+              step.classList.remove(this._inactiveFirstStepBgColor)
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            } else {
+              step.classList.add(this._activeStepBgColor)
+              step.dataset.active = "true"
+            }
+          }
+        })
+      })
+    }
 
     if (document.querySelector('#topIndex')) {
       // active some of the hihats in default
