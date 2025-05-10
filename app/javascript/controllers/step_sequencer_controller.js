@@ -324,4 +324,8 @@ export default class extends Controller {
   get inactiveFirstStepBgColor () {
     return this._inactiveFirstStepBgColor
   }
+  
+  get activeStepBgColor () {
+    return this._activeStepBgColor
+  }
 }
