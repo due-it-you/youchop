@@ -320,4 +320,8 @@ export default class extends Controller {
       step.setAttribute('data-active', 'false')
     })
   }
+
+  get inactiveFirstStepBgColor () {
+    return this._inactiveFirstStepBgColor
+  }
 }
