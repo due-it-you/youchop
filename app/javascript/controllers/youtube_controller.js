@@ -166,7 +166,7 @@ export default class extends Controller {
     const nStartTime = data.pad_timings_data.n_time.split('~')[0] // 00:00:00.0
     const nEndTime = data.pad_timings_data.n_time.split('~')[1]   // 00:00:00.0
     const nStartTimeInteger = nStartTime.split('.')[0] // 00:00:00
-    const n_starttime_decimal = nStartTime.split('.')[1] // 0
+    const nStartTimeDecimal = nStartTime.split('.')[1] // 0
     const nEndTimeInteger = nEndTime.split('.')[0] // 00:00:00
     const nEndTimeDecimal = nEndTime.split('.')[1] // 0
 
@@ -240,6 +240,7 @@ export default class extends Controller {
 
     stepsRowArr[1].forEach((step) => {
       activatedHihatSteps.forEach((stepActivated) => {
+        console.log(stepActivated)
         if (step.getAttribute('index') == stepActivated) {
           if (step.classList.contains('bg-gray-400')) {
             step.classList.remove('bg-gray-400')
