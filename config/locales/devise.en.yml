@@ -1,6 +1,13 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
 en:
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
