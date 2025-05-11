@@ -1,4 +1,6 @@
 class BeatsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     if !user_signed_in?
       return
@@ -65,7 +67,7 @@ class BeatsController < ApplicationController
   end
 
   def mybeats
-    @beats = Beat.where(user_id: current_user.id)
+    @beats = Beat.where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
   end
 
   def destroy
