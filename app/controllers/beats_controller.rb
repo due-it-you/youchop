@@ -67,7 +67,7 @@ class BeatsController < ApplicationController
   end
 
   def mybeats
-    @beats = Beat.where(user_id: current_user.id)
+    @beats = Beat.where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
   end
 
   def destroy

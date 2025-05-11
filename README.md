@@ -1,24 +1,22 @@
-# README
+## JPN
+### PC上で簡単にサンプリングで遊べるWebアプリ『YouChop』
+![YouChop_logoのコピー2](https://github.com/user-attachments/assets/b8d011d3-36c4-4ebb-b0d7-114f3265bf0a)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+権利的問題を回避しつつもっと気軽にWeb上だけでサンプリングを遊べる環境があるべきだという理念から当アプリを開発しました！🎤
 
-Things you may want to cover:
+https://youchop.onrender.com/
 
-* Ruby version
+### 制作した理由
+#### 金銭的ハードル
+従来はPC代に加えて、DTMまたはサンプラーを用意し、レコードを収集してレコードプレーヤーを手に入れないといけないというハードルがあった。
+**サンプリングを試してみたいのにお金がなく出来ない数年間の時期のフラストレーションが自身の体験として強く残っていた**ため。
 
-* System dependencies
+#### 権利的問題
+DTMのみで完結させれたとしてもYoutubeからダウンロードする必要があり、これはYoutubeの利用規約に違反している行為となる。
+また、そのダウンロードした音源の全ての権利元にはお金が入らないため、これも権利的に違反していると言える。
 
-* Configuration
+このWebアプリでは2つの方法で権利問題を出来るだけ回避している。
 
-* Database creation
+①**Youtube iFrame APIの規約で許された範囲を超えない使用を徹底する**ことでYoutubeの規約違反となることを回避している
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+②「**Youtubeが無断転載されている音源をAIが自動的に検知して権利元に収益が行くように変更する**」**という仕組みを利用する**ことで権利元に正当に収益が支払われる機会を確保している
