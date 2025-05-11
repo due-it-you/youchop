@@ -29,6 +29,29 @@ class BeatsController < ApplicationController
     ), status: :unprocessable_entity
   end
 
+  def update
+    ActiveRecord::Base.transaction do
+      beats_data_json = JSON.parse(beat_params[:beats_data])
+      youtubes_data_json = JSON.parse(beat_params[:youtubes_data])
+      sequencers_data_json = JSON.parse(beat_params[:sequencers_data])
+      pad_timings_data_json = JSON.parse(beat_params[:pad_timings_data])
+
+      @beat =current_user.beats.find(params[:id])
+
+      @beat.update!(beats_data_json)
+      @beat.youtube.update!(youtubes_data_json)
+      @beat.sequencer.update!(sequencers_data_json)
+      @beat.pad_timing.update!(pad_timings_data_json)
+    end
+    redirect_to mybeats_beats_path, notice: "The beat was updated successfully."
+  rescue ActiveRecord::RecordInvalid => e
+    flash.now[:danger] = "The beat could not be updated."
+    render turbo_stream: turbo_stream.replace(
+      "error_messages",
+      render_to_string(partial: "shared/danger")
+    ), status: :unprocessable_entity
+  end
+
   def show
     @beat = Beat.find(params[:id])
     @youtube = @beat.youtube
