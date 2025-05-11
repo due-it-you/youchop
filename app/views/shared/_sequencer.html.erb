@@ -9,15 +9,23 @@
         <input type="range" id="bpm" min="60" max="240" value="94" data-action="input->step-sequencer#currentBPM" data-step-sequencer-target="bpm">
         <button class="shadow-lg bg-blue-500 text-white font-bold py-2 px-4 rounded" data-action="click->step-sequencer#playSequencer">Play</button>
         <button class="shadow-lg bg-blue-500 text-white font-bold py-2 px-4 rounded" data-action="click->step-sequencer#stopSequencer">Stop</button>
-        <% if current_user.id == @beat.user_id %>
-          <button data-modal-target="SaveThisBeatModal" data-modal-toggle="SaveThisBeatModal" class="shadow-lg bg-blue-500 text-white font-bold py-2 px-4 rounded">
-          update this beat
-          </button>
+
+        <% if user_signed_in? %>
+          <% if current_user.id == @beat.user_id %>
+            <button data-modal-target="SaveThisBeatModal" data-modal-toggle="SaveThisBeatModal" class="shadow-lg bg-blue-500 text-white font-bold py-2 px-4 rounded">
+            update this beat
+            </button>
+          <% else %>
+            <button data-modal-target="SaveThisBeatModal" data-modal-toggle="SaveThisBeatModal" class="shadow-lg bg-blue-500 text-white font-bold py-2 px-4 rounded">
+            save this beat
+            </button>
+          <% end %>
         <% else %>
           <button data-modal-target="SaveThisBeatModal" data-modal-toggle="SaveThisBeatModal" class="shadow-lg bg-blue-500 text-white font-bold py-2 px-4 rounded">
           save this beat
           </button>
         <% end %>
+
         <!-- Modal -->
         <%= render 'shared/beats/form', beat: @beat %>
         <!-- Modal toggle -->
