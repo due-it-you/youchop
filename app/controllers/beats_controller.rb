@@ -2,7 +2,7 @@ class BeatsController < ApplicationController
   before_action :authenticate_user!, except: %i[index]
 
   def index
-
+    @beats = Beat.all.order(created_at: :desc).page(params[:page])
   end
 
   def create
