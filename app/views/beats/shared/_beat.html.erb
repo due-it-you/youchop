@@ -13,17 +13,23 @@
                   <div class="font-medium text-lg">Youtube: <%= beat.youtube.video_title %></div>
                 </div>
                 <div class="flex pt-2">
-                  <div class="text-lg">BPM:</div>
+                  <div class="text-lg mr-1">BPM:</div>
                   <div class="text-lg"><%= beat.sequencer.bpm %></div>
+                </div>
+                <div class="flex pt-2">
+                  <div class="text-lg mr-1">by</div>
+                  <div class="text-lg text-blue-500 hover:text-blue-600"><%= beat.user.username %></div>
                 </div>
               </div>
               <div class="flex justify-center items-center pt-4">
                 <div class="mr-2">
                   <%= button_to "Assign To Play", beat_path(beat.id), method: :get, class: "text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800" %>
                 </div>
-                <div>
-                  <%= button_to "Delete", beat_path(beat.id), { method: :delete, data: { turbo_method: :delete ,turbo_confirm: 'Are you sure you want to delete this beat?' }, class: 'focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' } %>
-                </div>
+                <% if user_signed_in? && current_user.id == beat.user_id %>
+                  <div>
+                    <%= button_to "Delete", beat_path(beat.id), { method: :delete, data: { turbo_method: :delete ,turbo_confirm: 'Are you sure you want to delete this beat?' }, class: 'focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' } %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
