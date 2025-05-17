@@ -1,5 +1,9 @@
 class BeatsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[ index show ]
+
+  def index
+    @beats = Beat.all.order(created_at: :desc).page(params[:page])
+  end
 
   def create
     if !user_signed_in?
