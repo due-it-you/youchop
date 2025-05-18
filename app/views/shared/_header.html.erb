@@ -9,17 +9,17 @@
         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
             <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 <li>
-                    <%= link_to 'Public Beats', beats_path, class: 'block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:text-gray-300 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white' %>
+                    <%= link_to 'Public Beats', beats_path, class: 'block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:text-gray-200 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0' %>
                 </li>
                 <% if user_signed_in? %>
                     <li>
-                        <div class="text-white">
+                        <div class="text-white hover:text-gray-200">
                             <%= button_to "My Beats", mybeats_beats_path, method: :get %>
                         </div>
                     </li>
                 <% end %>
                 <li>
-                    <button data-modal-target="samplingSlideModal" data-modal-toggle="samplingSlideModal" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:text-gray-300 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                    <button data-modal-target="samplingSlideModal" data-modal-toggle="samplingSlideModal" class="block py-2 pr-4 pl-3 text-white hover:text-gray-200 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">
                     What is Sampling?
                     </button>
                     <!-- Modal -->
@@ -72,7 +72,7 @@
                     </div>
                 </li>
                 <li>
-                    <button data-modal-target="howToUseSlideModal" data-modal-toggle="howToUseSlideModal" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:text-gray-300 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                    <button data-modal-target="howToUseSlideModal" data-modal-toggle="howToUseSlideModal" class="block py-2 pr-4 pl-3 text-white hover:text-gray-200 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0">
                     How to Use
                     </button>
                     <!-- Modal -->
@@ -126,18 +126,18 @@
                 </li>
                     <% if user_signed_in? %>
                         <li>
-                            <div class="text-white">
+                            <div class="text-white hover:text-gray-200">
                                 <%= button_to "Logout", destroy_user_session_path, method: :delete %>
                             </div>
                         </li>
                     <% else %>
                         <li>
-                            <div class="text-white">
+                            <div class="text-white hover:text-gray-200">
                                 <%= link_to "Log in", new_user_session_path %>
                             </div>
                         </li>
                         <li>
-                            <div class="text-white">
+                            <div class="text-white hover:text-gray-200">
                                 <%= link_to "Sign up", new_user_registration_path %>
                             </div>
                         </li>
