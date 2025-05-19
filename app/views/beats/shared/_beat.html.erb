@@ -9,12 +9,10 @@
             <a href="#" class="text-blue-600 hover:underline">test</a>
           </div>
         </div>
-
         <div class="text-sm text-gray-700">
           <p><strong>Youtube:</strong> Bill Evans - My Foolish Heart</p>
           <p><strong>BPM:</strong> 94</p>
         </div>
-
         <div class="flex justify-center space-x-2 pt-2">
           <button class="bg-blue-500 text-white text-sm px-4 py-1.5 rounded hover:bg-blue-600 flex items-center gap-1">
             <div class="mr-1">
@@ -22,12 +20,12 @@
             </div>
             Assign to Play
           </button>
-          <button class="bg-red-500 text-white text-sm px-4 py-1.5 rounded hover:bg-red-600 flex items-center gap-1">
+          <%= button_to beat_path(beat.id), method: :delete ,class: "bg-red-500 text-white text-sm px-4 py-1.5 rounded hover:bg-red-600 flex items-center gap-1" do %>
             <div class="mr-1">
               <i class="fa fa-trash-o"></i>
             </div>
             Delete
-          </button>
+          <% end %>
         </div>
       </div>
     </div>
