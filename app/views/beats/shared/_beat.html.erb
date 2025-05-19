@@ -1,10 +1,13 @@
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-2 gap-4">
   <% beats.each do |beat| %>
     <div class="flex justify-center">
       <div class="rounded-xl border p-7 shadow bg-white space-y-3">
         <div class="flex items-center justify-between">
-          <h2 class="font-bold text-lg">🎵 test</h2>
-          <span class="text-sm text-gray-500">by <a href="#" class="text-blue-600 hover:underline">test</a></span>
+          <h2 class="font-bold text-lg">🎵 <%= beat.title %></h2>
+          <div class="flex items-center">
+            <div class="text-sm text-gray-500 mr-1">by</div>
+            <a href="#" class="text-blue-600 hover:underline">test</a>
+          </div>
         </div>
 
         <div class="text-sm text-gray-700">
