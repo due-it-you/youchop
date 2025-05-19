@@ -16,12 +16,12 @@
           </div>
         </div>
         <div class="mx-4">
-          <button class="bg-blue-500 text-white w-full text-sm px-4 py-3 mb-4 rounded hover:bg-blue-600 flex items-center">
+          <%= button_to beat_path(beat.id), method: :get, class: "bg-blue-500 text-white w-full text-sm px-4 py-3 mb-4 rounded hover:bg-blue-600 flex items-center" do %>
             <div class="mr-1">
               <i class="fa fa-play"></i>
             </div>
             Assign to Play
-          </button>
+          <% end %>
           <%= button_to beat_path(beat.id), method: :delete ,class: "flex justify-center bg-red-500 text-white w-full text-sm px-4 py-3 mb-5 rounded hover:bg-red-600 flex items-center" do %>
             <div class="mr-1">
               <i class="fa fa-trash-o"></i>
