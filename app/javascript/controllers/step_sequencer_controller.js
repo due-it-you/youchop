@@ -196,6 +196,9 @@ export default class extends Controller {
     this.hihatGain.gain.value = this.hihats_volumeTarget.value
     this.snareGain.gain.value = this.snares_volumeTarget.value
     this.kickGain.gain.value = this.kicks_volumeTarget.value
+
+    // stop the sequencer when the page is changed
+    window.addEventListener(('beforeunload', this.stopSequencer()))
   }
 
   setTheDataToSave () {
