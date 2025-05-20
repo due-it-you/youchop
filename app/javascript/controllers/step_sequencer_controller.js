@@ -25,8 +25,17 @@ export default class extends Controller {
   }
 
   async initialize() {
-    console.log(this.beatIdValue)
     this.loopId = null
+
+    // stop the sequencer when the page is changed
+    window.addEventListener('beforeunload', (event) => {
+      this.stopSequencer()
+    })
+
+    // stop the sequencer when the page is changed with turbo
+    window.addEventListener("turbo:before-cache", () => {
+      this.stopSequencer()
+    })
 
     this._inactiveFirstStepBgColor = 'bg-gray-400'
     this._activeStepBgColor = 'bg-green-300'
