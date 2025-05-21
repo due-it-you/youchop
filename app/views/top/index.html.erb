@@ -1,5 +1,5 @@
-<div id="topIndex" class="hidden md:block">
-  <div id="youtube" data-controller="youtube" data-youtube-step-sequencer-outlet=".step-sequencer" data-action="
+<div id="topIndex">
+  <div id="youtube" class="hidden md:block" data-controller="youtube" data-youtube-step-sequencer-outlet=".step-sequencer" data-action="
     keydown.t@document->youtube#play 
     keydown.y@document->youtube#play
     keydown.u@document->youtube#play
@@ -11,5 +11,9 @@
     keydown.m@document->youtube#play
     ">
     <%= render 'shared/play_beat' %>
+  </div>
+  <!-- desktop usage recommendation on the mobile size access -->
+  <div class="h-full">
+    <%= render 'shared/mobile_size' %>
   </div>
 </div>
