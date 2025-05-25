@@ -22,11 +22,13 @@
             </div>
             Assign to Play
           <% end %>
-          <%= button_to beat_path(beat.id), method: :delete ,class: "flex justify-center bg-red-500 text-white w-full text-sm px-4 py-3 mb-5 rounded hover:bg-red-600 flex items-center" do %>
-            <div class="mr-1">
-              <i class="fa fa-trash-o"></i>
-            </div>
-            Delete
+          <% if user_signed_in? && current_user.id == beat.user_id %>
+            <%= button_to beat_path(beat.id), method: :delete ,class: "flex justify-center bg-red-500 text-white w-full text-sm px-4 py-3 mb-5 rounded hover:bg-red-600 flex items-center" do %>
+              <div class="mr-1">
+                <i class="fa fa-trash-o"></i>
+              </div>
+              Delete
+            <% end %>
           <% end %>
         </div>
       </div>
