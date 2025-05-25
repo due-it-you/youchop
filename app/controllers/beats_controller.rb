@@ -99,6 +99,7 @@ class BeatsController < ApplicationController
 
   def destroy
     @beat = Beat.find(params[:id])
+    return if !user_signed_in? || @beat.user_id != current_user.id
     if @beat.destroy!
       redirect_to mybeats_beats_path, status: :see_other, notice: "the beat is deleted successfully."
     else
